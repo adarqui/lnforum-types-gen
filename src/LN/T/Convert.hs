@@ -150,6 +150,82 @@ boardResponseToBoardRequest  BoardResponse{..} =
   }
 
 
+threadRequestToThreadResponse :: Int64 -> Int64 -> Int64 -> Int64 -> Int64 -> Text -> Bool -> (Maybe UTCTime) -> (Maybe Int64) -> (Maybe UTCTime) -> (Maybe UTCTime) -> ThreadRequest -> ThreadResponse
+threadRequestToThreadResponse _1 _2 _3 _4 _5 _6 _7 _8 _9 _10 _11 ThreadRequest{..} =
+  ThreadResponse {
+    threadResponseId = _1,
+    threadResponseUserId = _2,
+    threadResponseOrgId = _3,
+    threadResponseForumId = _4,
+    threadResponseBoardId = _5,
+    threadResponseName = _6,
+    threadResponseActive = _7,
+    threadResponseCreatedAt = _8,
+    threadResponseModifiedBy = _9,
+    threadResponseModifiedAt = _10,
+    threadResponseActivityAt = _11,
+    threadResponseDisplayName = threadRequestDisplayName,
+    threadResponseDescription = threadRequestDescription,
+    threadResponseSticky = threadRequestSticky,
+    threadResponseLocked = threadRequestLocked,
+    threadResponsePoll = threadRequestPoll,
+    threadResponseIcon = threadRequestIcon,
+    threadResponseTags = threadRequestTags,
+    threadResponseGuard = threadRequestGuard
+  }
+
+
+threadResponseToThreadRequest :: (Maybe Text) -> ThreadResponse -> ThreadRequest
+threadResponseToThreadRequest _1 ThreadResponse{..} =
+  ThreadRequest {
+    threadRequestStateTag = _1,
+    threadRequestDisplayName = threadResponseDisplayName,
+    threadRequestDescription = threadResponseDescription,
+    threadRequestSticky = threadResponseSticky,
+    threadRequestLocked = threadResponseLocked,
+    threadRequestPoll = threadResponsePoll,
+    threadRequestIcon = threadResponseIcon,
+    threadRequestTags = threadResponseTags,
+    threadRequestGuard = threadResponseGuard
+  }
+
+
+threadPostRequestToThreadPostResponse :: Int64 -> Int64 -> Int64 -> Int64 -> Int64 -> Int64 -> (Maybe Int64) -> Bool -> (Maybe UTCTime) -> (Maybe Int64) -> (Maybe UTCTime) -> (Maybe UTCTime) -> ThreadPostRequest -> ThreadPostResponse
+threadPostRequestToThreadPostResponse _1 _2 _3 _4 _5 _6 _7 _8 _9 _10 _11 _12 ThreadPostRequest{..} =
+  ThreadPostResponse {
+    threadPostResponseId = _1,
+    threadPostResponseUserId = _2,
+    threadPostResponseOrgId = _3,
+    threadPostResponseForumId = _4,
+    threadPostResponseBoardId = _5,
+    threadPostResponseThreadId = _6,
+    threadPostResponseParentId = _7,
+    threadPostResponseActive = _8,
+    threadPostResponseCreatedAt = _9,
+    threadPostResponseModifiedBy = _10,
+    threadPostResponseModifiedAt = _11,
+    threadPostResponseActivityAt = _12,
+    threadPostResponseTitle = threadPostRequestTitle,
+    threadPostResponseBody = threadPostRequestBody,
+    threadPostResponseTags = threadPostRequestTags,
+    threadPostResponsePrivateTags = threadPostRequestPrivateTags,
+    threadPostResponseGuard = threadPostRequestGuard
+  }
+
+
+threadPostResponseToThreadPostRequest :: (Maybe Text) -> (Maybe Text) -> ThreadPostResponse -> ThreadPostRequest
+threadPostResponseToThreadPostRequest _1 _2 ThreadPostResponse{..} =
+  ThreadPostRequest {
+    threadPostRequestStateTag = _1,
+    threadPostRequestStatePrivateTag = _2,
+    threadPostRequestTitle = threadPostResponseTitle,
+    threadPostRequestBody = threadPostResponseBody,
+    threadPostRequestTags = threadPostResponseTags,
+    threadPostRequestPrivateTags = threadPostResponsePrivateTags,
+    threadPostRequestGuard = threadPostResponseGuard
+  }
+
+
 userRequestToUserResponse :: Int64 -> Text -> Text -> (Maybe Text) -> (Maybe UTCTime) -> (Maybe Text) -> (Maybe UTCTime) -> Bool -> Int -> (Maybe UTCTime) -> (Maybe UTCTime) -> (Maybe UTCTime) -> (Maybe UTCTime) -> UserRequest -> UserResponse
 userRequestToUserResponse _1 _2 _3 _4 _5 _6 _7 _8 _9 _10 _11 _12 _13 UserRequest{..} =
   UserResponse {

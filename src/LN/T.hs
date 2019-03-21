@@ -9,7 +9,6 @@ import           LN.T.Api                 as A
 import           LN.T.Board               as A
 import           LN.T.Bucket              as A
 import           LN.T.Count               as A
-import           LN.T.DepList             as A
 import           LN.T.Ent                 as A
 import           LN.T.Error               as A
 import           LN.T.Like                as A

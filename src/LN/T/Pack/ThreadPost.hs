@@ -11,15 +11,10 @@
 module LN.T.Pack.ThreadPost where
 
 
-import LN.T.Permission
-import LN.T.Organization
-import LN.T.User
-import LN.T.Forum
-import LN.T.Board
-import LN.T.Thread
 import LN.T.ThreadPost
+import LN.T.User
+import LN.T.Permission
 import LN.T.Like
-import LN.T.Star
 
 
 import           Control.DeepSeq             (NFData)
@@ -42,9 +37,6 @@ data ThreadPostPackResponse = ThreadPostPackResponse {
   threadPostPackResponseUserId :: !(Int64),
   threadPostPackResponseStat :: !(ThreadPostStatResponse),
   threadPostPackResponseLike :: !((Maybe LikeResponse)),
-  threadPostPackResponseStar :: !((Maybe StarResponse)),
-  threadPostPackResponseWithOrganization :: !((Maybe OrganizationResponse)),
-  threadPostPackResponseWithForum :: !((Maybe ForumResponse)),
   threadPostPackResponseWithBoard :: !((Maybe BoardResponse)),
   threadPostPackResponseWithThread :: !((Maybe ThreadResponse)),
   threadPostPackResponseWithThreadPosts :: !((Maybe [Int64])),
@@ -62,9 +54,6 @@ instance FromJSON ThreadPostPackResponse where
     threadPostPackResponseUserId <- o .: ("user_id" :: Text)
     threadPostPackResponseStat <- o .: ("stat" :: Text)
     threadPostPackResponseLike <- o .: ("like" :: Text)
-    threadPostPackResponseStar <- o .: ("star" :: Text)
-    threadPostPackResponseWithOrganization <- o .: ("with_organization" :: Text)
-    threadPostPackResponseWithForum <- o .: ("with_forum" :: Text)
     threadPostPackResponseWithBoard <- o .: ("with_board" :: Text)
     threadPostPackResponseWithThread <- o .: ("with_thread" :: Text)
     threadPostPackResponseWithThreadPosts <- o .: ("with_thread_posts" :: Text)
@@ -78,9 +67,6 @@ instance FromJSON ThreadPostPackResponse where
       threadPostPackResponseUserId = threadPostPackResponseUserId,
       threadPostPackResponseStat = threadPostPackResponseStat,
       threadPostPackResponseLike = threadPostPackResponseLike,
-      threadPostPackResponseStar = threadPostPackResponseStar,
-      threadPostPackResponseWithOrganization = threadPostPackResponseWithOrganization,
-      threadPostPackResponseWithForum = threadPostPackResponseWithForum,
       threadPostPackResponseWithBoard = threadPostPackResponseWithBoard,
       threadPostPackResponseWithThread = threadPostPackResponseWithThread,
       threadPostPackResponseWithThreadPosts = threadPostPackResponseWithThreadPosts,
@@ -100,9 +86,6 @@ instance ToJSON ThreadPostPackResponse where
     , "user_id" .= threadPostPackResponseUserId
     , "stat" .= threadPostPackResponseStat
     , "like" .= threadPostPackResponseLike
-    , "star" .= threadPostPackResponseStar
-    , "with_organization" .= threadPostPackResponseWithOrganization
-    , "with_forum" .= threadPostPackResponseWithForum
     , "with_board" .= threadPostPackResponseWithBoard
     , "with_thread" .= threadPostPackResponseWithThread
     , "with_thread_posts" .= threadPostPackResponseWithThreadPosts
@@ -113,10 +96,10 @@ instance ToJSON ThreadPostPackResponse where
 
 
 instance Eq ThreadPostPackResponse where
-  (==) a b = threadPostPackResponseThreadPost a == threadPostPackResponseThreadPost b && threadPostPackResponseThreadPostId a == threadPostPackResponseThreadPostId b && threadPostPackResponseUser a == threadPostPackResponseUser b && threadPostPackResponseUserId a == threadPostPackResponseUserId b && threadPostPackResponseStat a == threadPostPackResponseStat b && threadPostPackResponseLike a == threadPostPackResponseLike b && threadPostPackResponseStar a == threadPostPackResponseStar b && threadPostPackResponseWithOrganization a == threadPostPackResponseWithOrganization b && threadPostPackResponseWithForum a == threadPostPackResponseWithForum b && threadPostPackResponseWithBoard a == threadPostPackResponseWithBoard b && threadPostPackResponseWithThread a == threadPostPackResponseWithThread b && threadPostPackResponseWithThreadPosts a == threadPostPackResponseWithThreadPosts b && threadPostPackResponseWithThreadPostsOffset a == threadPostPackResponseWithThreadPostsOffset b && threadPostPackResponseWithThreadPostsLimit a == threadPostPackResponseWithThreadPostsLimit b && threadPostPackResponsePermissions a == threadPostPackResponsePermissions b
+  (==) a b = threadPostPackResponseThreadPost a == threadPostPackResponseThreadPost b && threadPostPackResponseThreadPostId a == threadPostPackResponseThreadPostId b && threadPostPackResponseUser a == threadPostPackResponseUser b && threadPostPackResponseUserId a == threadPostPackResponseUserId b && threadPostPackResponseStat a == threadPostPackResponseStat b && threadPostPackResponseLike a == threadPostPackResponseLike b && threadPostPackResponseWithBoard a == threadPostPackResponseWithBoard b && threadPostPackResponseWithThread a == threadPostPackResponseWithThread b && threadPostPackResponseWithThreadPosts a == threadPostPackResponseWithThreadPosts b && threadPostPackResponseWithThreadPostsOffset a == threadPostPackResponseWithThreadPostsOffset b && threadPostPackResponseWithThreadPostsLimit a == threadPostPackResponseWithThreadPostsLimit b && threadPostPackResponsePermissions a == threadPostPackResponsePermissions b
 
 instance Show ThreadPostPackResponse where
-    show rec = "threadPostPackResponseThreadPost: " <> show (threadPostPackResponseThreadPost rec) <> ", " <> "threadPostPackResponseThreadPostId: " <> show (threadPostPackResponseThreadPostId rec) <> ", " <> "threadPostPackResponseUser: " <> show (threadPostPackResponseUser rec) <> ", " <> "threadPostPackResponseUserId: " <> show (threadPostPackResponseUserId rec) <> ", " <> "threadPostPackResponseStat: " <> show (threadPostPackResponseStat rec) <> ", " <> "threadPostPackResponseLike: " <> show (threadPostPackResponseLike rec) <> ", " <> "threadPostPackResponseStar: " <> show (threadPostPackResponseStar rec) <> ", " <> "threadPostPackResponseWithOrganization: " <> show (threadPostPackResponseWithOrganization rec) <> ", " <> "threadPostPackResponseWithForum: " <> show (threadPostPackResponseWithForum rec) <> ", " <> "threadPostPackResponseWithBoard: " <> show (threadPostPackResponseWithBoard rec) <> ", " <> "threadPostPackResponseWithThread: " <> show (threadPostPackResponseWithThread rec) <> ", " <> "threadPostPackResponseWithThreadPosts: " <> show (threadPostPackResponseWithThreadPosts rec) <> ", " <> "threadPostPackResponseWithThreadPostsOffset: " <> show (threadPostPackResponseWithThreadPostsOffset rec) <> ", " <> "threadPostPackResponseWithThreadPostsLimit: " <> show (threadPostPackResponseWithThreadPostsLimit rec) <> ", " <> "threadPostPackResponsePermissions: " <> show (threadPostPackResponsePermissions rec)
+    show rec = "threadPostPackResponseThreadPost: " <> show (threadPostPackResponseThreadPost rec) <> ", " <> "threadPostPackResponseThreadPostId: " <> show (threadPostPackResponseThreadPostId rec) <> ", " <> "threadPostPackResponseUser: " <> show (threadPostPackResponseUser rec) <> ", " <> "threadPostPackResponseUserId: " <> show (threadPostPackResponseUserId rec) <> ", " <> "threadPostPackResponseStat: " <> show (threadPostPackResponseStat rec) <> ", " <> "threadPostPackResponseLike: " <> show (threadPostPackResponseLike rec) <> ", " <> "threadPostPackResponseWithBoard: " <> show (threadPostPackResponseWithBoard rec) <> ", " <> "threadPostPackResponseWithThread: " <> show (threadPostPackResponseWithThread rec) <> ", " <> "threadPostPackResponseWithThreadPosts: " <> show (threadPostPackResponseWithThreadPosts rec) <> ", " <> "threadPostPackResponseWithThreadPostsOffset: " <> show (threadPostPackResponseWithThreadPostsOffset rec) <> ", " <> "threadPostPackResponseWithThreadPostsLimit: " <> show (threadPostPackResponseWithThreadPostsLimit rec) <> ", " <> "threadPostPackResponsePermissions: " <> show (threadPostPackResponsePermissions rec)
 
 data ThreadPostPackResponses = ThreadPostPackResponses {
   threadPostPackResponses :: !([ThreadPostPackResponse])
