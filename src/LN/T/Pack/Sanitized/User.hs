@@ -13,7 +13,6 @@ module LN.T.Pack.Sanitized.User where
 
 import LN.T.User
 import LN.T.Like
-import LN.T.Star
 import LN.T.Profile
 
 
@@ -36,8 +35,7 @@ data UserSanitizedPackResponse = UserSanitizedPackResponse {
   userSanitizedPackResponseProfile :: !(ProfileResponse),
   userSanitizedPackResponseProfileId :: !(Int64),
   userSanitizedPackResponseStat :: !(UserSanitizedStatResponse),
-  userSanitizedPackResponseLike :: !((Maybe LikeResponse)),
-  userSanitizedPackResponseStar :: !((Maybe StarResponse))
+  userSanitizedPackResponseLike :: !((Maybe LikeResponse))
 }  deriving (Generic,Typeable,NFData)
 
 
@@ -49,15 +47,13 @@ instance FromJSON UserSanitizedPackResponse where
     userSanitizedPackResponseProfileId <- o .: ("profile_id" :: Text)
     userSanitizedPackResponseStat <- o .: ("stat" :: Text)
     userSanitizedPackResponseLike <- o .: ("like" :: Text)
-    userSanitizedPackResponseStar <- o .: ("star" :: Text)
     pure $ UserSanitizedPackResponse {
       userSanitizedPackResponseUser = userSanitizedPackResponseUser,
       userSanitizedPackResponseUserId = userSanitizedPackResponseUserId,
       userSanitizedPackResponseProfile = userSanitizedPackResponseProfile,
       userSanitizedPackResponseProfileId = userSanitizedPackResponseProfileId,
       userSanitizedPackResponseStat = userSanitizedPackResponseStat,
-      userSanitizedPackResponseLike = userSanitizedPackResponseLike,
-      userSanitizedPackResponseStar = userSanitizedPackResponseStar
+      userSanitizedPackResponseLike = userSanitizedPackResponseLike
     }
   parseJSON x = fail $ "Could not parse object: " <> show x
 
@@ -71,15 +67,14 @@ instance ToJSON UserSanitizedPackResponse where
     , "profile_id" .= userSanitizedPackResponseProfileId
     , "stat" .= userSanitizedPackResponseStat
     , "like" .= userSanitizedPackResponseLike
-    , "star" .= userSanitizedPackResponseStar
     ]
 
 
 instance Eq UserSanitizedPackResponse where
-  (==) a b = userSanitizedPackResponseUser a == userSanitizedPackResponseUser b && userSanitizedPackResponseUserId a == userSanitizedPackResponseUserId b && userSanitizedPackResponseProfile a == userSanitizedPackResponseProfile b && userSanitizedPackResponseProfileId a == userSanitizedPackResponseProfileId b && userSanitizedPackResponseStat a == userSanitizedPackResponseStat b && userSanitizedPackResponseLike a == userSanitizedPackResponseLike b && userSanitizedPackResponseStar a == userSanitizedPackResponseStar b
+  (==) a b = userSanitizedPackResponseUser a == userSanitizedPackResponseUser b && userSanitizedPackResponseUserId a == userSanitizedPackResponseUserId b && userSanitizedPackResponseProfile a == userSanitizedPackResponseProfile b && userSanitizedPackResponseProfileId a == userSanitizedPackResponseProfileId b && userSanitizedPackResponseStat a == userSanitizedPackResponseStat b && userSanitizedPackResponseLike a == userSanitizedPackResponseLike b
 
 instance Show UserSanitizedPackResponse where
-    show rec = "userSanitizedPackResponseUser: " <> show (userSanitizedPackResponseUser rec) <> ", " <> "userSanitizedPackResponseUserId: " <> show (userSanitizedPackResponseUserId rec) <> ", " <> "userSanitizedPackResponseProfile: " <> show (userSanitizedPackResponseProfile rec) <> ", " <> "userSanitizedPackResponseProfileId: " <> show (userSanitizedPackResponseProfileId rec) <> ", " <> "userSanitizedPackResponseStat: " <> show (userSanitizedPackResponseStat rec) <> ", " <> "userSanitizedPackResponseLike: " <> show (userSanitizedPackResponseLike rec) <> ", " <> "userSanitizedPackResponseStar: " <> show (userSanitizedPackResponseStar rec)
+    show rec = "userSanitizedPackResponseUser: " <> show (userSanitizedPackResponseUser rec) <> ", " <> "userSanitizedPackResponseUserId: " <> show (userSanitizedPackResponseUserId rec) <> ", " <> "userSanitizedPackResponseProfile: " <> show (userSanitizedPackResponseProfile rec) <> ", " <> "userSanitizedPackResponseProfileId: " <> show (userSanitizedPackResponseProfileId rec) <> ", " <> "userSanitizedPackResponseStat: " <> show (userSanitizedPackResponseStat rec) <> ", " <> "userSanitizedPackResponseLike: " <> show (userSanitizedPackResponseLike rec)
 
 data UserSanitizedPackResponses = UserSanitizedPackResponses {
   userSanitizedPackResponses :: !([UserSanitizedPackResponse])

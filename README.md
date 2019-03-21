@@ -1,6 +1,6 @@
-# haskell-ln-types
+# lnforum-types-gen
 
-types auto-generated from ln-types, for haskell.
+types auto-generated from lnforum-types, for haskell.
 
 ## why?
 
