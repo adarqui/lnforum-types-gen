@@ -19,38 +19,19 @@ library
                        LN.T.ACL
                        LN.T.Api
                        LN.T.Board
-                       LN.T.Bucket
                        LN.T.Convert
                        LN.T.Count
-                       LN.T.DepList
                        LN.T.Ent
                        LN.T.Error
-                       LN.T.Forum
-                       LN.T.GlobalGroup
-                       LN.T.Group
-                       LN.T.GroupMember
                        LN.T.Job
-                       LN.T.Leuron
-                       LN.T.LeuronTraining
                        LN.T.Like
                        LN.T.Like.Extra
-                       LN.T.Membership
-                       LN.T.Organization
                        LN.T.Param
-                       LN.T.Pack.Organization
-                       LN.T.Pack.Team
-                       LN.T.Pack.TeamMember
                        LN.T.Pack.User
                        LN.T.Pack.Sanitized.User
-                       LN.T.Pack.GlobalGroup
-                       LN.T.Pack.Group
-                       LN.T.Pack.GroupMember
-                       LN.T.Pack.Forum
                        LN.T.Pack.Board
                        LN.T.Pack.Thread
                        LN.T.Pack.ThreadPost
-                       LN.T.Pack.Resource
-                       LN.T.Pack.Leuron
                        LN.T.Pack.PmIn
                        LN.T.Pack.PmOut
                        LN.T.Permission
@@ -58,17 +39,9 @@ library
                        LN.T.PmIn
                        LN.T.PmOut
                        LN.T.Profile
-                       LN.T.Reminder
-                       LN.T.Resource
                        LN.T.Size
-                       LN.T.Splits
-                       LN.T.Substitutions
-                       LN.T.Star
-                       LN.T.Team
-                       LN.T.TeamMember
                        LN.T.Thread
                        LN.T.ThreadPost
-                       LN.T.Templates
                        LN.T.User
                        LN.T.Visibility
                        LN.T.View
