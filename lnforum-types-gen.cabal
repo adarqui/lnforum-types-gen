@@ -1,8 +1,8 @@
-name:                haskell-ln-types
+name:                lnforum-types-gen
 version:             0.1.0.110
 synopsis:            Initial project template from stack
 description:         Please see README.md
-homepage:            https://github.com/adarqui/haskell-ln-types#readme
+homepage:            https://github.com/adarqui/lnforum-types-gen#readme
 license:             BSD3
 license-file:        LICENSE
 author:              Andrew Darqui
@@ -84,15 +84,15 @@ library
   ghc-options:         -Wall
   default-language:    Haskell2010
 
-test-suite haskell-ln-types-test
+test-suite lnforum-types-gen-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             Spec.hs
   build-depends:       base
-                     , haskell-ln-types
+                     , lnforum-types-gen
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
 
 source-repository head
   type:     git
-  location: https://github.com/adarqui/haskell-ln-types
+  location: https://github.com/adarqui/lnforum-types-gen
