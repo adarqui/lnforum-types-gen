@@ -15,6 +15,8 @@ import LN.T.ThreadPost
 import LN.T.User
 import LN.T.Permission
 import LN.T.Like
+import LN.T.Board
+import LN.T.Thread
 
 
 import           Control.DeepSeq             (NFData)
