@@ -163,7 +163,7 @@ data BoardResponse = BoardResponse {
   boardResponseUserId :: !(Int64),
   boardResponseName :: !(Text),
   boardResponseDisplayName :: !(Text),
-  boardResponseDescription :: !(Text),
+  boardResponseDescription :: !((Maybe Text)),
   boardResponseBoardType :: !(BoardType),
   boardResponseActive :: !(Bool),
   boardResponseIsAnonymous :: !(Bool),
@@ -281,6 +281,8 @@ data BoardStatResponse = BoardStatResponse {
   boardStatResponseLikes :: !(Int64),
   boardStatResponseNeutral :: !(Int64),
   boardStatResponseDislikes :: !(Int64),
+  boardStatResponseThreads :: !(Int64),
+  boardStatResponseThreadPosts :: !(Int64),
   boardStatResponseViews :: !(Int64)
 }  deriving (Generic,Typeable,NFData)
 
@@ -291,12 +293,16 @@ instance FromJSON BoardStatResponse where
     boardStatResponseLikes <- o .: ("likes" :: Text)
     boardStatResponseNeutral <- o .: ("neutral" :: Text)
     boardStatResponseDislikes <- o .: ("dislikes" :: Text)
+    boardStatResponseThreads <- o .: ("threads" :: Text)
+    boardStatResponseThreadPosts <- o .: ("thread_posts" :: Text)
     boardStatResponseViews <- o .: ("views" :: Text)
     pure $ BoardStatResponse {
       boardStatResponseBoardId = boardStatResponseBoardId,
       boardStatResponseLikes = boardStatResponseLikes,
       boardStatResponseNeutral = boardStatResponseNeutral,
       boardStatResponseDislikes = boardStatResponseDislikes,
+      boardStatResponseThreads = boardStatResponseThreads,
+      boardStatResponseThreadPosts = boardStatResponseThreadPosts,
       boardStatResponseViews = boardStatResponseViews
     }
   parseJSON x = fail $ "Could not parse object: " <> show x
@@ -309,15 +315,17 @@ instance ToJSON BoardStatResponse where
     , "likes" .= boardStatResponseLikes
     , "neutral" .= boardStatResponseNeutral
     , "dislikes" .= boardStatResponseDislikes
+    , "threads" .= boardStatResponseThreads
+    , "thread_posts" .= boardStatResponseThreadPosts
     , "views" .= boardStatResponseViews
     ]
 
 
 instance Eq BoardStatResponse where
-  (==) a b = boardStatResponseBoardId a == boardStatResponseBoardId b && boardStatResponseLikes a == boardStatResponseLikes b && boardStatResponseNeutral a == boardStatResponseNeutral b && boardStatResponseDislikes a == boardStatResponseDislikes b && boardStatResponseViews a == boardStatResponseViews b
+  (==) a b = boardStatResponseBoardId a == boardStatResponseBoardId b && boardStatResponseLikes a == boardStatResponseLikes b && boardStatResponseNeutral a == boardStatResponseNeutral b && boardStatResponseDislikes a == boardStatResponseDislikes b && boardStatResponseThreads a == boardStatResponseThreads b && boardStatResponseThreadPosts a == boardStatResponseThreadPosts b && boardStatResponseViews a == boardStatResponseViews b
 
 instance Show BoardStatResponse where
-    show rec = "boardStatResponseBoardId: " <> show (boardStatResponseBoardId rec) <> ", " <> "boardStatResponseLikes: " <> show (boardStatResponseLikes rec) <> ", " <> "boardStatResponseNeutral: " <> show (boardStatResponseNeutral rec) <> ", " <> "boardStatResponseDislikes: " <> show (boardStatResponseDislikes rec) <> ", " <> "boardStatResponseViews: " <> show (boardStatResponseViews rec)
+    show rec = "boardStatResponseBoardId: " <> show (boardStatResponseBoardId rec) <> ", " <> "boardStatResponseLikes: " <> show (boardStatResponseLikes rec) <> ", " <> "boardStatResponseNeutral: " <> show (boardStatResponseNeutral rec) <> ", " <> "boardStatResponseDislikes: " <> show (boardStatResponseDislikes rec) <> ", " <> "boardStatResponseThreads: " <> show (boardStatResponseThreads rec) <> ", " <> "boardStatResponseThreadPosts: " <> show (boardStatResponseThreadPosts rec) <> ", " <> "boardStatResponseViews: " <> show (boardStatResponseViews rec)
 
 data BoardStatResponses = BoardStatResponses {
   boardStatResponses :: !([BoardStatResponse])

@@ -125,17 +125,17 @@ forumResponseToForumRequest _1 _2 ForumResponse{..} =
   }
 
 
-boardRequestToBoardResponse :: Int64 -> Int64 -> Text -> Text -> (Maybe UTCTime) -> (Maybe UTCTime) -> (Maybe UTCTime) -> BoardRequest -> BoardResponse
-boardRequestToBoardResponse _1 _2 _3 _4 _5 _6 _7 BoardRequest{..} =
+boardRequestToBoardResponse :: Int64 -> Int64 -> Text -> (Maybe UTCTime) -> (Maybe UTCTime) -> (Maybe UTCTime) -> BoardRequest -> BoardResponse
+boardRequestToBoardResponse _1 _2 _3 _4 _5 _6 BoardRequest{..} =
   BoardResponse {
     boardResponseId = _1,
     boardResponseUserId = _2,
     boardResponseName = _3,
-    boardResponseDescription = _4,
-    boardResponseCreatedAt = _5,
-    boardResponseModifiedAt = _6,
-    boardResponseActivityAt = _7,
+    boardResponseCreatedAt = _4,
+    boardResponseModifiedAt = _5,
+    boardResponseActivityAt = _6,
     boardResponseDisplayName = boardRequestDisplayName,
+    boardResponseDescription = boardRequestDescription,
     boardResponseBoardType = boardRequestBoardType,
     boardResponseActive = boardRequestActive,
     boardResponseIsAnonymous = boardRequestIsAnonymous,
@@ -148,11 +148,11 @@ boardRequestToBoardResponse _1 _2 _3 _4 _5 _6 _7 BoardRequest{..} =
   }
 
 
-boardResponseToBoardRequest :: (Maybe Text) -> BoardResponse -> BoardRequest
-boardResponseToBoardRequest _1 BoardResponse{..} =
+boardResponseToBoardRequest :: BoardResponse -> BoardRequest
+boardResponseToBoardRequest  BoardResponse{..} =
   BoardRequest {
-    boardRequestDescription = _1,
     boardRequestDisplayName = boardResponseDisplayName,
+    boardRequestDescription = boardResponseDescription,
     boardRequestBoardType = boardResponseBoardType,
     boardRequestActive = boardResponseActive,
     boardRequestIsAnonymous = boardResponseIsAnonymous,

@@ -15,6 +15,8 @@ import LN.T.Board
 import LN.T.User
 import LN.T.Permission
 import LN.T.Like
+import LN.T.Thread
+import LN.T.ThreadPost
 
 
 import           Control.DeepSeq             (NFData)
@@ -37,7 +39,10 @@ data BoardPackResponse = BoardPackResponse {
   boardPackResponseUserId :: !(Int64),
   boardPackResponseStat :: !(BoardStatResponse),
   boardPackResponseLike :: !((Maybe LikeResponse)),
-  boardPackResponsePermissions :: !(Permissions)
+  boardPackResponsePermissions :: !(Permissions),
+  boardPackResponseLatestThread :: !((Maybe ThreadResponse)),
+  boardPackResponseLatestThreadPost :: !((Maybe ThreadPostResponse)),
+  boardPackResponseLatestThreadPostUser :: !((Maybe UserSanitizedResponse))
 }  deriving (Generic,Typeable,NFData)
 
 
@@ -50,6 +55,9 @@ instance FromJSON BoardPackResponse where
     boardPackResponseStat <- o .: ("stat" :: Text)
     boardPackResponseLike <- o .: ("like" :: Text)
     boardPackResponsePermissions <- o .: ("permissions" :: Text)
+    boardPackResponseLatestThread <- o .: ("latest_thread" :: Text)
+    boardPackResponseLatestThreadPost <- o .: ("latest_thread_post" :: Text)
+    boardPackResponseLatestThreadPostUser <- o .: ("latest_thread_post_user" :: Text)
     pure $ BoardPackResponse {
       boardPackResponseBoard = boardPackResponseBoard,
       boardPackResponseBoardId = boardPackResponseBoardId,
@@ -57,7 +65,10 @@ instance FromJSON BoardPackResponse where
       boardPackResponseUserId = boardPackResponseUserId,
       boardPackResponseStat = boardPackResponseStat,
       boardPackResponseLike = boardPackResponseLike,
-      boardPackResponsePermissions = boardPackResponsePermissions
+      boardPackResponsePermissions = boardPackResponsePermissions,
+      boardPackResponseLatestThread = boardPackResponseLatestThread,
+      boardPackResponseLatestThreadPost = boardPackResponseLatestThreadPost,
+      boardPackResponseLatestThreadPostUser = boardPackResponseLatestThreadPostUser
     }
   parseJSON x = fail $ "Could not parse object: " <> show x
 
@@ -72,14 +83,17 @@ instance ToJSON BoardPackResponse where
     , "stat" .= boardPackResponseStat
     , "like" .= boardPackResponseLike
     , "permissions" .= boardPackResponsePermissions
+    , "latest_thread" .= boardPackResponseLatestThread
+    , "latest_thread_post" .= boardPackResponseLatestThreadPost
+    , "latest_thread_post_user" .= boardPackResponseLatestThreadPostUser
     ]
 
 
 instance Eq BoardPackResponse where
-  (==) a b = boardPackResponseBoard a == boardPackResponseBoard b && boardPackResponseBoardId a == boardPackResponseBoardId b && boardPackResponseUser a == boardPackResponseUser b && boardPackResponseUserId a == boardPackResponseUserId b && boardPackResponseStat a == boardPackResponseStat b && boardPackResponseLike a == boardPackResponseLike b && boardPackResponsePermissions a == boardPackResponsePermissions b
+  (==) a b = boardPackResponseBoard a == boardPackResponseBoard b && boardPackResponseBoardId a == boardPackResponseBoardId b && boardPackResponseUser a == boardPackResponseUser b && boardPackResponseUserId a == boardPackResponseUserId b && boardPackResponseStat a == boardPackResponseStat b && boardPackResponseLike a == boardPackResponseLike b && boardPackResponsePermissions a == boardPackResponsePermissions b && boardPackResponseLatestThread a == boardPackResponseLatestThread b && boardPackResponseLatestThreadPost a == boardPackResponseLatestThreadPost b && boardPackResponseLatestThreadPostUser a == boardPackResponseLatestThreadPostUser b
 
 instance Show BoardPackResponse where
-    show rec = "boardPackResponseBoard: " <> show (boardPackResponseBoard rec) <> ", " <> "boardPackResponseBoardId: " <> show (boardPackResponseBoardId rec) <> ", " <> "boardPackResponseUser: " <> show (boardPackResponseUser rec) <> ", " <> "boardPackResponseUserId: " <> show (boardPackResponseUserId rec) <> ", " <> "boardPackResponseStat: " <> show (boardPackResponseStat rec) <> ", " <> "boardPackResponseLike: " <> show (boardPackResponseLike rec) <> ", " <> "boardPackResponsePermissions: " <> show (boardPackResponsePermissions rec)
+    show rec = "boardPackResponseBoard: " <> show (boardPackResponseBoard rec) <> ", " <> "boardPackResponseBoardId: " <> show (boardPackResponseBoardId rec) <> ", " <> "boardPackResponseUser: " <> show (boardPackResponseUser rec) <> ", " <> "boardPackResponseUserId: " <> show (boardPackResponseUserId rec) <> ", " <> "boardPackResponseStat: " <> show (boardPackResponseStat rec) <> ", " <> "boardPackResponseLike: " <> show (boardPackResponseLike rec) <> ", " <> "boardPackResponsePermissions: " <> show (boardPackResponsePermissions rec) <> ", " <> "boardPackResponseLatestThread: " <> show (boardPackResponseLatestThread rec) <> ", " <> "boardPackResponseLatestThreadPost: " <> show (boardPackResponseLatestThreadPost rec) <> ", " <> "boardPackResponseLatestThreadPostUser: " <> show (boardPackResponseLatestThreadPostUser rec)
 
 data BoardPackResponses = BoardPackResponses {
   boardPackResponses :: !([BoardPackResponse])

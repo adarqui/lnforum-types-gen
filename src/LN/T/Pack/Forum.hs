@@ -31,6 +31,7 @@ import           Haskell.Api.Helpers.Shared  (QueryParam, qp)
 import           Prelude
 
 data ForumPackResponse = ForumPackResponse {
+  forumPackResponsePermissions :: !(Permissions),
   forumPackResponseForum :: !(ForumResponse),
   forumPackResponseStat :: !(ForumStatResponse)
 }  deriving (Generic,Typeable,NFData)
@@ -38,9 +39,11 @@ data ForumPackResponse = ForumPackResponse {
 
 instance FromJSON ForumPackResponse where
   parseJSON (Object o) = do
+    forumPackResponsePermissions <- o .: ("permissions" :: Text)
     forumPackResponseForum <- o .: ("forum" :: Text)
     forumPackResponseStat <- o .: ("stat" :: Text)
     pure $ ForumPackResponse {
+      forumPackResponsePermissions = forumPackResponsePermissions,
       forumPackResponseForum = forumPackResponseForum,
       forumPackResponseStat = forumPackResponseStat
     }
@@ -50,14 +53,15 @@ instance FromJSON ForumPackResponse where
 instance ToJSON ForumPackResponse where
   toJSON ForumPackResponse{..} = object $
     [ "tag" .= ("ForumPackResponse" :: Text)
+    , "permissions" .= forumPackResponsePermissions
     , "forum" .= forumPackResponseForum
     , "stat" .= forumPackResponseStat
     ]
 
 
 instance Eq ForumPackResponse where
-  (==) a b = forumPackResponseForum a == forumPackResponseForum b && forumPackResponseStat a == forumPackResponseStat b
+  (==) a b = forumPackResponsePermissions a == forumPackResponsePermissions b && forumPackResponseForum a == forumPackResponseForum b && forumPackResponseStat a == forumPackResponseStat b
 
 instance Show ForumPackResponse where
-    show rec = "forumPackResponseForum: " <> show (forumPackResponseForum rec) <> ", " <> "forumPackResponseStat: " <> show (forumPackResponseStat rec)
+    show rec = "forumPackResponsePermissions: " <> show (forumPackResponsePermissions rec) <> ", " <> "forumPackResponseForum: " <> show (forumPackResponseForum rec) <> ", " <> "forumPackResponseStat: " <> show (forumPackResponseStat rec)
 -- footer
