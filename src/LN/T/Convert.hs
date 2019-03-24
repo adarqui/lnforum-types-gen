@@ -84,45 +84,81 @@ profileResponseToProfileRequest _1 _2 ProfileResponse{..} =
   }
 
 
-boardRequestToBoardResponse :: Int64 -> Int64 -> Text -> Bool -> (Maybe UTCTime) -> (Maybe UTCTime) -> (Maybe UTCTime) -> BoardRequest -> BoardResponse
+forumRequestToForumResponse :: Int64 -> Int64 -> Text -> (Maybe UTCTime) -> (Maybe Int64) -> (Maybe UTCTime) -> (Maybe UTCTime) -> ForumRequest -> ForumResponse
+forumRequestToForumResponse _1 _2 _3 _4 _5 _6 _7 ForumRequest{..} =
+  ForumResponse {
+    forumResponseId = _1,
+    forumResponseUserId = _2,
+    forumResponseName = _3,
+    forumResponseCreatedAt = _4,
+    forumResponseModifiedBy = _5,
+    forumResponseModifiedAt = _6,
+    forumResponseActivityAt = _7,
+    forumResponseDisplayName = forumRequestDisplayName,
+    forumResponseDescription = forumRequestDescription,
+    forumResponseThreadsPerBoard = forumRequestThreadsPerBoard,
+    forumResponseThreadPostsPerThread = forumRequestThreadPostsPerThread,
+    forumResponseRecentThreadsLimit = forumRequestRecentThreadsLimit,
+    forumResponseRecentPostsLimit = forumRequestRecentPostsLimit,
+    forumResponseMotwLimit = forumRequestMotwLimit,
+    forumResponseIcon = forumRequestIcon,
+    forumResponseVisibility = forumRequestVisibility,
+    forumResponseGuard = forumRequestGuard
+  }
+
+
+forumResponseToForumRequest :: [Text] -> (Maybe Text) -> ForumResponse -> ForumRequest
+forumResponseToForumRequest _1 _2 ForumResponse{..} =
+  ForumRequest {
+    forumRequestTags = _1,
+    forumRequestStateTag = _2,
+    forumRequestDisplayName = forumResponseDisplayName,
+    forumRequestDescription = forumResponseDescription,
+    forumRequestThreadsPerBoard = forumResponseThreadsPerBoard,
+    forumRequestThreadPostsPerThread = forumResponseThreadPostsPerThread,
+    forumRequestRecentThreadsLimit = forumResponseRecentThreadsLimit,
+    forumRequestRecentPostsLimit = forumResponseRecentPostsLimit,
+    forumRequestMotwLimit = forumResponseMotwLimit,
+    forumRequestIcon = forumResponseIcon,
+    forumRequestVisibility = forumResponseVisibility,
+    forumRequestGuard = forumResponseGuard
+  }
+
+
+boardRequestToBoardResponse :: Int64 -> Int64 -> Text -> Text -> (Maybe UTCTime) -> (Maybe UTCTime) -> (Maybe UTCTime) -> BoardRequest -> BoardResponse
 boardRequestToBoardResponse _1 _2 _3 _4 _5 _6 _7 BoardRequest{..} =
   BoardResponse {
     boardResponseId = _1,
     boardResponseUserId = _2,
     boardResponseName = _3,
-    boardResponseActive = _4,
+    boardResponseDescription = _4,
     boardResponseCreatedAt = _5,
     boardResponseModifiedAt = _6,
     boardResponseActivityAt = _7,
     boardResponseDisplayName = boardRequestDisplayName,
-    boardResponseDescription = boardRequestDescription,
-    boardResponseSource = boardRequestSource,
-    boardResponseAuthor = boardRequestAuthor,
-    boardResponsePrerequisites = boardRequestPrerequisites,
-    boardResponseCategories = boardRequestCategories,
+    boardResponseBoardType = boardRequestBoardType,
+    boardResponseActive = boardRequestActive,
+    boardResponseIsAnonymous = boardRequestIsAnonymous,
+    boardResponseCanCreateBoards = boardRequestCanCreateBoards,
+    boardResponseCanCreateThreads = boardRequestCanCreateThreads,
     boardResponseVisibility = boardRequestVisibility,
-    boardResponseCounter = boardRequestCounter,
-    boardResponseVersion = boardRequestVersion,
-    boardResponseUrls = boardRequestUrls,
     boardResponseIcon = boardRequestIcon,
     boardResponseTags = boardRequestTags,
     boardResponseGuard = boardRequestGuard
   }
 
 
-boardResponseToBoardRequest :: BoardResponse -> BoardRequest
-boardResponseToBoardRequest  BoardResponse{..} =
+boardResponseToBoardRequest :: (Maybe Text) -> BoardResponse -> BoardRequest
+boardResponseToBoardRequest _1 BoardResponse{..} =
   BoardRequest {
+    boardRequestDescription = _1,
     boardRequestDisplayName = boardResponseDisplayName,
-    boardRequestDescription = boardResponseDescription,
-    boardRequestSource = boardResponseSource,
-    boardRequestAuthor = boardResponseAuthor,
-    boardRequestPrerequisites = boardResponsePrerequisites,
-    boardRequestCategories = boardResponseCategories,
+    boardRequestBoardType = boardResponseBoardType,
+    boardRequestActive = boardResponseActive,
+    boardRequestIsAnonymous = boardResponseIsAnonymous,
+    boardRequestCanCreateBoards = boardResponseCanCreateBoards,
+    boardRequestCanCreateThreads = boardResponseCanCreateThreads,
     boardRequestVisibility = boardResponseVisibility,
-    boardRequestCounter = boardResponseCounter,
-    boardRequestVersion = boardResponseVersion,
-    boardRequestUrls = boardResponseUrls,
     boardRequestIcon = boardResponseIcon,
     boardRequestTags = boardResponseTags,
     boardRequestGuard = boardResponseGuard

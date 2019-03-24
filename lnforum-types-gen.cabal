@@ -23,12 +23,14 @@ library
                        LN.T.Count
                        LN.T.Ent
                        LN.T.Error
+                       LN.T.Forum
                        LN.T.Job
                        LN.T.Like
                        LN.T.Like.Extra
                        LN.T.Param
                        LN.T.Pack.User
                        LN.T.Pack.Sanitized.User
+                       LN.T.Pack.Forum
                        LN.T.Pack.Board
                        LN.T.Pack.Thread
                        LN.T.Pack.ThreadPost

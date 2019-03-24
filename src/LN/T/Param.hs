@@ -36,6 +36,7 @@ data Param
   | ByUsersIds !([Int64])
   | ByUserName !(Text)
   | ByUsersNames !([Text])
+  | ByForumId !(Int64)
   | ByBoardId !(Int64)
   | ByBoardsIds !([Int64])
   | ByBoardName !(Text)
@@ -120,6 +121,12 @@ instance FromJSON Param where
         case r of
           [x0] -> ByUsersNames <$> parseJSON x0
           _ -> fail "FromJON Typemismatch: ByUsersNames"
+
+      ("ByForumId" :: Text) -> do
+        r <- o .: "contents"
+        case r of
+          [x0] -> ByForumId <$> parseJSON x0
+          _ -> fail "FromJON Typemismatch: ByForumId"
 
       ("ByBoardId" :: Text) -> do
         r <- o .: "contents"
@@ -339,6 +346,10 @@ instance ToJSON Param where
     [ "tag" .= ("ByUsersNames" :: Text)
     , "contents" .= [toJSON x0]
     ]
+  toJSON (ByForumId x0) = object $
+    [ "tag" .= ("ByForumId" :: Text)
+    , "contents" .= [toJSON x0]
+    ]
   toJSON (ByBoardId x0) = object $
     [ "tag" .= ("ByBoardId" :: Text)
     , "contents" .= [toJSON x0]
@@ -470,6 +481,7 @@ instance Eq Param where
   (==) (ByUsersIds x0a) (ByUsersIds x0b) = x0a == x0b
   (==) (ByUserName x0a) (ByUserName x0b) = x0a == x0b
   (==) (ByUsersNames x0a) (ByUsersNames x0b) = x0a == x0b
+  (==) (ByForumId x0a) (ByForumId x0b) = x0a == x0b
   (==) (ByBoardId x0a) (ByBoardId x0b) = x0a == x0b
   (==) (ByBoardsIds x0a) (ByBoardsIds x0b) = x0a == x0b
   (==) (ByBoardName x0a) (ByBoardName x0b) = x0a == x0b
@@ -511,6 +523,7 @@ instance Show Param where
   show (ByUsersIds x0) = "by_users_ids: " <> show x0
   show (ByUserName x0) = "by_user_name: " <> show x0
   show (ByUsersNames x0) = "by_users_names: " <> show x0
+  show (ByForumId x0) = "by_forum_id: " <> show x0
   show (ByBoardId x0) = "by_board_id: " <> show x0
   show (ByBoardsIds x0) = "by_boards_ids: " <> show x0
   show (ByBoardName x0) = "by_board_name: " <> show x0
@@ -552,6 +565,7 @@ instance QueryParam Param where
   qp (ByUsersIds x0) = ("by_users_ids", (T.pack $ show x0))
   qp (ByUserName x0) = ("by_user_name", x0)
   qp (ByUsersNames x0) = ("by_users_names", (T.pack $ show x0))
+  qp (ByForumId x0) = ("by_forum_id", (T.pack $ show x0))
   qp (ByBoardId x0) = ("by_board_id", (T.pack $ show x0))
   qp (ByBoardsIds x0) = ("by_boards_ids", (T.pack $ show x0))
   qp (ByBoardName x0) = ("by_board_name", x0)

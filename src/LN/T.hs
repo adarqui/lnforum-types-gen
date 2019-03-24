@@ -10,9 +10,11 @@ import           LN.T.Board               as A
 import           LN.T.Count               as A
 import           LN.T.Ent                 as A
 import           LN.T.Error               as A
+import           LN.T.Forum               as A
 import           LN.T.Like                as A
 import           LN.T.Like.Extra          as A
 import           LN.T.Pack.Board          as A
+import           LN.T.Pack.Forum          as A
 import           LN.T.Pack.PmIn           as A
 import           LN.T.Pack.PmOut          as A
 import           LN.T.Pack.Sanitized.User as A
