@@ -102,16 +102,15 @@ forumRequestToForumResponse _1 _2 _3 _4 _5 _6 _7 ForumRequest{..} =
     forumResponseRecentPostsLimit = forumRequestRecentPostsLimit,
     forumResponseMotwLimit = forumRequestMotwLimit,
     forumResponseIcon = forumRequestIcon,
+    forumResponseTags = forumRequestTags,
     forumResponseVisibility = forumRequestVisibility,
     forumResponseGuard = forumRequestGuard
   }
 
 
-forumResponseToForumRequest :: [Text] -> (Maybe Text) -> ForumResponse -> ForumRequest
-forumResponseToForumRequest _1 _2 ForumResponse{..} =
+forumResponseToForumRequest :: ForumResponse -> ForumRequest
+forumResponseToForumRequest  ForumResponse{..} =
   ForumRequest {
-    forumRequestTags = _1,
-    forumRequestStateTag = _2,
     forumRequestDisplayName = forumResponseDisplayName,
     forumRequestDescription = forumResponseDescription,
     forumRequestThreadsPerBoard = forumResponseThreadsPerBoard,
@@ -121,6 +120,7 @@ forumResponseToForumRequest _1 _2 ForumResponse{..} =
     forumRequestMotwLimit = forumResponseMotwLimit,
     forumRequestIcon = forumResponseIcon,
     forumRequestVisibility = forumResponseVisibility,
+    forumRequestTags = forumResponseTags,
     forumRequestGuard = forumResponseGuard
   }
 
