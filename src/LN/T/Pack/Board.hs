@@ -35,8 +35,8 @@ import           Prelude
 data BoardPackResponse = BoardPackResponse {
   boardPackResponseBoard :: !(BoardResponse),
   boardPackResponseBoardId :: !(Int64),
-  boardPackResponseUser :: !(UserSanitizedResponse),
-  boardPackResponseUserId :: !(Int64),
+  boardPackResponseUser :: !((Maybe UserSanitizedResponse)),
+  boardPackResponseUserId :: !((Maybe Int64)),
   boardPackResponseStat :: !(BoardStatResponse),
   boardPackResponseLike :: !((Maybe LikeResponse)),
   boardPackResponsePermissions :: !(Permissions),
