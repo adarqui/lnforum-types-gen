@@ -166,20 +166,18 @@ boardResponseToBoardRequest  BoardResponse{..} =
   }
 
 
-threadRequestToThreadResponse :: Int64 -> Int64 -> Int64 -> Int64 -> Int64 -> Text -> Bool -> (Maybe UTCTime) -> (Maybe Int64) -> (Maybe UTCTime) -> (Maybe UTCTime) -> ThreadRequest -> ThreadResponse
-threadRequestToThreadResponse _1 _2 _3 _4 _5 _6 _7 _8 _9 _10 _11 ThreadRequest{..} =
+threadRequestToThreadResponse :: Int64 -> Int64 -> Int64 -> Text -> Bool -> (Maybe UTCTime) -> (Maybe Int64) -> (Maybe UTCTime) -> (Maybe UTCTime) -> ThreadRequest -> ThreadResponse
+threadRequestToThreadResponse _1 _2 _3 _4 _5 _6 _7 _8 _9 ThreadRequest{..} =
   ThreadResponse {
     threadResponseId = _1,
     threadResponseUserId = _2,
-    threadResponseOrgId = _3,
-    threadResponseForumId = _4,
-    threadResponseBoardId = _5,
-    threadResponseName = _6,
-    threadResponseActive = _7,
-    threadResponseCreatedAt = _8,
-    threadResponseModifiedBy = _9,
-    threadResponseModifiedAt = _10,
-    threadResponseActivityAt = _11,
+    threadResponseBoardId = _3,
+    threadResponseName = _4,
+    threadResponseActive = _5,
+    threadResponseCreatedAt = _6,
+    threadResponseModifiedBy = _7,
+    threadResponseModifiedAt = _8,
+    threadResponseActivityAt = _9,
     threadResponseDisplayName = threadRequestDisplayName,
     threadResponseDescription = threadRequestDescription,
     threadResponseSticky = threadRequestSticky,
@@ -206,21 +204,19 @@ threadResponseToThreadRequest _1 ThreadResponse{..} =
   }
 
 
-threadPostRequestToThreadPostResponse :: Int64 -> Int64 -> Int64 -> Int64 -> Int64 -> Int64 -> (Maybe Int64) -> Bool -> (Maybe UTCTime) -> (Maybe Int64) -> (Maybe UTCTime) -> (Maybe UTCTime) -> ThreadPostRequest -> ThreadPostResponse
-threadPostRequestToThreadPostResponse _1 _2 _3 _4 _5 _6 _7 _8 _9 _10 _11 _12 ThreadPostRequest{..} =
+threadPostRequestToThreadPostResponse :: Int64 -> Int64 -> Int64 -> Int64 -> (Maybe Int64) -> Bool -> (Maybe UTCTime) -> (Maybe Int64) -> (Maybe UTCTime) -> (Maybe UTCTime) -> ThreadPostRequest -> ThreadPostResponse
+threadPostRequestToThreadPostResponse _1 _2 _3 _4 _5 _6 _7 _8 _9 _10 ThreadPostRequest{..} =
   ThreadPostResponse {
     threadPostResponseId = _1,
     threadPostResponseUserId = _2,
-    threadPostResponseOrgId = _3,
-    threadPostResponseForumId = _4,
-    threadPostResponseBoardId = _5,
-    threadPostResponseThreadId = _6,
-    threadPostResponseParentId = _7,
-    threadPostResponseActive = _8,
-    threadPostResponseCreatedAt = _9,
-    threadPostResponseModifiedBy = _10,
-    threadPostResponseModifiedAt = _11,
-    threadPostResponseActivityAt = _12,
+    threadPostResponseBoardId = _3,
+    threadPostResponseThreadId = _4,
+    threadPostResponseParentId = _5,
+    threadPostResponseActive = _6,
+    threadPostResponseCreatedAt = _7,
+    threadPostResponseModifiedBy = _8,
+    threadPostResponseModifiedAt = _9,
+    threadPostResponseActivityAt = _10,
     threadPostResponseTitle = threadPostRequestTitle,
     threadPostResponseBody = threadPostRequestBody,
     threadPostResponseTags = threadPostRequestTags,

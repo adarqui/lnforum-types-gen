@@ -261,8 +261,6 @@ instance Show ThreadPostRequest where
 data ThreadPostResponse = ThreadPostResponse {
   threadPostResponseId :: !(Int64),
   threadPostResponseUserId :: !(Int64),
-  threadPostResponseOrgId :: !(Int64),
-  threadPostResponseForumId :: !(Int64),
   threadPostResponseBoardId :: !(Int64),
   threadPostResponseThreadId :: !(Int64),
   threadPostResponseParentId :: !((Maybe Int64)),
@@ -283,8 +281,6 @@ instance FromJSON ThreadPostResponse where
   parseJSON (Object o) = do
     threadPostResponseId <- o .: ("id" :: Text)
     threadPostResponseUserId <- o .: ("user_id" :: Text)
-    threadPostResponseOrgId <- o .: ("org_id" :: Text)
-    threadPostResponseForumId <- o .: ("forum_id" :: Text)
     threadPostResponseBoardId <- o .: ("board_id" :: Text)
     threadPostResponseThreadId <- o .: ("thread_id" :: Text)
     threadPostResponseParentId <- o .: ("parent_id" :: Text)
@@ -301,8 +297,6 @@ instance FromJSON ThreadPostResponse where
     pure $ ThreadPostResponse {
       threadPostResponseId = threadPostResponseId,
       threadPostResponseUserId = threadPostResponseUserId,
-      threadPostResponseOrgId = threadPostResponseOrgId,
-      threadPostResponseForumId = threadPostResponseForumId,
       threadPostResponseBoardId = threadPostResponseBoardId,
       threadPostResponseThreadId = threadPostResponseThreadId,
       threadPostResponseParentId = threadPostResponseParentId,
@@ -325,8 +319,6 @@ instance ToJSON ThreadPostResponse where
     [ "tag" .= ("ThreadPostResponse" :: Text)
     , "id" .= threadPostResponseId
     , "user_id" .= threadPostResponseUserId
-    , "org_id" .= threadPostResponseOrgId
-    , "forum_id" .= threadPostResponseForumId
     , "board_id" .= threadPostResponseBoardId
     , "thread_id" .= threadPostResponseThreadId
     , "parent_id" .= threadPostResponseParentId
@@ -344,10 +336,10 @@ instance ToJSON ThreadPostResponse where
 
 
 instance Eq ThreadPostResponse where
-  (==) a b = threadPostResponseId a == threadPostResponseId b && threadPostResponseUserId a == threadPostResponseUserId b && threadPostResponseOrgId a == threadPostResponseOrgId b && threadPostResponseForumId a == threadPostResponseForumId b && threadPostResponseBoardId a == threadPostResponseBoardId b && threadPostResponseThreadId a == threadPostResponseThreadId b && threadPostResponseParentId a == threadPostResponseParentId b && threadPostResponseTitle a == threadPostResponseTitle b && threadPostResponseBody a == threadPostResponseBody b && threadPostResponseTags a == threadPostResponseTags b && threadPostResponsePrivateTags a == threadPostResponsePrivateTags b && threadPostResponseActive a == threadPostResponseActive b && threadPostResponseGuard a == threadPostResponseGuard b && threadPostResponseCreatedAt a == threadPostResponseCreatedAt b && threadPostResponseModifiedBy a == threadPostResponseModifiedBy b && threadPostResponseModifiedAt a == threadPostResponseModifiedAt b && threadPostResponseActivityAt a == threadPostResponseActivityAt b
+  (==) a b = threadPostResponseId a == threadPostResponseId b && threadPostResponseUserId a == threadPostResponseUserId b && threadPostResponseBoardId a == threadPostResponseBoardId b && threadPostResponseThreadId a == threadPostResponseThreadId b && threadPostResponseParentId a == threadPostResponseParentId b && threadPostResponseTitle a == threadPostResponseTitle b && threadPostResponseBody a == threadPostResponseBody b && threadPostResponseTags a == threadPostResponseTags b && threadPostResponsePrivateTags a == threadPostResponsePrivateTags b && threadPostResponseActive a == threadPostResponseActive b && threadPostResponseGuard a == threadPostResponseGuard b && threadPostResponseCreatedAt a == threadPostResponseCreatedAt b && threadPostResponseModifiedBy a == threadPostResponseModifiedBy b && threadPostResponseModifiedAt a == threadPostResponseModifiedAt b && threadPostResponseActivityAt a == threadPostResponseActivityAt b
 
 instance Show ThreadPostResponse where
-    show rec = "threadPostResponseId: " <> show (threadPostResponseId rec) <> ", " <> "threadPostResponseUserId: " <> show (threadPostResponseUserId rec) <> ", " <> "threadPostResponseOrgId: " <> show (threadPostResponseOrgId rec) <> ", " <> "threadPostResponseForumId: " <> show (threadPostResponseForumId rec) <> ", " <> "threadPostResponseBoardId: " <> show (threadPostResponseBoardId rec) <> ", " <> "threadPostResponseThreadId: " <> show (threadPostResponseThreadId rec) <> ", " <> "threadPostResponseParentId: " <> show (threadPostResponseParentId rec) <> ", " <> "threadPostResponseTitle: " <> show (threadPostResponseTitle rec) <> ", " <> "threadPostResponseBody: " <> show (threadPostResponseBody rec) <> ", " <> "threadPostResponseTags: " <> show (threadPostResponseTags rec) <> ", " <> "threadPostResponsePrivateTags: " <> show (threadPostResponsePrivateTags rec) <> ", " <> "threadPostResponseActive: " <> show (threadPostResponseActive rec) <> ", " <> "threadPostResponseGuard: " <> show (threadPostResponseGuard rec) <> ", " <> "threadPostResponseCreatedAt: " <> show (threadPostResponseCreatedAt rec) <> ", " <> "threadPostResponseModifiedBy: " <> show (threadPostResponseModifiedBy rec) <> ", " <> "threadPostResponseModifiedAt: " <> show (threadPostResponseModifiedAt rec) <> ", " <> "threadPostResponseActivityAt: " <> show (threadPostResponseActivityAt rec)
+    show rec = "threadPostResponseId: " <> show (threadPostResponseId rec) <> ", " <> "threadPostResponseUserId: " <> show (threadPostResponseUserId rec) <> ", " <> "threadPostResponseBoardId: " <> show (threadPostResponseBoardId rec) <> ", " <> "threadPostResponseThreadId: " <> show (threadPostResponseThreadId rec) <> ", " <> "threadPostResponseParentId: " <> show (threadPostResponseParentId rec) <> ", " <> "threadPostResponseTitle: " <> show (threadPostResponseTitle rec) <> ", " <> "threadPostResponseBody: " <> show (threadPostResponseBody rec) <> ", " <> "threadPostResponseTags: " <> show (threadPostResponseTags rec) <> ", " <> "threadPostResponsePrivateTags: " <> show (threadPostResponsePrivateTags rec) <> ", " <> "threadPostResponseActive: " <> show (threadPostResponseActive rec) <> ", " <> "threadPostResponseGuard: " <> show (threadPostResponseGuard rec) <> ", " <> "threadPostResponseCreatedAt: " <> show (threadPostResponseCreatedAt rec) <> ", " <> "threadPostResponseModifiedBy: " <> show (threadPostResponseModifiedBy rec) <> ", " <> "threadPostResponseModifiedAt: " <> show (threadPostResponseModifiedAt rec) <> ", " <> "threadPostResponseActivityAt: " <> show (threadPostResponseActivityAt rec)
 
 data ThreadPostResponses = ThreadPostResponses {
   threadPostResponses :: !([ThreadPostResponse])

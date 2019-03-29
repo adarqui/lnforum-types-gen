@@ -89,8 +89,6 @@ instance Show ThreadRequest where
 data ThreadResponse = ThreadResponse {
   threadResponseId :: !(Int64),
   threadResponseUserId :: !(Int64),
-  threadResponseOrgId :: !(Int64),
-  threadResponseForumId :: !(Int64),
   threadResponseBoardId :: !(Int64),
   threadResponseName :: !(Text),
   threadResponseDisplayName :: !(Text),
@@ -113,8 +111,6 @@ instance FromJSON ThreadResponse where
   parseJSON (Object o) = do
     threadResponseId <- o .: ("id" :: Text)
     threadResponseUserId <- o .: ("user_id" :: Text)
-    threadResponseOrgId <- o .: ("org_id" :: Text)
-    threadResponseForumId <- o .: ("forum_id" :: Text)
     threadResponseBoardId <- o .: ("board_id" :: Text)
     threadResponseName <- o .: ("name" :: Text)
     threadResponseDisplayName <- o .: ("display_name" :: Text)
@@ -133,8 +129,6 @@ instance FromJSON ThreadResponse where
     pure $ ThreadResponse {
       threadResponseId = threadResponseId,
       threadResponseUserId = threadResponseUserId,
-      threadResponseOrgId = threadResponseOrgId,
-      threadResponseForumId = threadResponseForumId,
       threadResponseBoardId = threadResponseBoardId,
       threadResponseName = threadResponseName,
       threadResponseDisplayName = threadResponseDisplayName,
@@ -159,8 +153,6 @@ instance ToJSON ThreadResponse where
     [ "tag" .= ("ThreadResponse" :: Text)
     , "id" .= threadResponseId
     , "user_id" .= threadResponseUserId
-    , "org_id" .= threadResponseOrgId
-    , "forum_id" .= threadResponseForumId
     , "board_id" .= threadResponseBoardId
     , "name" .= threadResponseName
     , "display_name" .= threadResponseDisplayName
@@ -180,10 +172,10 @@ instance ToJSON ThreadResponse where
 
 
 instance Eq ThreadResponse where
-  (==) a b = threadResponseId a == threadResponseId b && threadResponseUserId a == threadResponseUserId b && threadResponseOrgId a == threadResponseOrgId b && threadResponseForumId a == threadResponseForumId b && threadResponseBoardId a == threadResponseBoardId b && threadResponseName a == threadResponseName b && threadResponseDisplayName a == threadResponseDisplayName b && threadResponseDescription a == threadResponseDescription b && threadResponseSticky a == threadResponseSticky b && threadResponseLocked a == threadResponseLocked b && threadResponsePoll a == threadResponsePoll b && threadResponseIcon a == threadResponseIcon b && threadResponseTags a == threadResponseTags b && threadResponseActive a == threadResponseActive b && threadResponseGuard a == threadResponseGuard b && threadResponseCreatedAt a == threadResponseCreatedAt b && threadResponseModifiedBy a == threadResponseModifiedBy b && threadResponseModifiedAt a == threadResponseModifiedAt b && threadResponseActivityAt a == threadResponseActivityAt b
+  (==) a b = threadResponseId a == threadResponseId b && threadResponseUserId a == threadResponseUserId b && threadResponseBoardId a == threadResponseBoardId b && threadResponseName a == threadResponseName b && threadResponseDisplayName a == threadResponseDisplayName b && threadResponseDescription a == threadResponseDescription b && threadResponseSticky a == threadResponseSticky b && threadResponseLocked a == threadResponseLocked b && threadResponsePoll a == threadResponsePoll b && threadResponseIcon a == threadResponseIcon b && threadResponseTags a == threadResponseTags b && threadResponseActive a == threadResponseActive b && threadResponseGuard a == threadResponseGuard b && threadResponseCreatedAt a == threadResponseCreatedAt b && threadResponseModifiedBy a == threadResponseModifiedBy b && threadResponseModifiedAt a == threadResponseModifiedAt b && threadResponseActivityAt a == threadResponseActivityAt b
 
 instance Show ThreadResponse where
-    show rec = "threadResponseId: " <> show (threadResponseId rec) <> ", " <> "threadResponseUserId: " <> show (threadResponseUserId rec) <> ", " <> "threadResponseOrgId: " <> show (threadResponseOrgId rec) <> ", " <> "threadResponseForumId: " <> show (threadResponseForumId rec) <> ", " <> "threadResponseBoardId: " <> show (threadResponseBoardId rec) <> ", " <> "threadResponseName: " <> show (threadResponseName rec) <> ", " <> "threadResponseDisplayName: " <> show (threadResponseDisplayName rec) <> ", " <> "threadResponseDescription: " <> show (threadResponseDescription rec) <> ", " <> "threadResponseSticky: " <> show (threadResponseSticky rec) <> ", " <> "threadResponseLocked: " <> show (threadResponseLocked rec) <> ", " <> "threadResponsePoll: " <> show (threadResponsePoll rec) <> ", " <> "threadResponseIcon: " <> show (threadResponseIcon rec) <> ", " <> "threadResponseTags: " <> show (threadResponseTags rec) <> ", " <> "threadResponseActive: " <> show (threadResponseActive rec) <> ", " <> "threadResponseGuard: " <> show (threadResponseGuard rec) <> ", " <> "threadResponseCreatedAt: " <> show (threadResponseCreatedAt rec) <> ", " <> "threadResponseModifiedBy: " <> show (threadResponseModifiedBy rec) <> ", " <> "threadResponseModifiedAt: " <> show (threadResponseModifiedAt rec) <> ", " <> "threadResponseActivityAt: " <> show (threadResponseActivityAt rec)
+    show rec = "threadResponseId: " <> show (threadResponseId rec) <> ", " <> "threadResponseUserId: " <> show (threadResponseUserId rec) <> ", " <> "threadResponseBoardId: " <> show (threadResponseBoardId rec) <> ", " <> "threadResponseName: " <> show (threadResponseName rec) <> ", " <> "threadResponseDisplayName: " <> show (threadResponseDisplayName rec) <> ", " <> "threadResponseDescription: " <> show (threadResponseDescription rec) <> ", " <> "threadResponseSticky: " <> show (threadResponseSticky rec) <> ", " <> "threadResponseLocked: " <> show (threadResponseLocked rec) <> ", " <> "threadResponsePoll: " <> show (threadResponsePoll rec) <> ", " <> "threadResponseIcon: " <> show (threadResponseIcon rec) <> ", " <> "threadResponseTags: " <> show (threadResponseTags rec) <> ", " <> "threadResponseActive: " <> show (threadResponseActive rec) <> ", " <> "threadResponseGuard: " <> show (threadResponseGuard rec) <> ", " <> "threadResponseCreatedAt: " <> show (threadResponseCreatedAt rec) <> ", " <> "threadResponseModifiedBy: " <> show (threadResponseModifiedBy rec) <> ", " <> "threadResponseModifiedAt: " <> show (threadResponseModifiedAt rec) <> ", " <> "threadResponseActivityAt: " <> show (threadResponseActivityAt rec)
 
 data ThreadResponses = ThreadResponses {
   threadResponses :: !([ThreadResponse])
