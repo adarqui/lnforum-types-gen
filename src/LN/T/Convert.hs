@@ -125,15 +125,16 @@ forumResponseToForumRequest  ForumResponse{..} =
   }
 
 
-boardRequestToBoardResponse :: Int64 -> Int64 -> Text -> (Maybe UTCTime) -> (Maybe UTCTime) -> (Maybe UTCTime) -> BoardRequest -> BoardResponse
-boardRequestToBoardResponse _1 _2 _3 _4 _5 _6 BoardRequest{..} =
+boardRequestToBoardResponse :: Int64 -> Int64 -> Text -> (Maybe UTCTime) -> (Maybe UTCTime) -> (Maybe Int64) -> (Maybe UTCTime) -> BoardRequest -> BoardResponse
+boardRequestToBoardResponse _1 _2 _3 _4 _5 _6 _7 BoardRequest{..} =
   BoardResponse {
     boardResponseId = _1,
     boardResponseUserId = _2,
     boardResponseName = _3,
     boardResponseCreatedAt = _4,
     boardResponseModifiedAt = _5,
-    boardResponseActivityAt = _6,
+    boardResponseModifiedBy = _6,
+    boardResponseActivityAt = _7,
     boardResponseDisplayName = boardRequestDisplayName,
     boardResponseDescription = boardRequestDescription,
     boardResponseBoardType = boardRequestBoardType,

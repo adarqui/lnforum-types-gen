@@ -175,6 +175,7 @@ data BoardResponse = BoardResponse {
   boardResponseGuard :: !(Int),
   boardResponseCreatedAt :: !((Maybe UTCTime)),
   boardResponseModifiedAt :: !((Maybe UTCTime)),
+  boardResponseModifiedBy :: !((Maybe Int64)),
   boardResponseActivityAt :: !((Maybe UTCTime))
 }  deriving (Generic,Typeable,NFData)
 
@@ -197,6 +198,7 @@ instance FromJSON BoardResponse where
     boardResponseGuard <- o .: ("guard" :: Text)
     boardResponseCreatedAt <- o .: ("created_at" :: Text)
     boardResponseModifiedAt <- o .: ("modified_at" :: Text)
+    boardResponseModifiedBy <- o .: ("modified_by" :: Text)
     boardResponseActivityAt <- o .: ("activity_at" :: Text)
     pure $ BoardResponse {
       boardResponseId = boardResponseId,
@@ -215,6 +217,7 @@ instance FromJSON BoardResponse where
       boardResponseGuard = boardResponseGuard,
       boardResponseCreatedAt = boardResponseCreatedAt,
       boardResponseModifiedAt = boardResponseModifiedAt,
+      boardResponseModifiedBy = boardResponseModifiedBy,
       boardResponseActivityAt = boardResponseActivityAt
     }
   parseJSON x = fail $ "Could not parse object: " <> show x
@@ -239,15 +242,16 @@ instance ToJSON BoardResponse where
     , "guard" .= boardResponseGuard
     , "created_at" .= boardResponseCreatedAt
     , "modified_at" .= boardResponseModifiedAt
+    , "modified_by" .= boardResponseModifiedBy
     , "activity_at" .= boardResponseActivityAt
     ]
 
 
 instance Eq BoardResponse where
-  (==) a b = boardResponseId a == boardResponseId b && boardResponseUserId a == boardResponseUserId b && boardResponseName a == boardResponseName b && boardResponseDisplayName a == boardResponseDisplayName b && boardResponseDescription a == boardResponseDescription b && boardResponseBoardType a == boardResponseBoardType b && boardResponseActive a == boardResponseActive b && boardResponseIsAnonymous a == boardResponseIsAnonymous b && boardResponseCanCreateBoards a == boardResponseCanCreateBoards b && boardResponseCanCreateThreads a == boardResponseCanCreateThreads b && boardResponseVisibility a == boardResponseVisibility b && boardResponseIcon a == boardResponseIcon b && boardResponseTags a == boardResponseTags b && boardResponseGuard a == boardResponseGuard b && boardResponseCreatedAt a == boardResponseCreatedAt b && boardResponseModifiedAt a == boardResponseModifiedAt b && boardResponseActivityAt a == boardResponseActivityAt b
+  (==) a b = boardResponseId a == boardResponseId b && boardResponseUserId a == boardResponseUserId b && boardResponseName a == boardResponseName b && boardResponseDisplayName a == boardResponseDisplayName b && boardResponseDescription a == boardResponseDescription b && boardResponseBoardType a == boardResponseBoardType b && boardResponseActive a == boardResponseActive b && boardResponseIsAnonymous a == boardResponseIsAnonymous b && boardResponseCanCreateBoards a == boardResponseCanCreateBoards b && boardResponseCanCreateThreads a == boardResponseCanCreateThreads b && boardResponseVisibility a == boardResponseVisibility b && boardResponseIcon a == boardResponseIcon b && boardResponseTags a == boardResponseTags b && boardResponseGuard a == boardResponseGuard b && boardResponseCreatedAt a == boardResponseCreatedAt b && boardResponseModifiedAt a == boardResponseModifiedAt b && boardResponseModifiedBy a == boardResponseModifiedBy b && boardResponseActivityAt a == boardResponseActivityAt b
 
 instance Show BoardResponse where
-    show rec = "boardResponseId: " <> show (boardResponseId rec) <> ", " <> "boardResponseUserId: " <> show (boardResponseUserId rec) <> ", " <> "boardResponseName: " <> show (boardResponseName rec) <> ", " <> "boardResponseDisplayName: " <> show (boardResponseDisplayName rec) <> ", " <> "boardResponseDescription: " <> show (boardResponseDescription rec) <> ", " <> "boardResponseBoardType: " <> show (boardResponseBoardType rec) <> ", " <> "boardResponseActive: " <> show (boardResponseActive rec) <> ", " <> "boardResponseIsAnonymous: " <> show (boardResponseIsAnonymous rec) <> ", " <> "boardResponseCanCreateBoards: " <> show (boardResponseCanCreateBoards rec) <> ", " <> "boardResponseCanCreateThreads: " <> show (boardResponseCanCreateThreads rec) <> ", " <> "boardResponseVisibility: " <> show (boardResponseVisibility rec) <> ", " <> "boardResponseIcon: " <> show (boardResponseIcon rec) <> ", " <> "boardResponseTags: " <> show (boardResponseTags rec) <> ", " <> "boardResponseGuard: " <> show (boardResponseGuard rec) <> ", " <> "boardResponseCreatedAt: " <> show (boardResponseCreatedAt rec) <> ", " <> "boardResponseModifiedAt: " <> show (boardResponseModifiedAt rec) <> ", " <> "boardResponseActivityAt: " <> show (boardResponseActivityAt rec)
+    show rec = "boardResponseId: " <> show (boardResponseId rec) <> ", " <> "boardResponseUserId: " <> show (boardResponseUserId rec) <> ", " <> "boardResponseName: " <> show (boardResponseName rec) <> ", " <> "boardResponseDisplayName: " <> show (boardResponseDisplayName rec) <> ", " <> "boardResponseDescription: " <> show (boardResponseDescription rec) <> ", " <> "boardResponseBoardType: " <> show (boardResponseBoardType rec) <> ", " <> "boardResponseActive: " <> show (boardResponseActive rec) <> ", " <> "boardResponseIsAnonymous: " <> show (boardResponseIsAnonymous rec) <> ", " <> "boardResponseCanCreateBoards: " <> show (boardResponseCanCreateBoards rec) <> ", " <> "boardResponseCanCreateThreads: " <> show (boardResponseCanCreateThreads rec) <> ", " <> "boardResponseVisibility: " <> show (boardResponseVisibility rec) <> ", " <> "boardResponseIcon: " <> show (boardResponseIcon rec) <> ", " <> "boardResponseTags: " <> show (boardResponseTags rec) <> ", " <> "boardResponseGuard: " <> show (boardResponseGuard rec) <> ", " <> "boardResponseCreatedAt: " <> show (boardResponseCreatedAt rec) <> ", " <> "boardResponseModifiedAt: " <> show (boardResponseModifiedAt rec) <> ", " <> "boardResponseModifiedBy: " <> show (boardResponseModifiedBy rec) <> ", " <> "boardResponseActivityAt: " <> show (boardResponseActivityAt rec)
 
 data BoardResponses = BoardResponses {
   boardResponses :: !([BoardResponse])
@@ -278,9 +282,6 @@ instance Show BoardResponses where
 
 data BoardStatResponse = BoardStatResponse {
   boardStatResponseBoardId :: !(Int64),
-  boardStatResponseLikes :: !(Int64),
-  boardStatResponseNeutral :: !(Int64),
-  boardStatResponseDislikes :: !(Int64),
   boardStatResponseThreads :: !(Int64),
   boardStatResponseThreadPosts :: !(Int64),
   boardStatResponseViews :: !(Int64)
@@ -290,17 +291,11 @@ data BoardStatResponse = BoardStatResponse {
 instance FromJSON BoardStatResponse where
   parseJSON (Object o) = do
     boardStatResponseBoardId <- o .: ("board_id" :: Text)
-    boardStatResponseLikes <- o .: ("likes" :: Text)
-    boardStatResponseNeutral <- o .: ("neutral" :: Text)
-    boardStatResponseDislikes <- o .: ("dislikes" :: Text)
     boardStatResponseThreads <- o .: ("threads" :: Text)
     boardStatResponseThreadPosts <- o .: ("thread_posts" :: Text)
     boardStatResponseViews <- o .: ("views" :: Text)
     pure $ BoardStatResponse {
       boardStatResponseBoardId = boardStatResponseBoardId,
-      boardStatResponseLikes = boardStatResponseLikes,
-      boardStatResponseNeutral = boardStatResponseNeutral,
-      boardStatResponseDislikes = boardStatResponseDislikes,
       boardStatResponseThreads = boardStatResponseThreads,
       boardStatResponseThreadPosts = boardStatResponseThreadPosts,
       boardStatResponseViews = boardStatResponseViews
@@ -312,9 +307,6 @@ instance ToJSON BoardStatResponse where
   toJSON BoardStatResponse{..} = object $
     [ "tag" .= ("BoardStatResponse" :: Text)
     , "board_id" .= boardStatResponseBoardId
-    , "likes" .= boardStatResponseLikes
-    , "neutral" .= boardStatResponseNeutral
-    , "dislikes" .= boardStatResponseDislikes
     , "threads" .= boardStatResponseThreads
     , "thread_posts" .= boardStatResponseThreadPosts
     , "views" .= boardStatResponseViews
@@ -322,10 +314,10 @@ instance ToJSON BoardStatResponse where
 
 
 instance Eq BoardStatResponse where
-  (==) a b = boardStatResponseBoardId a == boardStatResponseBoardId b && boardStatResponseLikes a == boardStatResponseLikes b && boardStatResponseNeutral a == boardStatResponseNeutral b && boardStatResponseDislikes a == boardStatResponseDislikes b && boardStatResponseThreads a == boardStatResponseThreads b && boardStatResponseThreadPosts a == boardStatResponseThreadPosts b && boardStatResponseViews a == boardStatResponseViews b
+  (==) a b = boardStatResponseBoardId a == boardStatResponseBoardId b && boardStatResponseThreads a == boardStatResponseThreads b && boardStatResponseThreadPosts a == boardStatResponseThreadPosts b && boardStatResponseViews a == boardStatResponseViews b
 
 instance Show BoardStatResponse where
-    show rec = "boardStatResponseBoardId: " <> show (boardStatResponseBoardId rec) <> ", " <> "boardStatResponseLikes: " <> show (boardStatResponseLikes rec) <> ", " <> "boardStatResponseNeutral: " <> show (boardStatResponseNeutral rec) <> ", " <> "boardStatResponseDislikes: " <> show (boardStatResponseDislikes rec) <> ", " <> "boardStatResponseThreads: " <> show (boardStatResponseThreads rec) <> ", " <> "boardStatResponseThreadPosts: " <> show (boardStatResponseThreadPosts rec) <> ", " <> "boardStatResponseViews: " <> show (boardStatResponseViews rec)
+    show rec = "boardStatResponseBoardId: " <> show (boardStatResponseBoardId rec) <> ", " <> "boardStatResponseThreads: " <> show (boardStatResponseThreads rec) <> ", " <> "boardStatResponseThreadPosts: " <> show (boardStatResponseThreadPosts rec) <> ", " <> "boardStatResponseViews: " <> show (boardStatResponseViews rec)
 
 data BoardStatResponses = BoardStatResponses {
   boardStatResponses :: !([BoardStatResponse])
