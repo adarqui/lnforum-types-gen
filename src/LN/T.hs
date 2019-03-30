@@ -13,6 +13,7 @@ import           LN.T.Error               as A
 import           LN.T.Forum               as A
 import           LN.T.Like                as A
 import           LN.T.Like.Extra          as A
+import           LN.T.Pack.Boot           as A
 import           LN.T.Pack.Board          as A
 import           LN.T.Pack.Forum          as A
 import           LN.T.Pack.PmIn           as A
