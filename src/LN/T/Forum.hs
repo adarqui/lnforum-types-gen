@@ -68,7 +68,7 @@ instance FromJSON ForumRequest where
       forumRequestVisibility = forumRequestVisibility,
       forumRequestGuard = forumRequestGuard
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ForumRequest: Could not parse object: " <> show x
 
 
 instance ToJSON ForumRequest where
@@ -156,7 +156,7 @@ instance FromJSON ForumResponse where
       forumResponseModifiedAt = forumResponseModifiedAt,
       forumResponseActivityAt = forumResponseActivityAt
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ForumResponse: Could not parse object: " <> show x
 
 
 instance ToJSON ForumResponse where
@@ -200,7 +200,7 @@ instance FromJSON ForumResponses where
     pure $ ForumResponses {
       forumResponses = forumResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ForumResponses: Could not parse object: " <> show x
 
 
 instance ToJSON ForumResponses where
@@ -236,7 +236,7 @@ instance FromJSON ForumStatResponse where
       forumStatResponseThreadPosts = forumStatResponseThreadPosts,
       forumStatResponseViews = forumStatResponseViews
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ForumStatResponse: Could not parse object: " <> show x
 
 
 instance ToJSON ForumStatResponse where

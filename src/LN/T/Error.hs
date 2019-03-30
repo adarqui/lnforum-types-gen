@@ -83,7 +83,7 @@ instance FromJSON ApplicationError where
 
       _ -> fail "Could not parse ApplicationError"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ApplicationError: Could not parse object: " <> show x
 
 
 instance ToJSON ApplicationError where
@@ -175,7 +175,7 @@ instance FromJSON ValidationError where
 
       _ -> fail "Could not parse ValidationError"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ValidationError: Could not parse object: " <> show x
 
 
 instance ToJSON ValidationError where
@@ -249,7 +249,7 @@ instance FromJSON ValidationErrorCode where
 
       _ -> fail "Could not parse ValidationErrorCode"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ValidationErrorCode: Could not parse object: " <> show x
 
 
 instance ToJSON ValidationErrorCode where

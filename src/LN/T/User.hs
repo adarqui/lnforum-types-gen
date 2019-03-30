@@ -50,7 +50,7 @@ instance FromJSON UserRequest where
       userRequestPlugin = userRequestPlugin,
       userRequestAcceptTOS = userRequestAcceptTOS
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "UserRequest: Could not parse object: " <> show x
 
 
 instance ToJSON UserRequest where
@@ -132,7 +132,7 @@ instance FromJSON UserResponse where
       userResponseDeactivatedAt = userResponseDeactivatedAt,
       userResponseActivityAt = userResponseActivityAt
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "UserResponse: Could not parse object: " <> show x
 
 
 instance ToJSON UserResponse where
@@ -176,7 +176,7 @@ instance FromJSON UserResponses where
     pure $ UserResponses {
       userResponses = userResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "UserResponses: Could not parse object: " <> show x
 
 
 instance ToJSON UserResponses where
@@ -224,7 +224,7 @@ instance FromJSON UserSanitizedResponse where
       userSanitizedResponseCreatedAt = userSanitizedResponseCreatedAt,
       userSanitizedResponseActivityAt = userSanitizedResponseActivityAt
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "UserSanitizedResponse: Could not parse object: " <> show x
 
 
 instance ToJSON UserSanitizedResponse where
@@ -258,7 +258,7 @@ instance FromJSON UserSanitizedResponses where
     pure $ UserSanitizedResponses {
       userSanitizedResponses = userSanitizedResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "UserSanitizedResponses: Could not parse object: " <> show x
 
 
 instance ToJSON UserSanitizedResponses where
@@ -297,7 +297,7 @@ instance FromJSON UserSanitizedStatResponse where
       userSanitizedStatResponseRespect = userSanitizedStatResponseRespect,
       userSanitizedStatResponseWorkouts = userSanitizedStatResponseWorkouts
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "UserSanitizedStatResponse: Could not parse object: " <> show x
 
 
 instance ToJSON UserSanitizedStatResponse where
@@ -328,7 +328,7 @@ instance FromJSON UserSanitizedStatResponses where
     pure $ UserSanitizedStatResponses {
       userSanitizedStatResponses = userSanitizedStatResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "UserSanitizedStatResponses: Could not parse object: " <> show x
 
 
 instance ToJSON UserSanitizedStatResponses where

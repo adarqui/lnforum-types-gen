@@ -51,7 +51,7 @@ instance FromJSON UserPackResponse where
       userPackResponseProfile = userPackResponseProfile,
       userPackResponseProfileId = userPackResponseProfileId
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "UserPackResponse: Could not parse object: " <> show x
 
 
 instance ToJSON UserPackResponse where
@@ -82,7 +82,7 @@ instance FromJSON UserPackResponses where
     pure $ UserPackResponses {
       userPackResponses = userPackResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "UserPackResponses: Could not parse object: " <> show x
 
 
 instance ToJSON UserPackResponses where

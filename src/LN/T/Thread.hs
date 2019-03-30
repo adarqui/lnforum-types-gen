@@ -62,7 +62,7 @@ instance FromJSON ThreadRequest where
       threadRequestGuard = threadRequestGuard,
       threadRequestStateTag = threadRequestStateTag
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ThreadRequest: Could not parse object: " <> show x
 
 
 instance ToJSON ThreadRequest where
@@ -145,7 +145,7 @@ instance FromJSON ThreadResponse where
       threadResponseModifiedAt = threadResponseModifiedAt,
       threadResponseActivityAt = threadResponseActivityAt
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ThreadResponse: Could not parse object: " <> show x
 
 
 instance ToJSON ThreadResponse where
@@ -188,7 +188,7 @@ instance FromJSON ThreadResponses where
     pure $ ThreadResponses {
       threadResponses = threadResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ThreadResponses: Could not parse object: " <> show x
 
 
 instance ToJSON ThreadResponses where
@@ -221,7 +221,7 @@ instance FromJSON ThreadStatResponse where
       threadStatResponseThreadPosts = threadStatResponseThreadPosts,
       threadStatResponseViews = threadStatResponseViews
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ThreadStatResponse: Could not parse object: " <> show x
 
 
 instance ToJSON ThreadStatResponse where
@@ -250,7 +250,7 @@ instance FromJSON ThreadStatResponses where
     pure $ ThreadStatResponses {
       threadStatResponses = threadStatResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ThreadStatResponses: Could not parse object: " <> show x
 
 
 instance ToJSON ThreadStatResponses where

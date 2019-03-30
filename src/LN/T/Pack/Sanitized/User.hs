@@ -55,7 +55,7 @@ instance FromJSON UserSanitizedPackResponse where
       userSanitizedPackResponseStat = userSanitizedPackResponseStat,
       userSanitizedPackResponseLike = userSanitizedPackResponseLike
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "UserSanitizedPackResponse: Could not parse object: " <> show x
 
 
 instance ToJSON UserSanitizedPackResponse where
@@ -87,7 +87,7 @@ instance FromJSON UserSanitizedPackResponses where
     pure $ UserSanitizedPackResponses {
       userSanitizedPackResponses = userSanitizedPackResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "UserSanitizedPackResponses: Could not parse object: " <> show x
 
 
 instance ToJSON UserSanitizedPackResponses where

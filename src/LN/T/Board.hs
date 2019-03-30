@@ -41,7 +41,7 @@ instance FromJSON BoardType where
 
       _ -> fail "Could not parse BoardType"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "BoardType: Could not parse object: " <> show x
 
 
 instance ToJSON BoardType where
@@ -73,7 +73,7 @@ instance FromJSON TyBoardType where
 
       _ -> fail "Could not parse TyBoardType"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "TyBoardType: Could not parse object: " <> show x
 
 
 instance ToJSON TyBoardType where
@@ -132,7 +132,7 @@ instance FromJSON BoardRequest where
       boardRequestTags = boardRequestTags,
       boardRequestGuard = boardRequestGuard
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "BoardRequest: Could not parse object: " <> show x
 
 
 instance ToJSON BoardRequest where
@@ -220,7 +220,7 @@ instance FromJSON BoardResponse where
       boardResponseModifiedBy = boardResponseModifiedBy,
       boardResponseActivityAt = boardResponseActivityAt
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "BoardResponse: Could not parse object: " <> show x
 
 
 instance ToJSON BoardResponse where
@@ -264,7 +264,7 @@ instance FromJSON BoardResponses where
     pure $ BoardResponses {
       boardResponses = boardResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "BoardResponses: Could not parse object: " <> show x
 
 
 instance ToJSON BoardResponses where
@@ -300,7 +300,7 @@ instance FromJSON BoardStatResponse where
       boardStatResponseThreadPosts = boardStatResponseThreadPosts,
       boardStatResponseViews = boardStatResponseViews
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "BoardStatResponse: Could not parse object: " <> show x
 
 
 instance ToJSON BoardStatResponse where
@@ -330,7 +330,7 @@ instance FromJSON BoardStatResponses where
     pure $ BoardStatResponses {
       boardStatResponses = boardStatResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "BoardStatResponses: Could not parse object: " <> show x
 
 
 instance ToJSON BoardStatResponses where

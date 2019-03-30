@@ -44,7 +44,7 @@ instance FromJSON ProfileX where
       profileName = profileName,
       profileEmail = profileEmail
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ProfileX: Could not parse object: " <> show x
 
 
 instance ToJSON ProfileX where
@@ -84,7 +84,7 @@ instance FromJSON ProfileGender where
 
       _ -> fail "Could not parse ProfileGender"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ProfileGender: Could not parse object: " <> show x
 
 
 instance ToJSON ProfileGender where
@@ -156,7 +156,7 @@ instance FromJSON ProfileRequest where
       profileRequestGuard = profileRequestGuard,
       profileRequestStateWebsites = profileRequestStateWebsites
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ProfileRequest: Could not parse object: " <> show x
 
 
 instance ToJSON ProfileRequest where
@@ -230,7 +230,7 @@ instance FromJSON ProfileResponse where
       profileResponseCreatedAt = profileResponseCreatedAt,
       profileResponseModifiedAt = profileResponseModifiedAt
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ProfileResponse: Could not parse object: " <> show x
 
 
 instance ToJSON ProfileResponse where
@@ -270,7 +270,7 @@ instance FromJSON ProfileResponses where
     pure $ ProfileResponses {
       profileResponses = profileResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ProfileResponses: Could not parse object: " <> show x
 
 
 instance ToJSON ProfileResponses where

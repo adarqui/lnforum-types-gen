@@ -57,7 +57,7 @@ instance FromJSON Size where
 
       _ -> fail "Could not parse Size"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "Size: Could not parse object: " <> show x
 
 
 instance ToJSON Size where

@@ -77,7 +77,7 @@ instance FromJSON PostData where
 
       _ -> fail "Could not parse PostData"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "PostData: Could not parse object: " <> show x
 
 
 instance ToJSON PostData where
@@ -159,7 +159,7 @@ instance FromJSON TyPostData where
 
       _ -> fail "Could not parse TyPostData"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "TyPostData: Could not parse object: " <> show x
 
 
 instance ToJSON TyPostData where
@@ -236,7 +236,7 @@ instance FromJSON ThreadPostRequest where
       threadPostRequestStateTag = threadPostRequestStateTag,
       threadPostRequestStatePrivateTag = threadPostRequestStatePrivateTag
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ThreadPostRequest: Could not parse object: " <> show x
 
 
 instance ToJSON ThreadPostRequest where
@@ -311,7 +311,7 @@ instance FromJSON ThreadPostResponse where
       threadPostResponseModifiedAt = threadPostResponseModifiedAt,
       threadPostResponseActivityAt = threadPostResponseActivityAt
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ThreadPostResponse: Could not parse object: " <> show x
 
 
 instance ToJSON ThreadPostResponse where
@@ -352,7 +352,7 @@ instance FromJSON ThreadPostResponses where
     pure $ ThreadPostResponses {
       threadPostResponses = threadPostResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ThreadPostResponses: Could not parse object: " <> show x
 
 
 instance ToJSON ThreadPostResponses where
@@ -391,7 +391,7 @@ instance FromJSON ThreadPostStatResponse where
       threadPostStatResponseDislikes = threadPostStatResponseDislikes,
       threadPostStatResponseViews = threadPostStatResponseViews
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ThreadPostStatResponse: Could not parse object: " <> show x
 
 
 instance ToJSON ThreadPostStatResponse where
@@ -422,7 +422,7 @@ instance FromJSON ThreadPostStatResponses where
     pure $ ThreadPostStatResponses {
       threadPostStatResponses = threadPostStatResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ThreadPostStatResponses: Could not parse object: " <> show x
 
 
 instance ToJSON ThreadPostStatResponses where

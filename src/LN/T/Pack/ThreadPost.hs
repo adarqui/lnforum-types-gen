@@ -76,7 +76,7 @@ instance FromJSON ThreadPostPackResponse where
       threadPostPackResponseWithThreadPostsLimit = threadPostPackResponseWithThreadPostsLimit,
       threadPostPackResponsePermissions = threadPostPackResponsePermissions
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ThreadPostPackResponse: Could not parse object: " <> show x
 
 
 instance ToJSON ThreadPostPackResponse where
@@ -114,7 +114,7 @@ instance FromJSON ThreadPostPackResponses where
     pure $ ThreadPostPackResponses {
       threadPostPackResponses = threadPostPackResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ThreadPostPackResponses: Could not parse object: " <> show x
 
 
 instance ToJSON ThreadPostPackResponses where

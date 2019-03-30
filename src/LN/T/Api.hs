@@ -41,7 +41,7 @@ instance FromJSON ApiRequest where
       apiRequestComment = apiRequestComment,
       apiRequestGuard = apiRequestGuard
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ApiRequest: Could not parse object: " <> show x
 
 
 instance ToJSON ApiRequest where
@@ -87,7 +87,7 @@ instance FromJSON ApiResponse where
       apiResponseCreatedAt = apiResponseCreatedAt,
       apiResponseModifiedAt = apiResponseModifiedAt
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ApiResponse: Could not parse object: " <> show x
 
 
 instance ToJSON ApiResponse where
@@ -120,7 +120,7 @@ instance FromJSON ApiResponses where
     pure $ ApiResponses {
       apiResponses = apiResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ApiResponses: Could not parse object: " <> show x
 
 
 instance ToJSON ApiResponses where

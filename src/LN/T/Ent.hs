@@ -73,7 +73,7 @@ instance FromJSON Ent where
 
       _ -> fail "Could not parse Ent"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "Ent: Could not parse object: " <> show x
 
 
 instance ToJSON Ent where

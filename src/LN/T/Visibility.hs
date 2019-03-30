@@ -45,7 +45,7 @@ instance FromJSON Visibility where
 
       _ -> fail "Could not parse Visibility"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "Visibility: Could not parse object: " <> show x
 
 
 instance ToJSON Visibility where

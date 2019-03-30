@@ -70,7 +70,7 @@ instance FromJSON BoardPackResponse where
       boardPackResponseLatestThreadPost = boardPackResponseLatestThreadPost,
       boardPackResponseLatestThreadPostUser = boardPackResponseLatestThreadPostUser
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "BoardPackResponse: Could not parse object: " <> show x
 
 
 instance ToJSON BoardPackResponse where
@@ -106,7 +106,7 @@ instance FromJSON BoardPackResponses where
     pure $ BoardPackResponses {
       boardPackResponses = boardPackResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "BoardPackResponses: Could not parse object: " <> show x
 
 
 instance ToJSON BoardPackResponses where

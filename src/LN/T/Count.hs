@@ -41,7 +41,7 @@ instance FromJSON CountResponse where
       countResponseId = countResponseId,
       countResponseN = countResponseN
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "CountResponse: Could not parse object: " <> show x
 
 
 instance ToJSON CountResponse where
@@ -69,7 +69,7 @@ instance FromJSON CountResponses where
     pure $ CountResponses {
       countResponses = countResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "CountResponses: Could not parse object: " <> show x
 
 
 instance ToJSON CountResponses where

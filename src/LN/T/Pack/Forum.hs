@@ -47,7 +47,7 @@ instance FromJSON ForumPackResponse where
       forumPackResponseForum = forumPackResponseForum,
       forumPackResponseStat = forumPackResponseStat
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ForumPackResponse: Could not parse object: " <> show x
 
 
 instance ToJSON ForumPackResponse where

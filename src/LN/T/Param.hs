@@ -310,7 +310,7 @@ instance FromJSON Param where
 
       _ -> fail "Could not parse Param"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "Param: Could not parse object: " <> show x
 
 
 instance ToJSON Param where
@@ -760,7 +760,7 @@ instance FromJSON ParamTag where
 
       _ -> fail "Could not parse ParamTag"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "ParamTag: Could not parse object: " <> show x
 
 
 instance ToJSON ParamTag where
@@ -1068,7 +1068,7 @@ instance FromJSON SortOrderBy where
 
       _ -> fail "Could not parse SortOrderBy"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "SortOrderBy: Could not parse object: " <> show x
 
 
 instance ToJSON SortOrderBy where
@@ -1158,7 +1158,7 @@ instance FromJSON OrderBy where
 
       _ -> fail "Could not parse OrderBy"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "OrderBy: Could not parse object: " <> show x
 
 
 instance ToJSON OrderBy where

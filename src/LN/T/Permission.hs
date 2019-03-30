@@ -57,7 +57,7 @@ instance FromJSON Permission where
 
       _ -> fail "Could not parse Permission"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "Permission: Could not parse object: " <> show x
 
 
 instance ToJSON Permission where

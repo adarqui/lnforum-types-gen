@@ -49,7 +49,7 @@ instance FromJSON LikeOpt where
 
       _ -> fail "Could not parse LikeOpt"
 
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "LikeOpt: Could not parse object: " <> show x
 
 
 instance ToJSON LikeOpt where
@@ -103,7 +103,7 @@ instance FromJSON LikeRequest where
       likeRequestReason = likeRequestReason,
       likeRequestGuard = likeRequestGuard
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "LikeRequest: Could not parse object: " <> show x
 
 
 instance ToJSON LikeRequest where
@@ -162,7 +162,7 @@ instance FromJSON LikeResponse where
       likeResponseCreatedAt = likeResponseCreatedAt,
       likeResponseModifiedAt = likeResponseModifiedAt
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "LikeResponse: Could not parse object: " <> show x
 
 
 instance ToJSON LikeResponse where
@@ -199,7 +199,7 @@ instance FromJSON LikeResponses where
     pure $ LikeResponses {
       likeResponses = likeResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "LikeResponses: Could not parse object: " <> show x
 
 
 instance ToJSON LikeResponses where
@@ -241,7 +241,7 @@ instance FromJSON LikeStatResponse where
       likeStatResponseNeutral = likeStatResponseNeutral,
       likeStatResponseDislike = likeStatResponseDislike
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "LikeStatResponse: Could not parse object: " <> show x
 
 
 instance ToJSON LikeStatResponse where
@@ -273,7 +273,7 @@ instance FromJSON LikeStatResponses where
     pure $ LikeStatResponses {
       likeStatResponses = likeStatResponses
     }
-  parseJSON x = fail $ "Could not parse object: " <> show x
+  parseJSON x = fail $ "LikeStatResponses: Could not parse object: " <> show x
 
 
 instance ToJSON LikeStatResponses where
