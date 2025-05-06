@@ -15,6 +15,7 @@ module LN.T.User where
 
 
 import           Control.DeepSeq             (NFData)
+import           Data.Aeson.Key
 import           Data.Aeson                  (FromJSON, ToJSON (), Value (..), parseJSON, toJSON, object, (.=), (.:))
 import           Data.Default                (Default, def)
 import           Data.Int                    (Int64)
@@ -38,11 +39,11 @@ data UserRequest = UserRequest {
 
 instance FromJSON UserRequest where
   parseJSON (Object o) = do
-    userRequestDisplayName <- o .: ("display_name" :: Text)
-    userRequestFullName <- o .: ("full_name" :: Text)
-    userRequestEmail <- o .: ("email" :: Text)
-    userRequestPlugin <- o .: ("plugin" :: Text)
-    userRequestAcceptTOS <- o .: ("accept_tos" :: Text)
+    userRequestDisplayName <- o .: ("display_name" :: Data.Aeson.Key.Key)
+    userRequestFullName <- o .: ("full_name" :: Data.Aeson.Key.Key)
+    userRequestEmail <- o .: ("email" :: Data.Aeson.Key.Key)
+    userRequestPlugin <- o .: ("plugin" :: Data.Aeson.Key.Key)
+    userRequestAcceptTOS <- o .: ("accept_tos" :: Data.Aeson.Key.Key)
     pure $ UserRequest {
       userRequestDisplayName = userRequestDisplayName,
       userRequestFullName = userRequestFullName,
@@ -94,24 +95,24 @@ data UserResponse = UserResponse {
 
 instance FromJSON UserResponse where
   parseJSON (Object o) = do
-    userResponseId <- o .: ("id" :: Text)
-    userResponseName <- o .: ("name" :: Text)
-    userResponseDisplayName <- o .: ("display_name" :: Text)
-    userResponseFullName <- o .: ("full_name" :: Text)
-    userResponseEmail <- o .: ("email" :: Text)
-    userResponseEmailMD5 <- o .: ("email_md5" :: Text)
-    userResponsePlugin <- o .: ("plugin" :: Text)
-    userResponseGithubIdent <- o .: ("github_ident" :: Text)
-    userResponseGithubCreatedAt <- o .: ("github_created_at" :: Text)
-    userResponseGoogleIdent <- o .: ("google_ident" :: Text)
-    userResponseGoogleCreatedAt <- o .: ("google_created_at" :: Text)
-    userResponseAcceptTOS <- o .: ("accept_tos" :: Text)
-    userResponseActive <- o .: ("active" :: Text)
-    userResponseGuard <- o .: ("guard" :: Text)
-    userResponseCreatedAt <- o .: ("created_at" :: Text)
-    userResponseModifiedAt <- o .: ("modified_at" :: Text)
-    userResponseDeactivatedAt <- o .: ("deactivated_at" :: Text)
-    userResponseActivityAt <- o .: ("activity_at" :: Text)
+    userResponseId <- o .: ("id" :: Data.Aeson.Key.Key)
+    userResponseName <- o .: ("name" :: Data.Aeson.Key.Key)
+    userResponseDisplayName <- o .: ("display_name" :: Data.Aeson.Key.Key)
+    userResponseFullName <- o .: ("full_name" :: Data.Aeson.Key.Key)
+    userResponseEmail <- o .: ("email" :: Data.Aeson.Key.Key)
+    userResponseEmailMD5 <- o .: ("email_md5" :: Data.Aeson.Key.Key)
+    userResponsePlugin <- o .: ("plugin" :: Data.Aeson.Key.Key)
+    userResponseGithubIdent <- o .: ("github_ident" :: Data.Aeson.Key.Key)
+    userResponseGithubCreatedAt <- o .: ("github_created_at" :: Data.Aeson.Key.Key)
+    userResponseGoogleIdent <- o .: ("google_ident" :: Data.Aeson.Key.Key)
+    userResponseGoogleCreatedAt <- o .: ("google_created_at" :: Data.Aeson.Key.Key)
+    userResponseAcceptTOS <- o .: ("accept_tos" :: Data.Aeson.Key.Key)
+    userResponseActive <- o .: ("active" :: Data.Aeson.Key.Key)
+    userResponseGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
+    userResponseCreatedAt <- o .: ("created_at" :: Data.Aeson.Key.Key)
+    userResponseModifiedAt <- o .: ("modified_at" :: Data.Aeson.Key.Key)
+    userResponseDeactivatedAt <- o .: ("deactivated_at" :: Data.Aeson.Key.Key)
+    userResponseActivityAt <- o .: ("activity_at" :: Data.Aeson.Key.Key)
     pure $ UserResponse {
       userResponseId = userResponseId,
       userResponseName = userResponseName,
@@ -172,7 +173,7 @@ data UserResponses = UserResponses {
 
 instance FromJSON UserResponses where
   parseJSON (Object o) = do
-    userResponses <- o .: ("user_responses" :: Text)
+    userResponses <- o .: ("user_responses" :: Data.Aeson.Key.Key)
     pure $ UserResponses {
       userResponses = userResponses
     }
@@ -206,14 +207,14 @@ data UserSanitizedResponse = UserSanitizedResponse {
 
 instance FromJSON UserSanitizedResponse where
   parseJSON (Object o) = do
-    userSanitizedResponseId <- o .: ("id" :: Text)
-    userSanitizedResponseName <- o .: ("name" :: Text)
-    userSanitizedResponseDisplayName <- o .: ("display_name" :: Text)
-    userSanitizedResponseEmailMD5 <- o .: ("email_md5" :: Text)
-    userSanitizedResponseActive <- o .: ("active" :: Text)
-    userSanitizedResponseGuard <- o .: ("guard" :: Text)
-    userSanitizedResponseCreatedAt <- o .: ("created_at" :: Text)
-    userSanitizedResponseActivityAt <- o .: ("activity_at" :: Text)
+    userSanitizedResponseId <- o .: ("id" :: Data.Aeson.Key.Key)
+    userSanitizedResponseName <- o .: ("name" :: Data.Aeson.Key.Key)
+    userSanitizedResponseDisplayName <- o .: ("display_name" :: Data.Aeson.Key.Key)
+    userSanitizedResponseEmailMD5 <- o .: ("email_md5" :: Data.Aeson.Key.Key)
+    userSanitizedResponseActive <- o .: ("active" :: Data.Aeson.Key.Key)
+    userSanitizedResponseGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
+    userSanitizedResponseCreatedAt <- o .: ("created_at" :: Data.Aeson.Key.Key)
+    userSanitizedResponseActivityAt <- o .: ("activity_at" :: Data.Aeson.Key.Key)
     pure $ UserSanitizedResponse {
       userSanitizedResponseId = userSanitizedResponseId,
       userSanitizedResponseName = userSanitizedResponseName,
@@ -254,7 +255,7 @@ data UserSanitizedResponses = UserSanitizedResponses {
 
 instance FromJSON UserSanitizedResponses where
   parseJSON (Object o) = do
-    userSanitizedResponses <- o .: ("user_sanitized_responses" :: Text)
+    userSanitizedResponses <- o .: ("user_sanitized_responses" :: Data.Aeson.Key.Key)
     pure $ UserSanitizedResponses {
       userSanitizedResponses = userSanitizedResponses
     }
@@ -285,11 +286,11 @@ data UserSanitizedStatResponse = UserSanitizedStatResponse {
 
 instance FromJSON UserSanitizedStatResponse where
   parseJSON (Object o) = do
-    userSanitizedStatResponseUserId <- o .: ("user_id" :: Text)
-    userSanitizedStatResponseThreads <- o .: ("threads" :: Text)
-    userSanitizedStatResponseThreadPosts <- o .: ("thread_posts" :: Text)
-    userSanitizedStatResponseRespect <- o .: ("respect" :: Text)
-    userSanitizedStatResponseWorkouts <- o .: ("workouts" :: Text)
+    userSanitizedStatResponseUserId <- o .: ("user_id" :: Data.Aeson.Key.Key)
+    userSanitizedStatResponseThreads <- o .: ("threads" :: Data.Aeson.Key.Key)
+    userSanitizedStatResponseThreadPosts <- o .: ("thread_posts" :: Data.Aeson.Key.Key)
+    userSanitizedStatResponseRespect <- o .: ("respect" :: Data.Aeson.Key.Key)
+    userSanitizedStatResponseWorkouts <- o .: ("workouts" :: Data.Aeson.Key.Key)
     pure $ UserSanitizedStatResponse {
       userSanitizedStatResponseUserId = userSanitizedStatResponseUserId,
       userSanitizedStatResponseThreads = userSanitizedStatResponseThreads,
@@ -324,7 +325,7 @@ data UserSanitizedStatResponses = UserSanitizedStatResponses {
 
 instance FromJSON UserSanitizedStatResponses where
   parseJSON (Object o) = do
-    userSanitizedStatResponses <- o .: ("user_sanitized_stat_responses" :: Text)
+    userSanitizedStatResponses <- o .: ("user_sanitized_stat_responses" :: Data.Aeson.Key.Key)
     pure $ UserSanitizedStatResponses {
       userSanitizedStatResponses = userSanitizedStatResponses
     }

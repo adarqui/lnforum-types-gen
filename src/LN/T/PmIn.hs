@@ -15,6 +15,7 @@ module LN.T.PmIn where
 
 
 import           Control.DeepSeq             (NFData)
+import           Data.Aeson.Key
 import           Data.Aeson                  (FromJSON, ToJSON (), Value (..), parseJSON, toJSON, object, (.=), (.:))
 import           Data.Default                (Default, def)
 import           Data.Int                    (Int64)
@@ -37,10 +38,10 @@ data PmInRequest = PmInRequest {
 
 instance FromJSON PmInRequest where
   parseJSON (Object o) = do
-    pmInRequestLabel <- o .: ("label" :: Text)
-    pmInRequestIsRead <- o .: ("is_read" :: Text)
-    pmInRequestIsStarred <- o .: ("is_starred" :: Text)
-    pmInRequestGuard <- o .: ("guard" :: Text)
+    pmInRequestLabel <- o .: ("label" :: Data.Aeson.Key.Key)
+    pmInRequestIsRead <- o .: ("is_read" :: Data.Aeson.Key.Key)
+    pmInRequestIsStarred <- o .: ("is_starred" :: Data.Aeson.Key.Key)
+    pmInRequestGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
     pure $ PmInRequest {
       pmInRequestLabel = pmInRequestLabel,
       pmInRequestIsRead = pmInRequestIsRead,
@@ -84,18 +85,18 @@ data PmInResponse = PmInResponse {
 
 instance FromJSON PmInResponse where
   parseJSON (Object o) = do
-    pmInResponseId <- o .: ("id" :: Text)
-    pmInResponsePmId <- o .: ("pm_id" :: Text)
-    pmInResponseUserId <- o .: ("user_id" :: Text)
-    pmInResponseLabel <- o .: ("label" :: Text)
-    pmInResponseIsRead <- o .: ("is_read" :: Text)
-    pmInResponseIsStarred <- o .: ("is_starred" :: Text)
-    pmInResponseIsNew <- o .: ("is_new" :: Text)
-    pmInResponseIsSaved <- o .: ("is_saved" :: Text)
-    pmInResponseActive <- o .: ("active" :: Text)
-    pmInResponseGuard <- o .: ("guard" :: Text)
-    pmInResponseCreatedAt <- o .: ("created_at" :: Text)
-    pmInResponseModifiedAt <- o .: ("modified_at" :: Text)
+    pmInResponseId <- o .: ("id" :: Data.Aeson.Key.Key)
+    pmInResponsePmId <- o .: ("pm_id" :: Data.Aeson.Key.Key)
+    pmInResponseUserId <- o .: ("user_id" :: Data.Aeson.Key.Key)
+    pmInResponseLabel <- o .: ("label" :: Data.Aeson.Key.Key)
+    pmInResponseIsRead <- o .: ("is_read" :: Data.Aeson.Key.Key)
+    pmInResponseIsStarred <- o .: ("is_starred" :: Data.Aeson.Key.Key)
+    pmInResponseIsNew <- o .: ("is_new" :: Data.Aeson.Key.Key)
+    pmInResponseIsSaved <- o .: ("is_saved" :: Data.Aeson.Key.Key)
+    pmInResponseActive <- o .: ("active" :: Data.Aeson.Key.Key)
+    pmInResponseGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
+    pmInResponseCreatedAt <- o .: ("created_at" :: Data.Aeson.Key.Key)
+    pmInResponseModifiedAt <- o .: ("modified_at" :: Data.Aeson.Key.Key)
     pure $ PmInResponse {
       pmInResponseId = pmInResponseId,
       pmInResponsePmId = pmInResponsePmId,
@@ -144,7 +145,7 @@ data PmInResponses = PmInResponses {
 
 instance FromJSON PmInResponses where
   parseJSON (Object o) = do
-    pmInResponses <- o .: ("pm_in_responses" :: Text)
+    pmInResponses <- o .: ("pm_in_responses" :: Data.Aeson.Key.Key)
     pure $ PmInResponses {
       pmInResponses = pmInResponses
     }

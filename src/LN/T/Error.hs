@@ -15,6 +15,7 @@ module LN.T.Error where
 
 
 import           Control.DeepSeq             (NFData)
+import           Data.Aeson.Key
 import           Data.Aeson                  (FromJSON, ToJSON (), Value (..), parseJSON, toJSON, object, (.=), (.:))
 import           Data.Default                (Default, def)
 import           Data.Int                    (Int64)
@@ -43,7 +44,7 @@ data ApplicationError
 
 instance FromJSON ApplicationError where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag" :: Data.Aeson.Key.Key)
     case tag of
       ("Error_Unknown" :: Text) -> do
         pure Error_Unknown
@@ -165,7 +166,7 @@ data ValidationError
 
 instance FromJSON ValidationError where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag" :: Data.Aeson.Key.Key)
     case tag of
       ("Validate" :: Text) -> do
         r <- o .: "contents"
@@ -212,7 +213,7 @@ data ValidationErrorCode
 
 instance FromJSON ValidationErrorCode where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag" :: Data.Aeson.Key.Key)
     case tag of
       ("Validate_Unknown" :: Text) -> do
         pure Validate_Unknown

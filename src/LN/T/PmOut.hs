@@ -15,6 +15,7 @@ module LN.T.PmOut where
 
 
 import           Control.DeepSeq             (NFData)
+import           Data.Aeson.Key
 import           Data.Aeson                  (FromJSON, ToJSON (), Value (..), parseJSON, toJSON, object, (.=), (.:))
 import           Data.Default                (Default, def)
 import           Data.Int                    (Int64)
@@ -35,8 +36,8 @@ data PmOutRequest = PmOutRequest {
 
 instance FromJSON PmOutRequest where
   parseJSON (Object o) = do
-    pmOutRequestLabel <- o .: ("label" :: Text)
-    pmOutRequestGuard <- o .: ("guard" :: Text)
+    pmOutRequestLabel <- o .: ("label" :: Data.Aeson.Key.Key)
+    pmOutRequestGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
     pure $ PmOutRequest {
       pmOutRequestLabel = pmOutRequestLabel,
       pmOutRequestGuard = pmOutRequestGuard
@@ -73,15 +74,15 @@ data PmOutResponse = PmOutResponse {
 
 instance FromJSON PmOutResponse where
   parseJSON (Object o) = do
-    pmOutResponseId <- o .: ("id" :: Text)
-    pmOutResponsePmId <- o .: ("pm_id" :: Text)
-    pmOutResponseUserId <- o .: ("user_id" :: Text)
-    pmOutResponseLabel <- o .: ("label" :: Text)
-    pmOutResponseIsSaved <- o .: ("is_saved" :: Text)
-    pmOutResponseActive <- o .: ("active" :: Text)
-    pmOutResponseGuard <- o .: ("guard" :: Text)
-    pmOutResponseCreatedAt <- o .: ("created_at" :: Text)
-    pmOutResponseModifiedAt <- o .: ("modified_at" :: Text)
+    pmOutResponseId <- o .: ("id" :: Data.Aeson.Key.Key)
+    pmOutResponsePmId <- o .: ("pm_id" :: Data.Aeson.Key.Key)
+    pmOutResponseUserId <- o .: ("user_id" :: Data.Aeson.Key.Key)
+    pmOutResponseLabel <- o .: ("label" :: Data.Aeson.Key.Key)
+    pmOutResponseIsSaved <- o .: ("is_saved" :: Data.Aeson.Key.Key)
+    pmOutResponseActive <- o .: ("active" :: Data.Aeson.Key.Key)
+    pmOutResponseGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
+    pmOutResponseCreatedAt <- o .: ("created_at" :: Data.Aeson.Key.Key)
+    pmOutResponseModifiedAt <- o .: ("modified_at" :: Data.Aeson.Key.Key)
     pure $ PmOutResponse {
       pmOutResponseId = pmOutResponseId,
       pmOutResponsePmId = pmOutResponsePmId,
@@ -124,7 +125,7 @@ data PmOutResponses = PmOutResponses {
 
 instance FromJSON PmOutResponses where
   parseJSON (Object o) = do
-    pmOutResponses <- o .: ("pm_out_responses" :: Text)
+    pmOutResponses <- o .: ("pm_out_responses" :: Data.Aeson.Key.Key)
     pure $ PmOutResponses {
       pmOutResponses = pmOutResponses
     }

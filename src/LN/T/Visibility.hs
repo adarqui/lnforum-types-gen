@@ -15,6 +15,7 @@ module LN.T.Visibility where
 
 
 import           Control.DeepSeq             (NFData)
+import           Data.Aeson.Key
 import           Data.Aeson                  (FromJSON, ToJSON (), Value (..), parseJSON, toJSON, object, (.=), (.:))
 import           Data.Default                (Default, def)
 import           Data.Int                    (Int64)
@@ -35,7 +36,7 @@ data Visibility
 
 instance FromJSON Visibility where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag" :: Data.Aeson.Key.Key)
     case tag of
       ("Public" :: Text) -> do
         pure Public

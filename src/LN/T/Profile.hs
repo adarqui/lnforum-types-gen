@@ -15,6 +15,7 @@ import LN.T.Ent
 
 
 import           Control.DeepSeq             (NFData)
+import           Data.Aeson.Key
 import           Data.Aeson                  (FromJSON, ToJSON (), Value (..), parseJSON, toJSON, object, (.=), (.:))
 import           Data.Default                (Default, def)
 import           Data.Int                    (Int64)
@@ -36,9 +37,9 @@ data ProfileX = ProfileX {
 
 instance FromJSON ProfileX where
   parseJSON (Object o) = do
-    profileLogin <- o .: ("profile_login" :: Text)
-    profileName <- o .: ("profile_name" :: Text)
-    profileEmail <- o .: ("profile_email" :: Text)
+    profileLogin <- o .: ("profile_login" :: Data.Aeson.Key.Key)
+    profileName <- o .: ("profile_name" :: Data.Aeson.Key.Key)
+    profileEmail <- o .: ("profile_email" :: Data.Aeson.Key.Key)
     pure $ ProfileX {
       profileLogin = profileLogin,
       profileName = profileName,
@@ -71,7 +72,7 @@ data ProfileGender
 
 instance FromJSON ProfileGender where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag" :: Data.Aeson.Key.Key)
     case tag of
       ("GenderMale" :: Text) -> do
         pure GenderMale
@@ -136,15 +137,15 @@ data ProfileRequest = ProfileRequest {
 
 instance FromJSON ProfileRequest where
   parseJSON (Object o) = do
-    profileRequestGender <- o .: ("gender" :: Text)
-    profileRequestBirthdate <- o .: ("birthdate" :: Text)
-    profileRequestWebsite <- o .: ("website" :: Text)
-    profileRequestWebsites <- o .: ("websites" :: Text)
-    profileRequestLocation <- o .: ("location" :: Text)
-    profileRequestSignature <- o .: ("signature" :: Text)
-    profileRequestDebug <- o .: ("debug" :: Text)
-    profileRequestGuard <- o .: ("guard" :: Text)
-    profileRequestStateWebsites <- o .: ("state_websites" :: Text)
+    profileRequestGender <- o .: ("gender" :: Data.Aeson.Key.Key)
+    profileRequestBirthdate <- o .: ("birthdate" :: Data.Aeson.Key.Key)
+    profileRequestWebsite <- o .: ("website" :: Data.Aeson.Key.Key)
+    profileRequestWebsites <- o .: ("websites" :: Data.Aeson.Key.Key)
+    profileRequestLocation <- o .: ("location" :: Data.Aeson.Key.Key)
+    profileRequestSignature <- o .: ("signature" :: Data.Aeson.Key.Key)
+    profileRequestDebug <- o .: ("debug" :: Data.Aeson.Key.Key)
+    profileRequestGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
+    profileRequestStateWebsites <- o .: ("state_websites" :: Data.Aeson.Key.Key)
     pure $ ProfileRequest {
       profileRequestGender = profileRequestGender,
       profileRequestBirthdate = profileRequestBirthdate,
@@ -200,20 +201,20 @@ data ProfileResponse = ProfileResponse {
 
 instance FromJSON ProfileResponse where
   parseJSON (Object o) = do
-    profileResponseId <- o .: ("id" :: Text)
-    profileResponseEnt <- o .: ("ent" :: Text)
-    profileResponseEntId <- o .: ("ent_id" :: Text)
-    profileResponseGender <- o .: ("gender" :: Text)
-    profileResponseBirthdate <- o .: ("birthdate" :: Text)
-    profileResponseWebsite <- o .: ("website" :: Text)
-    profileResponseLocation <- o .: ("location" :: Text)
-    profileResponseSignature <- o .: ("signature" :: Text)
-    profileResponseDebug <- o .: ("debug" :: Text)
-    profileResponseKarmaGood <- o .: ("karma_good" :: Text)
-    profileResponseKarmaBad <- o .: ("karma_bad" :: Text)
-    profileResponseGuard <- o .: ("guard" :: Text)
-    profileResponseCreatedAt <- o .: ("created_at" :: Text)
-    profileResponseModifiedAt <- o .: ("modified_at" :: Text)
+    profileResponseId <- o .: ("id" :: Data.Aeson.Key.Key)
+    profileResponseEnt <- o .: ("ent" :: Data.Aeson.Key.Key)
+    profileResponseEntId <- o .: ("ent_id" :: Data.Aeson.Key.Key)
+    profileResponseGender <- o .: ("gender" :: Data.Aeson.Key.Key)
+    profileResponseBirthdate <- o .: ("birthdate" :: Data.Aeson.Key.Key)
+    profileResponseWebsite <- o .: ("website" :: Data.Aeson.Key.Key)
+    profileResponseLocation <- o .: ("location" :: Data.Aeson.Key.Key)
+    profileResponseSignature <- o .: ("signature" :: Data.Aeson.Key.Key)
+    profileResponseDebug <- o .: ("debug" :: Data.Aeson.Key.Key)
+    profileResponseKarmaGood <- o .: ("karma_good" :: Data.Aeson.Key.Key)
+    profileResponseKarmaBad <- o .: ("karma_bad" :: Data.Aeson.Key.Key)
+    profileResponseGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
+    profileResponseCreatedAt <- o .: ("created_at" :: Data.Aeson.Key.Key)
+    profileResponseModifiedAt <- o .: ("modified_at" :: Data.Aeson.Key.Key)
     pure $ ProfileResponse {
       profileResponseId = profileResponseId,
       profileResponseEnt = profileResponseEnt,
@@ -266,7 +267,7 @@ data ProfileResponses = ProfileResponses {
 
 instance FromJSON ProfileResponses where
   parseJSON (Object o) = do
-    profileResponses <- o .: ("profile_responses" :: Text)
+    profileResponses <- o .: ("profile_responses" :: Data.Aeson.Key.Key)
     pure $ ProfileResponses {
       profileResponses = profileResponses
     }

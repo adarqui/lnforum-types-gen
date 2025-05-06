@@ -15,6 +15,7 @@ import LN.T.Visibility
 
 
 import           Control.DeepSeq             (NFData)
+import           Data.Aeson.Key
 import           Data.Aeson                  (FromJSON, ToJSON (), Value (..), parseJSON, toJSON, object, (.=), (.:))
 import           Data.Default                (Default, def)
 import           Data.Int                    (Int64)
@@ -34,7 +35,7 @@ data BoardType
 
 instance FromJSON BoardType where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag" :: Data.Aeson.Key.Key)
     case tag of
       ("FixMe" :: Text) -> do
         pure FixMe
@@ -66,7 +67,7 @@ data TyBoardType
 
 instance FromJSON TyBoardType where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag" :: Data.Aeson.Key.Key)
     case tag of
       ("TyFixMe" :: Text) -> do
         pure TyFixMe
@@ -108,17 +109,17 @@ data BoardRequest = BoardRequest {
 
 instance FromJSON BoardRequest where
   parseJSON (Object o) = do
-    boardRequestDisplayName <- o .: ("display_name" :: Text)
-    boardRequestDescription <- o .: ("description" :: Text)
-    boardRequestBoardType <- o .: ("board_type" :: Text)
-    boardRequestActive <- o .: ("active" :: Text)
-    boardRequestIsAnonymous <- o .: ("is_anonymous" :: Text)
-    boardRequestCanCreateBoards <- o .: ("can_create_boards" :: Text)
-    boardRequestCanCreateThreads <- o .: ("can_create_threads" :: Text)
-    boardRequestVisibility <- o .: ("visibility" :: Text)
-    boardRequestIcon <- o .: ("icon" :: Text)
-    boardRequestTags <- o .: ("tags" :: Text)
-    boardRequestGuard <- o .: ("guard" :: Text)
+    boardRequestDisplayName <- o .: ("display_name" :: Data.Aeson.Key.Key)
+    boardRequestDescription <- o .: ("description" :: Data.Aeson.Key.Key)
+    boardRequestBoardType <- o .: ("board_type" :: Data.Aeson.Key.Key)
+    boardRequestActive <- o .: ("active" :: Data.Aeson.Key.Key)
+    boardRequestIsAnonymous <- o .: ("is_anonymous" :: Data.Aeson.Key.Key)
+    boardRequestCanCreateBoards <- o .: ("can_create_boards" :: Data.Aeson.Key.Key)
+    boardRequestCanCreateThreads <- o .: ("can_create_threads" :: Data.Aeson.Key.Key)
+    boardRequestVisibility <- o .: ("visibility" :: Data.Aeson.Key.Key)
+    boardRequestIcon <- o .: ("icon" :: Data.Aeson.Key.Key)
+    boardRequestTags <- o .: ("tags" :: Data.Aeson.Key.Key)
+    boardRequestGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
     pure $ BoardRequest {
       boardRequestDisplayName = boardRequestDisplayName,
       boardRequestDescription = boardRequestDescription,
@@ -182,24 +183,24 @@ data BoardResponse = BoardResponse {
 
 instance FromJSON BoardResponse where
   parseJSON (Object o) = do
-    boardResponseId <- o .: ("id" :: Text)
-    boardResponseUserId <- o .: ("user_id" :: Text)
-    boardResponseName <- o .: ("name" :: Text)
-    boardResponseDisplayName <- o .: ("display_name" :: Text)
-    boardResponseDescription <- o .: ("description" :: Text)
-    boardResponseBoardType <- o .: ("board_type" :: Text)
-    boardResponseActive <- o .: ("active" :: Text)
-    boardResponseIsAnonymous <- o .: ("is_anonymous" :: Text)
-    boardResponseCanCreateBoards <- o .: ("can_create_boards" :: Text)
-    boardResponseCanCreateThreads <- o .: ("can_create_threads" :: Text)
-    boardResponseVisibility <- o .: ("visibility" :: Text)
-    boardResponseIcon <- o .: ("icon" :: Text)
-    boardResponseTags <- o .: ("tags" :: Text)
-    boardResponseGuard <- o .: ("guard" :: Text)
-    boardResponseCreatedAt <- o .: ("created_at" :: Text)
-    boardResponseModifiedAt <- o .: ("modified_at" :: Text)
-    boardResponseModifiedBy <- o .: ("modified_by" :: Text)
-    boardResponseActivityAt <- o .: ("activity_at" :: Text)
+    boardResponseId <- o .: ("id" :: Data.Aeson.Key.Key)
+    boardResponseUserId <- o .: ("user_id" :: Data.Aeson.Key.Key)
+    boardResponseName <- o .: ("name" :: Data.Aeson.Key.Key)
+    boardResponseDisplayName <- o .: ("display_name" :: Data.Aeson.Key.Key)
+    boardResponseDescription <- o .: ("description" :: Data.Aeson.Key.Key)
+    boardResponseBoardType <- o .: ("board_type" :: Data.Aeson.Key.Key)
+    boardResponseActive <- o .: ("active" :: Data.Aeson.Key.Key)
+    boardResponseIsAnonymous <- o .: ("is_anonymous" :: Data.Aeson.Key.Key)
+    boardResponseCanCreateBoards <- o .: ("can_create_boards" :: Data.Aeson.Key.Key)
+    boardResponseCanCreateThreads <- o .: ("can_create_threads" :: Data.Aeson.Key.Key)
+    boardResponseVisibility <- o .: ("visibility" :: Data.Aeson.Key.Key)
+    boardResponseIcon <- o .: ("icon" :: Data.Aeson.Key.Key)
+    boardResponseTags <- o .: ("tags" :: Data.Aeson.Key.Key)
+    boardResponseGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
+    boardResponseCreatedAt <- o .: ("created_at" :: Data.Aeson.Key.Key)
+    boardResponseModifiedAt <- o .: ("modified_at" :: Data.Aeson.Key.Key)
+    boardResponseModifiedBy <- o .: ("modified_by" :: Data.Aeson.Key.Key)
+    boardResponseActivityAt <- o .: ("activity_at" :: Data.Aeson.Key.Key)
     pure $ BoardResponse {
       boardResponseId = boardResponseId,
       boardResponseUserId = boardResponseUserId,
@@ -260,7 +261,7 @@ data BoardResponses = BoardResponses {
 
 instance FromJSON BoardResponses where
   parseJSON (Object o) = do
-    boardResponses <- o .: ("board_responses" :: Text)
+    boardResponses <- o .: ("board_responses" :: Data.Aeson.Key.Key)
     pure $ BoardResponses {
       boardResponses = boardResponses
     }
@@ -290,10 +291,10 @@ data BoardStatResponse = BoardStatResponse {
 
 instance FromJSON BoardStatResponse where
   parseJSON (Object o) = do
-    boardStatResponseBoardId <- o .: ("board_id" :: Text)
-    boardStatResponseThreads <- o .: ("threads" :: Text)
-    boardStatResponseThreadPosts <- o .: ("thread_posts" :: Text)
-    boardStatResponseViews <- o .: ("views" :: Text)
+    boardStatResponseBoardId <- o .: ("board_id" :: Data.Aeson.Key.Key)
+    boardStatResponseThreads <- o .: ("threads" :: Data.Aeson.Key.Key)
+    boardStatResponseThreadPosts <- o .: ("thread_posts" :: Data.Aeson.Key.Key)
+    boardStatResponseViews <- o .: ("views" :: Data.Aeson.Key.Key)
     pure $ BoardStatResponse {
       boardStatResponseBoardId = boardStatResponseBoardId,
       boardStatResponseThreads = boardStatResponseThreads,
@@ -326,7 +327,7 @@ data BoardStatResponses = BoardStatResponses {
 
 instance FromJSON BoardStatResponses where
   parseJSON (Object o) = do
-    boardStatResponses <- o .: ("board_stat_responses" :: Text)
+    boardStatResponses <- o .: ("board_stat_responses" :: Data.Aeson.Key.Key)
     pure $ BoardStatResponses {
       boardStatResponses = boardStatResponses
     }

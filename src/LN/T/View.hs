@@ -15,6 +15,7 @@ import LN.T.Ent
 
 
 import           Control.DeepSeq             (NFData)
+import           Data.Aeson.Key
 import           Data.Aeson                  (FromJSON, ToJSON (), Value (..), parseJSON, toJSON, object, (.=), (.:))
 import           Data.Default                (Default, def)
 import           Data.Int                    (Int64)
@@ -34,7 +35,7 @@ data ViewRequest = ViewRequest {
 
 instance FromJSON ViewRequest where
   parseJSON (Object o) = do
-    viewRequestCount <- o .: ("count" :: Text)
+    viewRequestCount <- o .: ("count" :: Data.Aeson.Key.Key)
     pure $ ViewRequest {
       viewRequestCount = viewRequestCount
     }
@@ -66,12 +67,12 @@ data ViewResponse = ViewResponse {
 
 instance FromJSON ViewResponse where
   parseJSON (Object o) = do
-    viewResponseId <- o .: ("id" :: Text)
-    viewResponseEnt <- o .: ("ent" :: Text)
-    viewResponseEntId <- o .: ("ent_id" :: Text)
-    viewResponseCount <- o .: ("count" :: Text)
-    viewResponseCreatedAt <- o .: ("created_at" :: Text)
-    viewResponseModifiedAt <- o .: ("modified_at" :: Text)
+    viewResponseId <- o .: ("id" :: Data.Aeson.Key.Key)
+    viewResponseEnt <- o .: ("ent" :: Data.Aeson.Key.Key)
+    viewResponseEntId <- o .: ("ent_id" :: Data.Aeson.Key.Key)
+    viewResponseCount <- o .: ("count" :: Data.Aeson.Key.Key)
+    viewResponseCreatedAt <- o .: ("created_at" :: Data.Aeson.Key.Key)
+    viewResponseModifiedAt <- o .: ("modified_at" :: Data.Aeson.Key.Key)
     pure $ ViewResponse {
       viewResponseId = viewResponseId,
       viewResponseEnt = viewResponseEnt,
@@ -108,7 +109,7 @@ data ViewResponses = ViewResponses {
 
 instance FromJSON ViewResponses where
   parseJSON (Object o) = do
-    viewResponses <- o .: ("view_responses" :: Text)
+    viewResponses <- o .: ("view_responses" :: Data.Aeson.Key.Key)
     pure $ ViewResponses {
       viewResponses = viewResponses
     }

@@ -15,6 +15,7 @@ import LN.T.Board
 
 
 import           Control.DeepSeq             (NFData)
+import           Data.Aeson.Key
 import           Data.Aeson                  (FromJSON, ToJSON (), Value (..), parseJSON, toJSON, object, (.=), (.:))
 import           Data.Default                (Default, def)
 import           Data.Int                    (Int64)
@@ -42,15 +43,15 @@ data ThreadRequest = ThreadRequest {
 
 instance FromJSON ThreadRequest where
   parseJSON (Object o) = do
-    threadRequestDisplayName <- o .: ("display_name" :: Text)
-    threadRequestDescription <- o .: ("description" :: Text)
-    threadRequestSticky <- o .: ("sticky" :: Text)
-    threadRequestLocked <- o .: ("locked" :: Text)
-    threadRequestPoll <- o .: ("poll" :: Text)
-    threadRequestIcon <- o .: ("icon" :: Text)
-    threadRequestTags <- o .: ("tags" :: Text)
-    threadRequestGuard <- o .: ("guard" :: Text)
-    threadRequestStateTag <- o .: ("state_tag" :: Text)
+    threadRequestDisplayName <- o .: ("display_name" :: Data.Aeson.Key.Key)
+    threadRequestDescription <- o .: ("description" :: Data.Aeson.Key.Key)
+    threadRequestSticky <- o .: ("sticky" :: Data.Aeson.Key.Key)
+    threadRequestLocked <- o .: ("locked" :: Data.Aeson.Key.Key)
+    threadRequestPoll <- o .: ("poll" :: Data.Aeson.Key.Key)
+    threadRequestIcon <- o .: ("icon" :: Data.Aeson.Key.Key)
+    threadRequestTags <- o .: ("tags" :: Data.Aeson.Key.Key)
+    threadRequestGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
+    threadRequestStateTag <- o .: ("state_tag" :: Data.Aeson.Key.Key)
     pure $ ThreadRequest {
       threadRequestDisplayName = threadRequestDisplayName,
       threadRequestDescription = threadRequestDescription,
@@ -109,23 +110,23 @@ data ThreadResponse = ThreadResponse {
 
 instance FromJSON ThreadResponse where
   parseJSON (Object o) = do
-    threadResponseId <- o .: ("id" :: Text)
-    threadResponseUserId <- o .: ("user_id" :: Text)
-    threadResponseBoardId <- o .: ("board_id" :: Text)
-    threadResponseName <- o .: ("name" :: Text)
-    threadResponseDisplayName <- o .: ("display_name" :: Text)
-    threadResponseDescription <- o .: ("description" :: Text)
-    threadResponseSticky <- o .: ("sticky" :: Text)
-    threadResponseLocked <- o .: ("locked" :: Text)
-    threadResponsePoll <- o .: ("poll" :: Text)
-    threadResponseIcon <- o .: ("icon" :: Text)
-    threadResponseTags <- o .: ("tags" :: Text)
-    threadResponseActive <- o .: ("active" :: Text)
-    threadResponseGuard <- o .: ("guard" :: Text)
-    threadResponseCreatedAt <- o .: ("created_at" :: Text)
-    threadResponseModifiedBy <- o .: ("modified_by" :: Text)
-    threadResponseModifiedAt <- o .: ("modified_at" :: Text)
-    threadResponseActivityAt <- o .: ("activity_at" :: Text)
+    threadResponseId <- o .: ("id" :: Data.Aeson.Key.Key)
+    threadResponseUserId <- o .: ("user_id" :: Data.Aeson.Key.Key)
+    threadResponseBoardId <- o .: ("board_id" :: Data.Aeson.Key.Key)
+    threadResponseName <- o .: ("name" :: Data.Aeson.Key.Key)
+    threadResponseDisplayName <- o .: ("display_name" :: Data.Aeson.Key.Key)
+    threadResponseDescription <- o .: ("description" :: Data.Aeson.Key.Key)
+    threadResponseSticky <- o .: ("sticky" :: Data.Aeson.Key.Key)
+    threadResponseLocked <- o .: ("locked" :: Data.Aeson.Key.Key)
+    threadResponsePoll <- o .: ("poll" :: Data.Aeson.Key.Key)
+    threadResponseIcon <- o .: ("icon" :: Data.Aeson.Key.Key)
+    threadResponseTags <- o .: ("tags" :: Data.Aeson.Key.Key)
+    threadResponseActive <- o .: ("active" :: Data.Aeson.Key.Key)
+    threadResponseGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
+    threadResponseCreatedAt <- o .: ("created_at" :: Data.Aeson.Key.Key)
+    threadResponseModifiedBy <- o .: ("modified_by" :: Data.Aeson.Key.Key)
+    threadResponseModifiedAt <- o .: ("modified_at" :: Data.Aeson.Key.Key)
+    threadResponseActivityAt <- o .: ("activity_at" :: Data.Aeson.Key.Key)
     pure $ ThreadResponse {
       threadResponseId = threadResponseId,
       threadResponseUserId = threadResponseUserId,
@@ -184,7 +185,7 @@ data ThreadResponses = ThreadResponses {
 
 instance FromJSON ThreadResponses where
   parseJSON (Object o) = do
-    threadResponses <- o .: ("thread_responses" :: Text)
+    threadResponses <- o .: ("thread_responses" :: Data.Aeson.Key.Key)
     pure $ ThreadResponses {
       threadResponses = threadResponses
     }
@@ -213,9 +214,9 @@ data ThreadStatResponse = ThreadStatResponse {
 
 instance FromJSON ThreadStatResponse where
   parseJSON (Object o) = do
-    threadStatResponseThreadId <- o .: ("thread_id" :: Text)
-    threadStatResponseThreadPosts <- o .: ("thread_posts" :: Text)
-    threadStatResponseViews <- o .: ("views" :: Text)
+    threadStatResponseThreadId <- o .: ("thread_id" :: Data.Aeson.Key.Key)
+    threadStatResponseThreadPosts <- o .: ("thread_posts" :: Data.Aeson.Key.Key)
+    threadStatResponseViews <- o .: ("views" :: Data.Aeson.Key.Key)
     pure $ ThreadStatResponse {
       threadStatResponseThreadId = threadStatResponseThreadId,
       threadStatResponseThreadPosts = threadStatResponseThreadPosts,
@@ -246,7 +247,7 @@ data ThreadStatResponses = ThreadStatResponses {
 
 instance FromJSON ThreadStatResponses where
   parseJSON (Object o) = do
-    threadStatResponses <- o .: ("thread_stat_responses" :: Text)
+    threadStatResponses <- o .: ("thread_stat_responses" :: Data.Aeson.Key.Key)
     pure $ ThreadStatResponses {
       threadStatResponses = threadStatResponses
     }

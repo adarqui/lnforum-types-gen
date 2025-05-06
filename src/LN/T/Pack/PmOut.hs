@@ -16,6 +16,7 @@ import LN.T.User
 
 
 import           Control.DeepSeq             (NFData)
+import           Data.Aeson.Key
 import           Data.Aeson                  (FromJSON, ToJSON (), Value (..), parseJSON, toJSON, object, (.=), (.:))
 import           Data.Default                (Default, def)
 import           Data.Int                    (Int64)
@@ -38,10 +39,10 @@ data PmOutPackResponse = PmOutPackResponse {
 
 instance FromJSON PmOutPackResponse where
   parseJSON (Object o) = do
-    pmOutPackResponsePmOut <- o .: ("pm_out" :: Text)
-    pmOutPackResponsePmOutId <- o .: ("pm_out_id" :: Text)
-    pmOutPackResponseUser <- o .: ("user" :: Text)
-    pmOutPackResponseUserId <- o .: ("user_id" :: Text)
+    pmOutPackResponsePmOut <- o .: ("pm_out" :: Data.Aeson.Key.Key)
+    pmOutPackResponsePmOutId <- o .: ("pm_out_id" :: Data.Aeson.Key.Key)
+    pmOutPackResponseUser <- o .: ("user" :: Data.Aeson.Key.Key)
+    pmOutPackResponseUserId <- o .: ("user_id" :: Data.Aeson.Key.Key)
     pure $ PmOutPackResponse {
       pmOutPackResponsePmOut = pmOutPackResponsePmOut,
       pmOutPackResponsePmOutId = pmOutPackResponsePmOutId,
@@ -74,7 +75,7 @@ data PmOutPackResponses = PmOutPackResponses {
 
 instance FromJSON PmOutPackResponses where
   parseJSON (Object o) = do
-    pmOutPackResponses <- o .: ("pm_out_pack_responses" :: Text)
+    pmOutPackResponses <- o .: ("pm_out_pack_responses" :: Data.Aeson.Key.Key)
     pure $ PmOutPackResponses {
       pmOutPackResponses = pmOutPackResponses
     }

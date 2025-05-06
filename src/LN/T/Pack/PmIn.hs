@@ -16,6 +16,7 @@ import LN.T.User
 
 
 import           Control.DeepSeq             (NFData)
+import           Data.Aeson.Key
 import           Data.Aeson                  (FromJSON, ToJSON (), Value (..), parseJSON, toJSON, object, (.=), (.:))
 import           Data.Default                (Default, def)
 import           Data.Int                    (Int64)
@@ -38,10 +39,10 @@ data PmInPackResponse = PmInPackResponse {
 
 instance FromJSON PmInPackResponse where
   parseJSON (Object o) = do
-    pmInPackResponsePmIn <- o .: ("pm_in" :: Text)
-    pmInPackResponsePmInId <- o .: ("pm_in_id" :: Text)
-    pmInPackResponseUser <- o .: ("user" :: Text)
-    pmInPackResponseUserId <- o .: ("user_id" :: Text)
+    pmInPackResponsePmIn <- o .: ("pm_in" :: Data.Aeson.Key.Key)
+    pmInPackResponsePmInId <- o .: ("pm_in_id" :: Data.Aeson.Key.Key)
+    pmInPackResponseUser <- o .: ("user" :: Data.Aeson.Key.Key)
+    pmInPackResponseUserId <- o .: ("user_id" :: Data.Aeson.Key.Key)
     pure $ PmInPackResponse {
       pmInPackResponsePmIn = pmInPackResponsePmIn,
       pmInPackResponsePmInId = pmInPackResponsePmInId,
@@ -74,7 +75,7 @@ data PmInPackResponses = PmInPackResponses {
 
 instance FromJSON PmInPackResponses where
   parseJSON (Object o) = do
-    pmInPackResponses <- o .: ("pm_in_pack_responses" :: Text)
+    pmInPackResponses <- o .: ("pm_in_pack_responses" :: Data.Aeson.Key.Key)
     pure $ PmInPackResponses {
       pmInPackResponses = pmInPackResponses
     }

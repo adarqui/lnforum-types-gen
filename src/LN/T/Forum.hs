@@ -15,6 +15,7 @@ import LN.T.Visibility
 
 
 import           Control.DeepSeq             (NFData)
+import           Data.Aeson.Key
 import           Data.Aeson                  (FromJSON, ToJSON (), Value (..), parseJSON, toJSON, object, (.=), (.:))
 import           Data.Default                (Default, def)
 import           Data.Int                    (Int64)
@@ -44,17 +45,17 @@ data ForumRequest = ForumRequest {
 
 instance FromJSON ForumRequest where
   parseJSON (Object o) = do
-    forumRequestDisplayName <- o .: ("display_name" :: Text)
-    forumRequestDescription <- o .: ("description" :: Text)
-    forumRequestThreadsPerBoard <- o .: ("threads_per_board" :: Text)
-    forumRequestThreadPostsPerThread <- o .: ("thread_posts_per_thread" :: Text)
-    forumRequestRecentThreadsLimit <- o .: ("recent_threads_limit" :: Text)
-    forumRequestRecentPostsLimit <- o .: ("recent_posts_limit" :: Text)
-    forumRequestMotwLimit <- o .: ("motw_limit" :: Text)
-    forumRequestIcon <- o .: ("icon" :: Text)
-    forumRequestTags <- o .: ("tags" :: Text)
-    forumRequestVisibility <- o .: ("visibility" :: Text)
-    forumRequestGuard <- o .: ("guard" :: Text)
+    forumRequestDisplayName <- o .: ("display_name" :: Data.Aeson.Key.Key)
+    forumRequestDescription <- o .: ("description" :: Data.Aeson.Key.Key)
+    forumRequestThreadsPerBoard <- o .: ("threads_per_board" :: Data.Aeson.Key.Key)
+    forumRequestThreadPostsPerThread <- o .: ("thread_posts_per_thread" :: Data.Aeson.Key.Key)
+    forumRequestRecentThreadsLimit <- o .: ("recent_threads_limit" :: Data.Aeson.Key.Key)
+    forumRequestRecentPostsLimit <- o .: ("recent_posts_limit" :: Data.Aeson.Key.Key)
+    forumRequestMotwLimit <- o .: ("motw_limit" :: Data.Aeson.Key.Key)
+    forumRequestIcon <- o .: ("icon" :: Data.Aeson.Key.Key)
+    forumRequestTags <- o .: ("tags" :: Data.Aeson.Key.Key)
+    forumRequestVisibility <- o .: ("visibility" :: Data.Aeson.Key.Key)
+    forumRequestGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
     pure $ ForumRequest {
       forumRequestDisplayName = forumRequestDisplayName,
       forumRequestDescription = forumRequestDescription,
@@ -118,24 +119,24 @@ data ForumResponse = ForumResponse {
 
 instance FromJSON ForumResponse where
   parseJSON (Object o) = do
-    forumResponseId <- o .: ("id" :: Text)
-    forumResponseUserId <- o .: ("user_id" :: Text)
-    forumResponseName <- o .: ("name" :: Text)
-    forumResponseDisplayName <- o .: ("display_name" :: Text)
-    forumResponseDescription <- o .: ("description" :: Text)
-    forumResponseThreadsPerBoard <- o .: ("threads_per_board" :: Text)
-    forumResponseThreadPostsPerThread <- o .: ("thread_posts_per_thread" :: Text)
-    forumResponseRecentThreadsLimit <- o .: ("recent_threads_limit" :: Text)
-    forumResponseRecentPostsLimit <- o .: ("recent_posts_limit" :: Text)
-    forumResponseMotwLimit <- o .: ("motw_limit" :: Text)
-    forumResponseIcon <- o .: ("icon" :: Text)
-    forumResponseVisibility <- o .: ("visibility" :: Text)
-    forumResponseTags <- o .: ("tags" :: Text)
-    forumResponseGuard <- o .: ("guard" :: Text)
-    forumResponseCreatedAt <- o .: ("created_at" :: Text)
-    forumResponseModifiedBy <- o .: ("modified_by" :: Text)
-    forumResponseModifiedAt <- o .: ("modified_at" :: Text)
-    forumResponseActivityAt <- o .: ("activity_at" :: Text)
+    forumResponseId <- o .: ("id" :: Data.Aeson.Key.Key)
+    forumResponseUserId <- o .: ("user_id" :: Data.Aeson.Key.Key)
+    forumResponseName <- o .: ("name" :: Data.Aeson.Key.Key)
+    forumResponseDisplayName <- o .: ("display_name" :: Data.Aeson.Key.Key)
+    forumResponseDescription <- o .: ("description" :: Data.Aeson.Key.Key)
+    forumResponseThreadsPerBoard <- o .: ("threads_per_board" :: Data.Aeson.Key.Key)
+    forumResponseThreadPostsPerThread <- o .: ("thread_posts_per_thread" :: Data.Aeson.Key.Key)
+    forumResponseRecentThreadsLimit <- o .: ("recent_threads_limit" :: Data.Aeson.Key.Key)
+    forumResponseRecentPostsLimit <- o .: ("recent_posts_limit" :: Data.Aeson.Key.Key)
+    forumResponseMotwLimit <- o .: ("motw_limit" :: Data.Aeson.Key.Key)
+    forumResponseIcon <- o .: ("icon" :: Data.Aeson.Key.Key)
+    forumResponseVisibility <- o .: ("visibility" :: Data.Aeson.Key.Key)
+    forumResponseTags <- o .: ("tags" :: Data.Aeson.Key.Key)
+    forumResponseGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
+    forumResponseCreatedAt <- o .: ("created_at" :: Data.Aeson.Key.Key)
+    forumResponseModifiedBy <- o .: ("modified_by" :: Data.Aeson.Key.Key)
+    forumResponseModifiedAt <- o .: ("modified_at" :: Data.Aeson.Key.Key)
+    forumResponseActivityAt <- o .: ("activity_at" :: Data.Aeson.Key.Key)
     pure $ ForumResponse {
       forumResponseId = forumResponseId,
       forumResponseUserId = forumResponseUserId,
@@ -196,7 +197,7 @@ data ForumResponses = ForumResponses {
 
 instance FromJSON ForumResponses where
   parseJSON (Object o) = do
-    forumResponses <- o .: ("forum_responses" :: Text)
+    forumResponses <- o .: ("forum_responses" :: Data.Aeson.Key.Key)
     pure $ ForumResponses {
       forumResponses = forumResponses
     }
@@ -226,10 +227,10 @@ data ForumStatResponse = ForumStatResponse {
 
 instance FromJSON ForumStatResponse where
   parseJSON (Object o) = do
-    forumStatResponseBoards <- o .: ("boards" :: Text)
-    forumStatResponseThreads <- o .: ("threads" :: Text)
-    forumStatResponseThreadPosts <- o .: ("thread_posts" :: Text)
-    forumStatResponseViews <- o .: ("views" :: Text)
+    forumStatResponseBoards <- o .: ("boards" :: Data.Aeson.Key.Key)
+    forumStatResponseThreads <- o .: ("threads" :: Data.Aeson.Key.Key)
+    forumStatResponseThreadPosts <- o .: ("thread_posts" :: Data.Aeson.Key.Key)
+    forumStatResponseViews <- o .: ("views" :: Data.Aeson.Key.Key)
     pure $ ForumStatResponse {
       forumStatResponseBoards = forumStatResponseBoards,
       forumStatResponseThreads = forumStatResponseThreads,

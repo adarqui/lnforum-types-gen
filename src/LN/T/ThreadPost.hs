@@ -16,6 +16,7 @@ import LN.T.Thread
 
 
 import           Control.DeepSeq             (NFData)
+import           Data.Aeson.Key
 import           Data.Aeson                  (FromJSON, ToJSON (), Value (..), parseJSON, toJSON, object, (.=), (.:))
 import           Data.Default                (Default, def)
 import           Data.Int                    (Int64)
@@ -40,7 +41,7 @@ data PostData
 
 instance FromJSON PostData where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag" :: Data.Aeson.Key.Key)
     case tag of
       ("PostDataRaw" :: Text) -> do
         r <- o .: "contents"
@@ -137,7 +138,7 @@ data TyPostData
 
 instance FromJSON TyPostData where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag" :: Data.Aeson.Key.Key)
     case tag of
       ("TyPostDataRaw" :: Text) -> do
         pure TyPostDataRaw
@@ -220,13 +221,13 @@ data ThreadPostRequest = ThreadPostRequest {
 
 instance FromJSON ThreadPostRequest where
   parseJSON (Object o) = do
-    threadPostRequestTitle <- o .: ("title" :: Text)
-    threadPostRequestBody <- o .: ("body" :: Text)
-    threadPostRequestTags <- o .: ("tags" :: Text)
-    threadPostRequestPrivateTags <- o .: ("private_tags" :: Text)
-    threadPostRequestGuard <- o .: ("guard" :: Text)
-    threadPostRequestStateTag <- o .: ("state_tag" :: Text)
-    threadPostRequestStatePrivateTag <- o .: ("state_private_tag" :: Text)
+    threadPostRequestTitle <- o .: ("title" :: Data.Aeson.Key.Key)
+    threadPostRequestBody <- o .: ("body" :: Data.Aeson.Key.Key)
+    threadPostRequestTags <- o .: ("tags" :: Data.Aeson.Key.Key)
+    threadPostRequestPrivateTags <- o .: ("private_tags" :: Data.Aeson.Key.Key)
+    threadPostRequestGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
+    threadPostRequestStateTag <- o .: ("state_tag" :: Data.Aeson.Key.Key)
+    threadPostRequestStatePrivateTag <- o .: ("state_private_tag" :: Data.Aeson.Key.Key)
     pure $ ThreadPostRequest {
       threadPostRequestTitle = threadPostRequestTitle,
       threadPostRequestBody = threadPostRequestBody,
@@ -279,21 +280,21 @@ data ThreadPostResponse = ThreadPostResponse {
 
 instance FromJSON ThreadPostResponse where
   parseJSON (Object o) = do
-    threadPostResponseId <- o .: ("id" :: Text)
-    threadPostResponseUserId <- o .: ("user_id" :: Text)
-    threadPostResponseBoardId <- o .: ("board_id" :: Text)
-    threadPostResponseThreadId <- o .: ("thread_id" :: Text)
-    threadPostResponseParentId <- o .: ("parent_id" :: Text)
-    threadPostResponseTitle <- o .: ("title" :: Text)
-    threadPostResponseBody <- o .: ("body" :: Text)
-    threadPostResponseTags <- o .: ("tags" :: Text)
-    threadPostResponsePrivateTags <- o .: ("private_tags" :: Text)
-    threadPostResponseActive <- o .: ("active" :: Text)
-    threadPostResponseGuard <- o .: ("guard" :: Text)
-    threadPostResponseCreatedAt <- o .: ("created_at" :: Text)
-    threadPostResponseModifiedBy <- o .: ("modified_by" :: Text)
-    threadPostResponseModifiedAt <- o .: ("modified_at" :: Text)
-    threadPostResponseActivityAt <- o .: ("activity_at" :: Text)
+    threadPostResponseId <- o .: ("id" :: Data.Aeson.Key.Key)
+    threadPostResponseUserId <- o .: ("user_id" :: Data.Aeson.Key.Key)
+    threadPostResponseBoardId <- o .: ("board_id" :: Data.Aeson.Key.Key)
+    threadPostResponseThreadId <- o .: ("thread_id" :: Data.Aeson.Key.Key)
+    threadPostResponseParentId <- o .: ("parent_id" :: Data.Aeson.Key.Key)
+    threadPostResponseTitle <- o .: ("title" :: Data.Aeson.Key.Key)
+    threadPostResponseBody <- o .: ("body" :: Data.Aeson.Key.Key)
+    threadPostResponseTags <- o .: ("tags" :: Data.Aeson.Key.Key)
+    threadPostResponsePrivateTags <- o .: ("private_tags" :: Data.Aeson.Key.Key)
+    threadPostResponseActive <- o .: ("active" :: Data.Aeson.Key.Key)
+    threadPostResponseGuard <- o .: ("guard" :: Data.Aeson.Key.Key)
+    threadPostResponseCreatedAt <- o .: ("created_at" :: Data.Aeson.Key.Key)
+    threadPostResponseModifiedBy <- o .: ("modified_by" :: Data.Aeson.Key.Key)
+    threadPostResponseModifiedAt <- o .: ("modified_at" :: Data.Aeson.Key.Key)
+    threadPostResponseActivityAt <- o .: ("activity_at" :: Data.Aeson.Key.Key)
     pure $ ThreadPostResponse {
       threadPostResponseId = threadPostResponseId,
       threadPostResponseUserId = threadPostResponseUserId,
@@ -348,7 +349,7 @@ data ThreadPostResponses = ThreadPostResponses {
 
 instance FromJSON ThreadPostResponses where
   parseJSON (Object o) = do
-    threadPostResponses <- o .: ("thread_post_responses" :: Text)
+    threadPostResponses <- o .: ("thread_post_responses" :: Data.Aeson.Key.Key)
     pure $ ThreadPostResponses {
       threadPostResponses = threadPostResponses
     }
@@ -379,11 +380,11 @@ data ThreadPostStatResponse = ThreadPostStatResponse {
 
 instance FromJSON ThreadPostStatResponse where
   parseJSON (Object o) = do
-    threadPostStatResponseThreadPostId <- o .: ("thread_post_id" :: Text)
-    threadPostStatResponseLikes <- o .: ("likes" :: Text)
-    threadPostStatResponseNeutral <- o .: ("neutral" :: Text)
-    threadPostStatResponseDislikes <- o .: ("dislikes" :: Text)
-    threadPostStatResponseViews <- o .: ("views" :: Text)
+    threadPostStatResponseThreadPostId <- o .: ("thread_post_id" :: Data.Aeson.Key.Key)
+    threadPostStatResponseLikes <- o .: ("likes" :: Data.Aeson.Key.Key)
+    threadPostStatResponseNeutral <- o .: ("neutral" :: Data.Aeson.Key.Key)
+    threadPostStatResponseDislikes <- o .: ("dislikes" :: Data.Aeson.Key.Key)
+    threadPostStatResponseViews <- o .: ("views" :: Data.Aeson.Key.Key)
     pure $ ThreadPostStatResponse {
       threadPostStatResponseThreadPostId = threadPostStatResponseThreadPostId,
       threadPostStatResponseLikes = threadPostStatResponseLikes,
@@ -418,7 +419,7 @@ data ThreadPostStatResponses = ThreadPostStatResponses {
 
 instance FromJSON ThreadPostStatResponses where
   parseJSON (Object o) = do
-    threadPostStatResponses <- o .: ("thread_post_stat_responses" :: Text)
+    threadPostStatResponses <- o .: ("thread_post_stat_responses" :: Data.Aeson.Key.Key)
     pure $ ThreadPostStatResponses {
       threadPostStatResponses = threadPostStatResponses
     }
