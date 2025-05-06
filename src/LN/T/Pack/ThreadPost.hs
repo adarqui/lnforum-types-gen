@@ -50,18 +50,18 @@ data ThreadPostPackResponse = ThreadPostPackResponse {
 
 instance FromJSON ThreadPostPackResponse where
   parseJSON (Object o) = do
-    threadPostPackResponseThreadPost <- o .: ("thread_post" :: Text)
-    threadPostPackResponseThreadPostId <- o .: ("thread_post_id" :: Text)
-    threadPostPackResponseUser <- o .: ("user" :: Text)
-    threadPostPackResponseUserId <- o .: ("user_id" :: Text)
-    threadPostPackResponseStat <- o .: ("stat" :: Text)
-    threadPostPackResponseLike <- o .: ("like" :: Text)
-    threadPostPackResponseWithBoard <- o .: ("with_board" :: Text)
-    threadPostPackResponseWithThread <- o .: ("with_thread" :: Text)
-    threadPostPackResponseWithThreadPosts <- o .: ("with_thread_posts" :: Text)
-    threadPostPackResponseWithThreadPostsOffset <- o .: ("with_thread_posts_offset" :: Text)
-    threadPostPackResponseWithThreadPostsLimit <- o .: ("with_thread_posts_limit" :: Text)
-    threadPostPackResponsePermissions <- o .: ("permissions" :: Text)
+    threadPostPackResponseThreadPost <- o .: ("thread_post")
+    threadPostPackResponseThreadPostId <- o .: ("thread_post_id")
+    threadPostPackResponseUser <- o .: ("user")
+    threadPostPackResponseUserId <- o .: ("user_id")
+    threadPostPackResponseStat <- o .: ("stat")
+    threadPostPackResponseLike <- o .: ("like")
+    threadPostPackResponseWithBoard <- o .: ("with_board")
+    threadPostPackResponseWithThread <- o .: ("with_thread")
+    threadPostPackResponseWithThreadPosts <- o .: ("with_thread_posts")
+    threadPostPackResponseWithThreadPostsOffset <- o .: ("with_thread_posts_offset")
+    threadPostPackResponseWithThreadPostsLimit <- o .: ("with_thread_posts_limit")
+    threadPostPackResponsePermissions <- o .: ("permissions")
     pure $ ThreadPostPackResponse {
       threadPostPackResponseThreadPost = threadPostPackResponseThreadPost,
       threadPostPackResponseThreadPostId = threadPostPackResponseThreadPostId,
@@ -110,7 +110,7 @@ data ThreadPostPackResponses = ThreadPostPackResponses {
 
 instance FromJSON ThreadPostPackResponses where
   parseJSON (Object o) = do
-    threadPostPackResponses <- o .: ("thread_post_pack_responses" :: Text)
+    threadPostPackResponses <- o .: ("thread_post_pack_responses")
     pure $ ThreadPostPackResponses {
       threadPostPackResponses = threadPostPackResponses
     }

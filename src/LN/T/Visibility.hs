@@ -35,7 +35,7 @@ data Visibility
 
 instance FromJSON Visibility where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: "tag"
     case tag of
       ("Public" :: Text) -> do
         pure Public

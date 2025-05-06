@@ -48,16 +48,16 @@ data BoardPackResponse = BoardPackResponse {
 
 instance FromJSON BoardPackResponse where
   parseJSON (Object o) = do
-    boardPackResponseBoard <- o .: ("board" :: Text)
-    boardPackResponseBoardId <- o .: ("board_id" :: Text)
-    boardPackResponseUser <- o .: ("user" :: Text)
-    boardPackResponseUserId <- o .: ("user_id" :: Text)
-    boardPackResponseStat <- o .: ("stat" :: Text)
-    boardPackResponseLike <- o .: ("like" :: Text)
-    boardPackResponsePermissions <- o .: ("permissions" :: Text)
-    boardPackResponseLatestThread <- o .: ("latest_thread" :: Text)
-    boardPackResponseLatestThreadPost <- o .: ("latest_thread_post" :: Text)
-    boardPackResponseLatestThreadPostUser <- o .: ("latest_thread_post_user" :: Text)
+    boardPackResponseBoard <- o .: ("board")
+    boardPackResponseBoardId <- o .: ("board_id")
+    boardPackResponseUser <- o .: ("user")
+    boardPackResponseUserId <- o .: ("user_id")
+    boardPackResponseStat <- o .: ("stat")
+    boardPackResponseLike <- o .: ("like")
+    boardPackResponsePermissions <- o .: ("permissions")
+    boardPackResponseLatestThread <- o .: ("latest_thread")
+    boardPackResponseLatestThreadPost <- o .: ("latest_thread_post")
+    boardPackResponseLatestThreadPostUser <- o .: ("latest_thread_post_user")
     pure $ BoardPackResponse {
       boardPackResponseBoard = boardPackResponseBoard,
       boardPackResponseBoardId = boardPackResponseBoardId,
@@ -102,7 +102,7 @@ data BoardPackResponses = BoardPackResponses {
 
 instance FromJSON BoardPackResponses where
   parseJSON (Object o) = do
-    boardPackResponses <- o .: ("board_pack_responses" :: Text)
+    boardPackResponses <- o .: ("board_pack_responses")
     pure $ BoardPackResponses {
       boardPackResponses = boardPackResponses
     }

@@ -34,7 +34,7 @@ data BoardType
 
 instance FromJSON BoardType where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("FixMe" :: Text) -> do
         pure FixMe
@@ -66,7 +66,7 @@ data TyBoardType
 
 instance FromJSON TyBoardType where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("TyFixMe" :: Text) -> do
         pure TyFixMe
@@ -108,17 +108,17 @@ data BoardRequest = BoardRequest {
 
 instance FromJSON BoardRequest where
   parseJSON (Object o) = do
-    boardRequestDisplayName <- o .: ("display_name" :: Text)
-    boardRequestDescription <- o .: ("description" :: Text)
-    boardRequestBoardType <- o .: ("board_type" :: Text)
-    boardRequestActive <- o .: ("active" :: Text)
-    boardRequestIsAnonymous <- o .: ("is_anonymous" :: Text)
-    boardRequestCanCreateBoards <- o .: ("can_create_boards" :: Text)
-    boardRequestCanCreateThreads <- o .: ("can_create_threads" :: Text)
-    boardRequestVisibility <- o .: ("visibility" :: Text)
-    boardRequestIcon <- o .: ("icon" :: Text)
-    boardRequestTags <- o .: ("tags" :: Text)
-    boardRequestGuard <- o .: ("guard" :: Text)
+    boardRequestDisplayName <- o .: ("display_name")
+    boardRequestDescription <- o .: ("description")
+    boardRequestBoardType <- o .: ("board_type")
+    boardRequestActive <- o .: ("active")
+    boardRequestIsAnonymous <- o .: ("is_anonymous")
+    boardRequestCanCreateBoards <- o .: ("can_create_boards")
+    boardRequestCanCreateThreads <- o .: ("can_create_threads")
+    boardRequestVisibility <- o .: ("visibility")
+    boardRequestIcon <- o .: ("icon")
+    boardRequestTags <- o .: ("tags")
+    boardRequestGuard <- o .: ("guard")
     pure $ BoardRequest {
       boardRequestDisplayName = boardRequestDisplayName,
       boardRequestDescription = boardRequestDescription,
@@ -182,24 +182,24 @@ data BoardResponse = BoardResponse {
 
 instance FromJSON BoardResponse where
   parseJSON (Object o) = do
-    boardResponseId <- o .: ("id" :: Text)
-    boardResponseUserId <- o .: ("user_id" :: Text)
-    boardResponseName <- o .: ("name" :: Text)
-    boardResponseDisplayName <- o .: ("display_name" :: Text)
-    boardResponseDescription <- o .: ("description" :: Text)
-    boardResponseBoardType <- o .: ("board_type" :: Text)
-    boardResponseActive <- o .: ("active" :: Text)
-    boardResponseIsAnonymous <- o .: ("is_anonymous" :: Text)
-    boardResponseCanCreateBoards <- o .: ("can_create_boards" :: Text)
-    boardResponseCanCreateThreads <- o .: ("can_create_threads" :: Text)
-    boardResponseVisibility <- o .: ("visibility" :: Text)
-    boardResponseIcon <- o .: ("icon" :: Text)
-    boardResponseTags <- o .: ("tags" :: Text)
-    boardResponseGuard <- o .: ("guard" :: Text)
-    boardResponseCreatedAt <- o .: ("created_at" :: Text)
-    boardResponseModifiedAt <- o .: ("modified_at" :: Text)
-    boardResponseModifiedBy <- o .: ("modified_by" :: Text)
-    boardResponseActivityAt <- o .: ("activity_at" :: Text)
+    boardResponseId <- o .: ("id")
+    boardResponseUserId <- o .: ("user_id")
+    boardResponseName <- o .: ("name")
+    boardResponseDisplayName <- o .: ("display_name")
+    boardResponseDescription <- o .: ("description")
+    boardResponseBoardType <- o .: ("board_type")
+    boardResponseActive <- o .: ("active")
+    boardResponseIsAnonymous <- o .: ("is_anonymous")
+    boardResponseCanCreateBoards <- o .: ("can_create_boards")
+    boardResponseCanCreateThreads <- o .: ("can_create_threads")
+    boardResponseVisibility <- o .: ("visibility")
+    boardResponseIcon <- o .: ("icon")
+    boardResponseTags <- o .: ("tags")
+    boardResponseGuard <- o .: ("guard")
+    boardResponseCreatedAt <- o .: ("created_at")
+    boardResponseModifiedAt <- o .: ("modified_at")
+    boardResponseModifiedBy <- o .: ("modified_by")
+    boardResponseActivityAt <- o .: ("activity_at")
     pure $ BoardResponse {
       boardResponseId = boardResponseId,
       boardResponseUserId = boardResponseUserId,
@@ -260,7 +260,7 @@ data BoardResponses = BoardResponses {
 
 instance FromJSON BoardResponses where
   parseJSON (Object o) = do
-    boardResponses <- o .: ("board_responses" :: Text)
+    boardResponses <- o .: "board_responses"
     pure $ BoardResponses {
       boardResponses = boardResponses
     }
@@ -290,10 +290,10 @@ data BoardStatResponse = BoardStatResponse {
 
 instance FromJSON BoardStatResponse where
   parseJSON (Object o) = do
-    boardStatResponseBoardId <- o .: ("board_id" :: Text)
-    boardStatResponseThreads <- o .: ("threads" :: Text)
-    boardStatResponseThreadPosts <- o .: ("thread_posts" :: Text)
-    boardStatResponseViews <- o .: ("views" :: Text)
+    boardStatResponseBoardId <- o .: "board_id"
+    boardStatResponseThreads <- o .: "threads"
+    boardStatResponseThreadPosts <- o .: "thread_posts"
+    boardStatResponseViews <- o .: "views"
     pure $ BoardStatResponse {
       boardStatResponseBoardId = boardStatResponseBoardId,
       boardStatResponseThreads = boardStatResponseThreads,
@@ -326,7 +326,7 @@ data BoardStatResponses = BoardStatResponses {
 
 instance FromJSON BoardStatResponses where
   parseJSON (Object o) = do
-    boardStatResponses <- o .: ("board_stat_responses" :: Text)
+    boardStatResponses <- o .: "board_stat_responses"
     pure $ BoardStatResponses {
       boardStatResponses = boardStatResponses
     }

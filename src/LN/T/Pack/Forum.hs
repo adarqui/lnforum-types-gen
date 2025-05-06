@@ -39,9 +39,9 @@ data ForumPackResponse = ForumPackResponse {
 
 instance FromJSON ForumPackResponse where
   parseJSON (Object o) = do
-    forumPackResponsePermissions <- o .: ("permissions" :: Text)
-    forumPackResponseForum <- o .: ("forum" :: Text)
-    forumPackResponseStat <- o .: ("stat" :: Text)
+    forumPackResponsePermissions <- o .: ("permissions")
+    forumPackResponseForum <- o .: ("forum")
+    forumPackResponseStat <- o .: ("stat")
     pure $ ForumPackResponse {
       forumPackResponsePermissions = forumPackResponsePermissions,
       forumPackResponseForum = forumPackResponseForum,

@@ -36,7 +36,7 @@ data Job
 
 instance FromJSON Job where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("Job_Nop" :: Text) -> do
         r <- o .: "contents"
@@ -102,7 +102,7 @@ data Queue
 
 instance FromJSON Queue where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("QNop" :: Text) -> do
         pure QNop

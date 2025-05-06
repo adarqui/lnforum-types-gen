@@ -35,8 +35,8 @@ data CountResponse = CountResponse {
 
 instance FromJSON CountResponse where
   parseJSON (Object o) = do
-    countResponseId <- o .: ("id" :: Text)
-    countResponseN <- o .: ("n" :: Text)
+    countResponseId <- o .: ("id")
+    countResponseN <- o .: ("n")
     pure $ CountResponse {
       countResponseId = countResponseId,
       countResponseN = countResponseN
@@ -65,7 +65,7 @@ data CountResponses = CountResponses {
 
 instance FromJSON CountResponses where
   parseJSON (Object o) = do
-    countResponses <- o .: ("count_responses" :: Text)
+    countResponses <- o .: ("count_responses")
     pure $ CountResponses {
       countResponses = countResponses
     }

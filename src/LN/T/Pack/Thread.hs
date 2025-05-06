@@ -48,16 +48,16 @@ data ThreadPackResponse = ThreadPackResponse {
 
 instance FromJSON ThreadPackResponse where
   parseJSON (Object o) = do
-    threadPackResponseThread <- o .: ("thread" :: Text)
-    threadPackResponseThreadId <- o .: ("thread_id" :: Text)
-    threadPackResponseUser <- o .: ("user" :: Text)
-    threadPackResponseUserId <- o .: ("user_id" :: Text)
-    threadPackResponseStat <- o .: ("stat" :: Text)
-    threadPackResponseLike <- o .: ("like" :: Text)
-    threadPackResponseLatestThreadPost <- o .: ("latest_thread_post" :: Text)
-    threadPackResponseLatestThreadPostUser <- o .: ("latest_thread_post_user" :: Text)
-    threadPackResponseWithBoard <- o .: ("with_board" :: Text)
-    threadPackResponsePermissions <- o .: ("permissions" :: Text)
+    threadPackResponseThread <- o .: ("thread")
+    threadPackResponseThreadId <- o .: ("thread_id")
+    threadPackResponseUser <- o .: ("user")
+    threadPackResponseUserId <- o .: ("user_id")
+    threadPackResponseStat <- o .: ("stat")
+    threadPackResponseLike <- o .: ("like")
+    threadPackResponseLatestThreadPost <- o .: ("latest_thread_post")
+    threadPackResponseLatestThreadPostUser <- o .: ("latest_thread_post_user")
+    threadPackResponseWithBoard <- o .: ("with_board")
+    threadPackResponsePermissions <- o .: ("permissions")
     pure $ ThreadPackResponse {
       threadPackResponseThread = threadPackResponseThread,
       threadPackResponseThreadId = threadPackResponseThreadId,
@@ -102,7 +102,7 @@ data ThreadPackResponses = ThreadPackResponses {
 
 instance FromJSON ThreadPackResponses where
   parseJSON (Object o) = do
-    threadPackResponses <- o .: ("thread_pack_responses" :: Text)
+    threadPackResponses <- o .: ("thread_pack_responses")
     pure $ ThreadPackResponses {
       threadPackResponses = threadPackResponses
     }

@@ -37,10 +37,10 @@ data PmInRequest = PmInRequest {
 
 instance FromJSON PmInRequest where
   parseJSON (Object o) = do
-    pmInRequestLabel <- o .: ("label" :: Text)
-    pmInRequestIsRead <- o .: ("is_read" :: Text)
-    pmInRequestIsStarred <- o .: ("is_starred" :: Text)
-    pmInRequestGuard <- o .: ("guard" :: Text)
+    pmInRequestLabel <- o .: ("label")
+    pmInRequestIsRead <- o .: ("is_read")
+    pmInRequestIsStarred <- o .: ("is_starred")
+    pmInRequestGuard <- o .: ("guard")
     pure $ PmInRequest {
       pmInRequestLabel = pmInRequestLabel,
       pmInRequestIsRead = pmInRequestIsRead,
@@ -84,18 +84,18 @@ data PmInResponse = PmInResponse {
 
 instance FromJSON PmInResponse where
   parseJSON (Object o) = do
-    pmInResponseId <- o .: ("id" :: Text)
-    pmInResponsePmId <- o .: ("pm_id" :: Text)
-    pmInResponseUserId <- o .: ("user_id" :: Text)
-    pmInResponseLabel <- o .: ("label" :: Text)
-    pmInResponseIsRead <- o .: ("is_read" :: Text)
-    pmInResponseIsStarred <- o .: ("is_starred" :: Text)
-    pmInResponseIsNew <- o .: ("is_new" :: Text)
-    pmInResponseIsSaved <- o .: ("is_saved" :: Text)
-    pmInResponseActive <- o .: ("active" :: Text)
-    pmInResponseGuard <- o .: ("guard" :: Text)
-    pmInResponseCreatedAt <- o .: ("created_at" :: Text)
-    pmInResponseModifiedAt <- o .: ("modified_at" :: Text)
+    pmInResponseId <- o .: ("id")
+    pmInResponsePmId <- o .: ("pm_id")
+    pmInResponseUserId <- o .: ("user_id")
+    pmInResponseLabel <- o .: ("label")
+    pmInResponseIsRead <- o .: ("is_read")
+    pmInResponseIsStarred <- o .: ("is_starred")
+    pmInResponseIsNew <- o .: ("is_new")
+    pmInResponseIsSaved <- o .: ("is_saved")
+    pmInResponseActive <- o .: ("active")
+    pmInResponseGuard <- o .: ("guard")
+    pmInResponseCreatedAt <- o .: ("created_at")
+    pmInResponseModifiedAt <- o .: ("modified_at")
     pure $ PmInResponse {
       pmInResponseId = pmInResponseId,
       pmInResponsePmId = pmInResponsePmId,
@@ -144,7 +144,7 @@ data PmInResponses = PmInResponses {
 
 instance FromJSON PmInResponses where
   parseJSON (Object o) = do
-    pmInResponses <- o .: ("pm_in_responses" :: Text)
+    pmInResponses <- o .: ("pm_in_responses")
     pure $ PmInResponses {
       pmInResponses = pmInResponses
     }

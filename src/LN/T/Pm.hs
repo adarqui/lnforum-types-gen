@@ -36,9 +36,9 @@ data PmRequest = PmRequest {
 
 instance FromJSON PmRequest where
   parseJSON (Object o) = do
-    pmRequestSubject <- o .: ("subject" :: Text)
-    pmRequestBody <- o .: ("body" :: Text)
-    pmRequestGuard <- o .: ("guard" :: Text)
+    pmRequestSubject <- o .: ("subject")
+    pmRequestBody <- o .: ("body")
+    pmRequestGuard <- o .: ("guard")
     pure $ PmRequest {
       pmRequestSubject = pmRequestSubject,
       pmRequestBody = pmRequestBody,
@@ -78,16 +78,16 @@ data PmResponse = PmResponse {
 
 instance FromJSON PmResponse where
   parseJSON (Object o) = do
-    pmResponseId <- o .: ("id" :: Text)
-    pmResponseUserId <- o .: ("user_id" :: Text)
-    pmResponseToUserId <- o .: ("to_user_id" :: Text)
-    pmResponseSubject <- o .: ("subject" :: Text)
-    pmResponseBody <- o .: ("body" :: Text)
-    pmResponseActive <- o .: ("active" :: Text)
-    pmResponseGuard <- o .: ("guard" :: Text)
-    pmResponseCreatedAt <- o .: ("created_at" :: Text)
-    pmResponseModifiedAt <- o .: ("modified_at" :: Text)
-    pmResponseActivityAt <- o .: ("activity_at" :: Text)
+    pmResponseId <- o .: ("id")
+    pmResponseUserId <- o .: ("user_id")
+    pmResponseToUserId <- o .: ("to_user_id")
+    pmResponseSubject <- o .: ("subject")
+    pmResponseBody <- o .: ("body")
+    pmResponseActive <- o .: ("active")
+    pmResponseGuard <- o .: ("guard")
+    pmResponseCreatedAt <- o .: ("created_at")
+    pmResponseModifiedAt <- o .: ("modified_at")
+    pmResponseActivityAt <- o .: ("activity_at")
     pure $ PmResponse {
       pmResponseId = pmResponseId,
       pmResponseUserId = pmResponseUserId,
@@ -132,7 +132,7 @@ data PmResponses = PmResponses {
 
 instance FromJSON PmResponses where
   parseJSON (Object o) = do
-    pmResponses <- o .: ("pm_responses" :: Text)
+    pmResponses <- o .: ("pm_responses")
     pure $ PmResponses {
       pmResponses = pmResponses
     }

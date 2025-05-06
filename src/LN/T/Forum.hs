@@ -44,17 +44,17 @@ data ForumRequest = ForumRequest {
 
 instance FromJSON ForumRequest where
   parseJSON (Object o) = do
-    forumRequestDisplayName <- o .: ("display_name" :: Text)
-    forumRequestDescription <- o .: ("description" :: Text)
-    forumRequestThreadsPerBoard <- o .: ("threads_per_board" :: Text)
-    forumRequestThreadPostsPerThread <- o .: ("thread_posts_per_thread" :: Text)
-    forumRequestRecentThreadsLimit <- o .: ("recent_threads_limit" :: Text)
-    forumRequestRecentPostsLimit <- o .: ("recent_posts_limit" :: Text)
-    forumRequestMotwLimit <- o .: ("motw_limit" :: Text)
-    forumRequestIcon <- o .: ("icon" :: Text)
-    forumRequestTags <- o .: ("tags" :: Text)
-    forumRequestVisibility <- o .: ("visibility" :: Text)
-    forumRequestGuard <- o .: ("guard" :: Text)
+    forumRequestDisplayName <- o .: ("display_name")
+    forumRequestDescription <- o .: ("description")
+    forumRequestThreadsPerBoard <- o .: ("threads_per_board")
+    forumRequestThreadPostsPerThread <- o .: ("thread_posts_per_thread")
+    forumRequestRecentThreadsLimit <- o .: ("recent_threads_limit")
+    forumRequestRecentPostsLimit <- o .: ("recent_posts_limit")
+    forumRequestMotwLimit <- o .: ("motw_limit")
+    forumRequestIcon <- o .: ("icon")
+    forumRequestTags <- o .: ("tags")
+    forumRequestVisibility <- o .: ("visibility")
+    forumRequestGuard <- o .: ("guard")
     pure $ ForumRequest {
       forumRequestDisplayName = forumRequestDisplayName,
       forumRequestDescription = forumRequestDescription,
@@ -118,24 +118,24 @@ data ForumResponse = ForumResponse {
 
 instance FromJSON ForumResponse where
   parseJSON (Object o) = do
-    forumResponseId <- o .: ("id" :: Text)
-    forumResponseUserId <- o .: ("user_id" :: Text)
-    forumResponseName <- o .: ("name" :: Text)
-    forumResponseDisplayName <- o .: ("display_name" :: Text)
-    forumResponseDescription <- o .: ("description" :: Text)
-    forumResponseThreadsPerBoard <- o .: ("threads_per_board" :: Text)
-    forumResponseThreadPostsPerThread <- o .: ("thread_posts_per_thread" :: Text)
-    forumResponseRecentThreadsLimit <- o .: ("recent_threads_limit" :: Text)
-    forumResponseRecentPostsLimit <- o .: ("recent_posts_limit" :: Text)
-    forumResponseMotwLimit <- o .: ("motw_limit" :: Text)
-    forumResponseIcon <- o .: ("icon" :: Text)
-    forumResponseVisibility <- o .: ("visibility" :: Text)
-    forumResponseTags <- o .: ("tags" :: Text)
-    forumResponseGuard <- o .: ("guard" :: Text)
-    forumResponseCreatedAt <- o .: ("created_at" :: Text)
-    forumResponseModifiedBy <- o .: ("modified_by" :: Text)
-    forumResponseModifiedAt <- o .: ("modified_at" :: Text)
-    forumResponseActivityAt <- o .: ("activity_at" :: Text)
+    forumResponseId <- o .: ("id")
+    forumResponseUserId <- o .: ("user_id")
+    forumResponseName <- o .: ("name")
+    forumResponseDisplayName <- o .: ("display_name")
+    forumResponseDescription <- o .: ("description")
+    forumResponseThreadsPerBoard <- o .: ("threads_per_board")
+    forumResponseThreadPostsPerThread <- o .: ("thread_posts_per_thread")
+    forumResponseRecentThreadsLimit <- o .: ("recent_threads_limit")
+    forumResponseRecentPostsLimit <- o .: ("recent_posts_limit")
+    forumResponseMotwLimit <- o .: ("motw_limit")
+    forumResponseIcon <- o .: ("icon")
+    forumResponseVisibility <- o .: ("visibility")
+    forumResponseTags <- o .: ("tags")
+    forumResponseGuard <- o .: ("guard")
+    forumResponseCreatedAt <- o .: ("created_at")
+    forumResponseModifiedBy <- o .: ("modified_by")
+    forumResponseModifiedAt <- o .: ("modified_at")
+    forumResponseActivityAt <- o .: ("activity_at")
     pure $ ForumResponse {
       forumResponseId = forumResponseId,
       forumResponseUserId = forumResponseUserId,
@@ -196,7 +196,7 @@ data ForumResponses = ForumResponses {
 
 instance FromJSON ForumResponses where
   parseJSON (Object o) = do
-    forumResponses <- o .: ("forum_responses" :: Text)
+    forumResponses <- o .: ("forum_responses")
     pure $ ForumResponses {
       forumResponses = forumResponses
     }
@@ -226,10 +226,10 @@ data ForumStatResponse = ForumStatResponse {
 
 instance FromJSON ForumStatResponse where
   parseJSON (Object o) = do
-    forumStatResponseBoards <- o .: ("boards" :: Text)
-    forumStatResponseThreads <- o .: ("threads" :: Text)
-    forumStatResponseThreadPosts <- o .: ("thread_posts" :: Text)
-    forumStatResponseViews <- o .: ("views" :: Text)
+    forumStatResponseBoards <- o .: ("boards")
+    forumStatResponseThreads <- o .: ("threads")
+    forumStatResponseThreadPosts <- o .: ("thread_posts")
+    forumStatResponseViews <- o .: ("views")
     pure $ ForumStatResponse {
       forumStatResponseBoards = forumStatResponseBoards,
       forumStatResponseThreads = forumStatResponseThreads,

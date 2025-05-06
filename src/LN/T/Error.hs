@@ -43,7 +43,7 @@ data ApplicationError
 
 instance FromJSON ApplicationError where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("Error_Unknown" :: Text) -> do
         pure Error_Unknown
@@ -165,7 +165,7 @@ data ValidationError
 
 instance FromJSON ValidationError where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("Validate" :: Text) -> do
         r <- o .: "contents"
@@ -212,7 +212,7 @@ data ValidationErrorCode
 
 instance FromJSON ValidationErrorCode where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("Validate_Unknown" :: Text) -> do
         pure Validate_Unknown

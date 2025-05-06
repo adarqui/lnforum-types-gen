@@ -35,8 +35,8 @@ data PmOutRequest = PmOutRequest {
 
 instance FromJSON PmOutRequest where
   parseJSON (Object o) = do
-    pmOutRequestLabel <- o .: ("label" :: Text)
-    pmOutRequestGuard <- o .: ("guard" :: Text)
+    pmOutRequestLabel <- o .: ("label")
+    pmOutRequestGuard <- o .: ("guard")
     pure $ PmOutRequest {
       pmOutRequestLabel = pmOutRequestLabel,
       pmOutRequestGuard = pmOutRequestGuard
@@ -73,15 +73,15 @@ data PmOutResponse = PmOutResponse {
 
 instance FromJSON PmOutResponse where
   parseJSON (Object o) = do
-    pmOutResponseId <- o .: ("id" :: Text)
-    pmOutResponsePmId <- o .: ("pm_id" :: Text)
-    pmOutResponseUserId <- o .: ("user_id" :: Text)
-    pmOutResponseLabel <- o .: ("label" :: Text)
-    pmOutResponseIsSaved <- o .: ("is_saved" :: Text)
-    pmOutResponseActive <- o .: ("active" :: Text)
-    pmOutResponseGuard <- o .: ("guard" :: Text)
-    pmOutResponseCreatedAt <- o .: ("created_at" :: Text)
-    pmOutResponseModifiedAt <- o .: ("modified_at" :: Text)
+    pmOutResponseId <- o .: ("id")
+    pmOutResponsePmId <- o .: ("pm_id")
+    pmOutResponseUserId <- o .: ("user_id")
+    pmOutResponseLabel <- o .: ("label")
+    pmOutResponseIsSaved <- o .: ("is_saved")
+    pmOutResponseActive <- o .: ("active")
+    pmOutResponseGuard <- o .: ("guard")
+    pmOutResponseCreatedAt <- o .: ("created_at")
+    pmOutResponseModifiedAt <- o .: ("modified_at")
     pure $ PmOutResponse {
       pmOutResponseId = pmOutResponseId,
       pmOutResponsePmId = pmOutResponsePmId,
@@ -124,7 +124,7 @@ data PmOutResponses = PmOutResponses {
 
 instance FromJSON PmOutResponses where
   parseJSON (Object o) = do
-    pmOutResponses <- o .: ("pm_out_responses" :: Text)
+    pmOutResponses <- o .: ("pm_out_responses")
     pure $ PmOutResponses {
       pmOutResponses = pmOutResponses
     }

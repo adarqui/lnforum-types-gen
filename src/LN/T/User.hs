@@ -38,11 +38,11 @@ data UserRequest = UserRequest {
 
 instance FromJSON UserRequest where
   parseJSON (Object o) = do
-    userRequestDisplayName <- o .: ("display_name" :: Text)
-    userRequestFullName <- o .: ("full_name" :: Text)
-    userRequestEmail <- o .: ("email" :: Text)
-    userRequestPlugin <- o .: ("plugin" :: Text)
-    userRequestAcceptTOS <- o .: ("accept_tos" :: Text)
+    userRequestDisplayName <- o .: ("display_name")
+    userRequestFullName <- o .: ("full_name")
+    userRequestEmail <- o .: ("email")
+    userRequestPlugin <- o .: ("plugin")
+    userRequestAcceptTOS <- o .: ("accept_tos")
     pure $ UserRequest {
       userRequestDisplayName = userRequestDisplayName,
       userRequestFullName = userRequestFullName,
@@ -94,24 +94,24 @@ data UserResponse = UserResponse {
 
 instance FromJSON UserResponse where
   parseJSON (Object o) = do
-    userResponseId <- o .: ("id" :: Text)
-    userResponseName <- o .: ("name" :: Text)
-    userResponseDisplayName <- o .: ("display_name" :: Text)
-    userResponseFullName <- o .: ("full_name" :: Text)
-    userResponseEmail <- o .: ("email" :: Text)
-    userResponseEmailMD5 <- o .: ("email_md5" :: Text)
-    userResponsePlugin <- o .: ("plugin" :: Text)
-    userResponseGithubIdent <- o .: ("github_ident" :: Text)
-    userResponseGithubCreatedAt <- o .: ("github_created_at" :: Text)
-    userResponseGoogleIdent <- o .: ("google_ident" :: Text)
-    userResponseGoogleCreatedAt <- o .: ("google_created_at" :: Text)
-    userResponseAcceptTOS <- o .: ("accept_tos" :: Text)
-    userResponseActive <- o .: ("active" :: Text)
-    userResponseGuard <- o .: ("guard" :: Text)
-    userResponseCreatedAt <- o .: ("created_at" :: Text)
-    userResponseModifiedAt <- o .: ("modified_at" :: Text)
-    userResponseDeactivatedAt <- o .: ("deactivated_at" :: Text)
-    userResponseActivityAt <- o .: ("activity_at" :: Text)
+    userResponseId <- o .: ("id")
+    userResponseName <- o .: ("name")
+    userResponseDisplayName <- o .: ("display_name")
+    userResponseFullName <- o .: ("full_name")
+    userResponseEmail <- o .: ("email")
+    userResponseEmailMD5 <- o .: ("email_md5")
+    userResponsePlugin <- o .: ("plugin")
+    userResponseGithubIdent <- o .: ("github_ident")
+    userResponseGithubCreatedAt <- o .: ("github_created_at")
+    userResponseGoogleIdent <- o .: ("google_ident")
+    userResponseGoogleCreatedAt <- o .: ("google_created_at")
+    userResponseAcceptTOS <- o .: ("accept_tos")
+    userResponseActive <- o .: ("active")
+    userResponseGuard <- o .: ("guard")
+    userResponseCreatedAt <- o .: ("created_at")
+    userResponseModifiedAt <- o .: ("modified_at")
+    userResponseDeactivatedAt <- o .: ("deactivated_at")
+    userResponseActivityAt <- o .: ("activity_at")
     pure $ UserResponse {
       userResponseId = userResponseId,
       userResponseName = userResponseName,
@@ -172,7 +172,7 @@ data UserResponses = UserResponses {
 
 instance FromJSON UserResponses where
   parseJSON (Object o) = do
-    userResponses <- o .: ("user_responses" :: Text)
+    userResponses <- o .: ("user_responses")
     pure $ UserResponses {
       userResponses = userResponses
     }
@@ -206,14 +206,14 @@ data UserSanitizedResponse = UserSanitizedResponse {
 
 instance FromJSON UserSanitizedResponse where
   parseJSON (Object o) = do
-    userSanitizedResponseId <- o .: ("id" :: Text)
-    userSanitizedResponseName <- o .: ("name" :: Text)
-    userSanitizedResponseDisplayName <- o .: ("display_name" :: Text)
-    userSanitizedResponseEmailMD5 <- o .: ("email_md5" :: Text)
-    userSanitizedResponseActive <- o .: ("active" :: Text)
-    userSanitizedResponseGuard <- o .: ("guard" :: Text)
-    userSanitizedResponseCreatedAt <- o .: ("created_at" :: Text)
-    userSanitizedResponseActivityAt <- o .: ("activity_at" :: Text)
+    userSanitizedResponseId <- o .: ("id")
+    userSanitizedResponseName <- o .: ("name")
+    userSanitizedResponseDisplayName <- o .: ("display_name")
+    userSanitizedResponseEmailMD5 <- o .: ("email_md5")
+    userSanitizedResponseActive <- o .: ("active")
+    userSanitizedResponseGuard <- o .: ("guard")
+    userSanitizedResponseCreatedAt <- o .: ("created_at")
+    userSanitizedResponseActivityAt <- o .: ("activity_at")
     pure $ UserSanitizedResponse {
       userSanitizedResponseId = userSanitizedResponseId,
       userSanitizedResponseName = userSanitizedResponseName,
@@ -254,7 +254,7 @@ data UserSanitizedResponses = UserSanitizedResponses {
 
 instance FromJSON UserSanitizedResponses where
   parseJSON (Object o) = do
-    userSanitizedResponses <- o .: ("user_sanitized_responses" :: Text)
+    userSanitizedResponses <- o .: ("user_sanitized_responses")
     pure $ UserSanitizedResponses {
       userSanitizedResponses = userSanitizedResponses
     }
@@ -285,11 +285,11 @@ data UserSanitizedStatResponse = UserSanitizedStatResponse {
 
 instance FromJSON UserSanitizedStatResponse where
   parseJSON (Object o) = do
-    userSanitizedStatResponseUserId <- o .: ("user_id" :: Text)
-    userSanitizedStatResponseThreads <- o .: ("threads" :: Text)
-    userSanitizedStatResponseThreadPosts <- o .: ("thread_posts" :: Text)
-    userSanitizedStatResponseRespect <- o .: ("respect" :: Text)
-    userSanitizedStatResponseWorkouts <- o .: ("workouts" :: Text)
+    userSanitizedStatResponseUserId <- o .: ("user_id")
+    userSanitizedStatResponseThreads <- o .: ("threads")
+    userSanitizedStatResponseThreadPosts <- o .: ("thread_posts")
+    userSanitizedStatResponseRespect <- o .: ("respect")
+    userSanitizedStatResponseWorkouts <- o .: ("workouts")
     pure $ UserSanitizedStatResponse {
       userSanitizedStatResponseUserId = userSanitizedStatResponseUserId,
       userSanitizedStatResponseThreads = userSanitizedStatResponseThreads,
@@ -324,7 +324,7 @@ data UserSanitizedStatResponses = UserSanitizedStatResponses {
 
 instance FromJSON UserSanitizedStatResponses where
   parseJSON (Object o) = do
-    userSanitizedStatResponses <- o .: ("user_sanitized_stat_responses" :: Text)
+    userSanitizedStatResponses <- o .: ("user_sanitized_stat_responses")
     pure $ UserSanitizedStatResponses {
       userSanitizedStatResponses = userSanitizedStatResponses
     }

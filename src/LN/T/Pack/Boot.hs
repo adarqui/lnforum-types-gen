@@ -41,11 +41,11 @@ data BootPackResponse = BootPackResponse {
 
 instance FromJSON BootPackResponse where
   parseJSON (Object o) = do
-    bootPackResponseForumPack <- o .: ("forum_pack" :: Text)
-    bootPackResponseBoardPacks <- o .: ("board_packs" :: Text)
-    bootPackResponseRecentPosts <- o .: ("recent_posts" :: Text)
-    bootPackResponsePostsOfTheWeek <- o .: ("posts_of_the_week" :: Text)
-    bootPackResponseUsersOnline <- o .: ("users_online" :: Text)
+    bootPackResponseForumPack <- o .: ("forum_pack")
+    bootPackResponseBoardPacks <- o .: ("board_packs")
+    bootPackResponseRecentPosts <- o .: ("recent_posts")
+    bootPackResponsePostsOfTheWeek <- o .: ("posts_of_the_week")
+    bootPackResponseUsersOnline <- o .: ("users_online")
     pure $ BootPackResponse {
       bootPackResponseForumPack = bootPackResponseForumPack,
       bootPackResponseBoardPacks = bootPackResponseBoardPacks,

@@ -42,7 +42,7 @@ data Ent
 
 instance FromJSON Ent where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("Ent_User" :: Text) -> do
         pure Ent_User

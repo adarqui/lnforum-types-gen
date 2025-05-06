@@ -34,7 +34,7 @@ data ViewRequest = ViewRequest {
 
 instance FromJSON ViewRequest where
   parseJSON (Object o) = do
-    viewRequestCount <- o .: ("count" :: Text)
+    viewRequestCount <- o .: ("count")
     pure $ ViewRequest {
       viewRequestCount = viewRequestCount
     }
@@ -66,12 +66,12 @@ data ViewResponse = ViewResponse {
 
 instance FromJSON ViewResponse where
   parseJSON (Object o) = do
-    viewResponseId <- o .: ("id" :: Text)
-    viewResponseEnt <- o .: ("ent" :: Text)
-    viewResponseEntId <- o .: ("ent_id" :: Text)
-    viewResponseCount <- o .: ("count" :: Text)
-    viewResponseCreatedAt <- o .: ("created_at" :: Text)
-    viewResponseModifiedAt <- o .: ("modified_at" :: Text)
+    viewResponseId <- o .: ("id")
+    viewResponseEnt <- o .: ("ent")
+    viewResponseEntId <- o .: ("ent_id")
+    viewResponseCount <- o .: ("count")
+    viewResponseCreatedAt <- o .: ("created_at")
+    viewResponseModifiedAt <- o .: ("modified_at")
     pure $ ViewResponse {
       viewResponseId = viewResponseId,
       viewResponseEnt = viewResponseEnt,
@@ -108,7 +108,7 @@ data ViewResponses = ViewResponses {
 
 instance FromJSON ViewResponses where
   parseJSON (Object o) = do
-    viewResponses <- o .: ("view_responses" :: Text)
+    viewResponses <- o .: ("view_responses")
     pure $ ViewResponses {
       viewResponses = viewResponses
     }

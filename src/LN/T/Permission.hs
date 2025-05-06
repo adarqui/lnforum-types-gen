@@ -38,7 +38,7 @@ data Permission
 
 instance FromJSON Permission where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("Perm_Create" :: Text) -> do
         pure Perm_Create

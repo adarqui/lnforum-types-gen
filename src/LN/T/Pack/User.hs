@@ -39,11 +39,11 @@ data UserPackResponse = UserPackResponse {
 
 instance FromJSON UserPackResponse where
   parseJSON (Object o) = do
-    userPackResponseUser <- o .: ("user" :: Text)
-    userPackResponseUserId <- o .: ("user_id" :: Text)
-    userPackResponseStat <- o .: ("stat" :: Text)
-    userPackResponseProfile <- o .: ("profile" :: Text)
-    userPackResponseProfileId <- o .: ("profile_id" :: Text)
+    userPackResponseUser <- o .: ("user")
+    userPackResponseUserId <- o .: ("user_id")
+    userPackResponseStat <- o .: ("stat")
+    userPackResponseProfile <- o .: ("profile")
+    userPackResponseProfileId <- o .: ("profile_id")
     pure $ UserPackResponse {
       userPackResponseUser = userPackResponseUser,
       userPackResponseUserId = userPackResponseUserId,
@@ -78,7 +78,7 @@ data UserPackResponses = UserPackResponses {
 
 instance FromJSON UserPackResponses where
   parseJSON (Object o) = do
-    userPackResponses <- o .: ("user_pack_responses" :: Text)
+    userPackResponses <- o .: ("user_pack_responses")
     pure $ UserPackResponses {
       userPackResponses = userPackResponses
     }

@@ -36,9 +36,9 @@ data ProfileX = ProfileX {
 
 instance FromJSON ProfileX where
   parseJSON (Object o) = do
-    profileLogin <- o .: ("profile_login" :: Text)
-    profileName <- o .: ("profile_name" :: Text)
-    profileEmail <- o .: ("profile_email" :: Text)
+    profileLogin <- o .: ("profile_login")
+    profileName <- o .: ("profile_name")
+    profileEmail <- o .: ("profile_email")
     pure $ ProfileX {
       profileLogin = profileLogin,
       profileName = profileName,
@@ -71,7 +71,7 @@ data ProfileGender
 
 instance FromJSON ProfileGender where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("GenderMale" :: Text) -> do
         pure GenderMale
@@ -136,15 +136,15 @@ data ProfileRequest = ProfileRequest {
 
 instance FromJSON ProfileRequest where
   parseJSON (Object o) = do
-    profileRequestGender <- o .: ("gender" :: Text)
-    profileRequestBirthdate <- o .: ("birthdate" :: Text)
-    profileRequestWebsite <- o .: ("website" :: Text)
-    profileRequestWebsites <- o .: ("websites" :: Text)
-    profileRequestLocation <- o .: ("location" :: Text)
-    profileRequestSignature <- o .: ("signature" :: Text)
-    profileRequestDebug <- o .: ("debug" :: Text)
-    profileRequestGuard <- o .: ("guard" :: Text)
-    profileRequestStateWebsites <- o .: ("state_websites" :: Text)
+    profileRequestGender <- o .: ("gender")
+    profileRequestBirthdate <- o .: ("birthdate")
+    profileRequestWebsite <- o .: ("website")
+    profileRequestWebsites <- o .: ("websites")
+    profileRequestLocation <- o .: ("location")
+    profileRequestSignature <- o .: ("signature")
+    profileRequestDebug <- o .: ("debug")
+    profileRequestGuard <- o .: ("guard")
+    profileRequestStateWebsites <- o .: ("state_websites")
     pure $ ProfileRequest {
       profileRequestGender = profileRequestGender,
       profileRequestBirthdate = profileRequestBirthdate,
@@ -200,20 +200,20 @@ data ProfileResponse = ProfileResponse {
 
 instance FromJSON ProfileResponse where
   parseJSON (Object o) = do
-    profileResponseId <- o .: ("id" :: Text)
-    profileResponseEnt <- o .: ("ent" :: Text)
-    profileResponseEntId <- o .: ("ent_id" :: Text)
-    profileResponseGender <- o .: ("gender" :: Text)
-    profileResponseBirthdate <- o .: ("birthdate" :: Text)
-    profileResponseWebsite <- o .: ("website" :: Text)
-    profileResponseLocation <- o .: ("location" :: Text)
-    profileResponseSignature <- o .: ("signature" :: Text)
-    profileResponseDebug <- o .: ("debug" :: Text)
-    profileResponseKarmaGood <- o .: ("karma_good" :: Text)
-    profileResponseKarmaBad <- o .: ("karma_bad" :: Text)
-    profileResponseGuard <- o .: ("guard" :: Text)
-    profileResponseCreatedAt <- o .: ("created_at" :: Text)
-    profileResponseModifiedAt <- o .: ("modified_at" :: Text)
+    profileResponseId <- o .: ("id")
+    profileResponseEnt <- o .: ("ent")
+    profileResponseEntId <- o .: ("ent_id")
+    profileResponseGender <- o .: ("gender")
+    profileResponseBirthdate <- o .: ("birthdate")
+    profileResponseWebsite <- o .: ("website")
+    profileResponseLocation <- o .: ("location")
+    profileResponseSignature <- o .: ("signature")
+    profileResponseDebug <- o .: ("debug")
+    profileResponseKarmaGood <- o .: ("karma_good")
+    profileResponseKarmaBad <- o .: ("karma_bad")
+    profileResponseGuard <- o .: ("guard")
+    profileResponseCreatedAt <- o .: ("created_at")
+    profileResponseModifiedAt <- o .: ("modified_at")
     pure $ ProfileResponse {
       profileResponseId = profileResponseId,
       profileResponseEnt = profileResponseEnt,
@@ -266,7 +266,7 @@ data ProfileResponses = ProfileResponses {
 
 instance FromJSON ProfileResponses where
   parseJSON (Object o) = do
-    profileResponses <- o .: ("profile_responses" :: Text)
+    profileResponses <- o .: ("profile_responses")
     pure $ ProfileResponses {
       profileResponses = profileResponses
     }

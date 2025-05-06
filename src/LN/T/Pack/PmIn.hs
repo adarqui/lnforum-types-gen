@@ -38,10 +38,10 @@ data PmInPackResponse = PmInPackResponse {
 
 instance FromJSON PmInPackResponse where
   parseJSON (Object o) = do
-    pmInPackResponsePmIn <- o .: ("pm_in" :: Text)
-    pmInPackResponsePmInId <- o .: ("pm_in_id" :: Text)
-    pmInPackResponseUser <- o .: ("user" :: Text)
-    pmInPackResponseUserId <- o .: ("user_id" :: Text)
+    pmInPackResponsePmIn <- o .: ("pm_in")
+    pmInPackResponsePmInId <- o .: ("pm_in_id")
+    pmInPackResponseUser <- o .: ("user")
+    pmInPackResponseUserId <- o .: ("user_id")
     pure $ PmInPackResponse {
       pmInPackResponsePmIn = pmInPackResponsePmIn,
       pmInPackResponsePmInId = pmInPackResponsePmInId,
@@ -74,7 +74,7 @@ data PmInPackResponses = PmInPackResponses {
 
 instance FromJSON PmInPackResponses where
   parseJSON (Object o) = do
-    pmInPackResponses <- o .: ("pm_in_pack_responses" :: Text)
+    pmInPackResponses <- o .: ("pm_in_pack_responses")
     pure $ PmInPackResponses {
       pmInPackResponses = pmInPackResponses
     }

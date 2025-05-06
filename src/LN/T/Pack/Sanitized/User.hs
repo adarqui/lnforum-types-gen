@@ -41,12 +41,12 @@ data UserSanitizedPackResponse = UserSanitizedPackResponse {
 
 instance FromJSON UserSanitizedPackResponse where
   parseJSON (Object o) = do
-    userSanitizedPackResponseUser <- o .: ("user" :: Text)
-    userSanitizedPackResponseUserId <- o .: ("user_id" :: Text)
-    userSanitizedPackResponseProfile <- o .: ("profile" :: Text)
-    userSanitizedPackResponseProfileId <- o .: ("profile_id" :: Text)
-    userSanitizedPackResponseStat <- o .: ("stat" :: Text)
-    userSanitizedPackResponseLike <- o .: ("like" :: Text)
+    userSanitizedPackResponseUser <- o .: ("user")
+    userSanitizedPackResponseUserId <- o .: ("user_id")
+    userSanitizedPackResponseProfile <- o .: ("profile")
+    userSanitizedPackResponseProfileId <- o .: ("profile_id")
+    userSanitizedPackResponseStat <- o .: ("stat")
+    userSanitizedPackResponseLike <- o .: ("like")
     pure $ UserSanitizedPackResponse {
       userSanitizedPackResponseUser = userSanitizedPackResponseUser,
       userSanitizedPackResponseUserId = userSanitizedPackResponseUserId,
@@ -83,7 +83,7 @@ data UserSanitizedPackResponses = UserSanitizedPackResponses {
 
 instance FromJSON UserSanitizedPackResponses where
   parseJSON (Object o) = do
-    userSanitizedPackResponses <- o .: ("user_sanitized_pack_responses" :: Text)
+    userSanitizedPackResponses <- o .: ("user_sanitized_pack_responses")
     pure $ UserSanitizedPackResponses {
       userSanitizedPackResponses = userSanitizedPackResponses
     }

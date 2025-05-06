@@ -72,7 +72,7 @@ data Param
 
 instance FromJSON Param where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("Limit" :: Text) -> do
         r <- o .: "contents"
@@ -642,7 +642,7 @@ data ParamTag
 
 instance FromJSON ParamTag where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("ParamTag_Limit" :: Text) -> do
         pure ParamTag_Limit
@@ -1052,7 +1052,7 @@ data SortOrderBy
 
 instance FromJSON SortOrderBy where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("SortOrderBy_Asc" :: Text) -> do
         pure SortOrderBy_Asc
@@ -1127,7 +1127,7 @@ data OrderBy
 
 instance FromJSON OrderBy where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("OrderBy_UserId" :: Text) -> do
         pure OrderBy_UserId

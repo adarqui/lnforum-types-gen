@@ -35,8 +35,8 @@ data ApiRequest = ApiRequest {
 
 instance FromJSON ApiRequest where
   parseJSON (Object o) = do
-    apiRequestComment <- o .: ("comment" :: Text)
-    apiRequestGuard <- o .: ("guard" :: Text)
+    apiRequestComment <- o .: ("comment")
+    apiRequestGuard <- o .: ("guard")
     pure $ ApiRequest {
       apiRequestComment = apiRequestComment,
       apiRequestGuard = apiRequestGuard
@@ -71,13 +71,13 @@ data ApiResponse = ApiResponse {
 
 instance FromJSON ApiResponse where
   parseJSON (Object o) = do
-    apiResponseId <- o .: ("id" :: Text)
-    apiResponseUserId <- o .: ("user_id" :: Text)
-    apiResponseKey <- o .: ("key" :: Text)
-    apiResponseComment <- o .: ("comment" :: Text)
-    apiResponseGuard <- o .: ("guard" :: Text)
-    apiResponseCreatedAt <- o .: ("created_at" :: Text)
-    apiResponseModifiedAt <- o .: ("modified_at" :: Text)
+    apiResponseId <- o .: ("id")
+    apiResponseUserId <- o .: ("user_id")
+    apiResponseKey <- o .: ("key")
+    apiResponseComment <- o .: ("comment")
+    apiResponseGuard <- o .: ("guard")
+    apiResponseCreatedAt <- o .: ("created_at")
+    apiResponseModifiedAt <- o .: ("modified_at")
     pure $ ApiResponse {
       apiResponseId = apiResponseId,
       apiResponseUserId = apiResponseUserId,
@@ -116,7 +116,7 @@ data ApiResponses = ApiResponses {
 
 instance FromJSON ApiResponses where
   parseJSON (Object o) = do
-    apiResponses <- o .: ("api_responses" :: Text)
+    apiResponses <- o .: ("api_responses")
     pure $ ApiResponses {
       apiResponses = apiResponses
     }

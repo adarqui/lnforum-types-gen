@@ -36,7 +36,7 @@ data LikeOpt
 
 instance FromJSON LikeOpt where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("Like" :: Text) -> do
         pure Like
@@ -95,9 +95,9 @@ data LikeRequest = LikeRequest {
 
 instance FromJSON LikeRequest where
   parseJSON (Object o) = do
-    likeRequestOpt <- o .: ("opt" :: Text)
-    likeRequestReason <- o .: ("reason" :: Text)
-    likeRequestGuard <- o .: ("guard" :: Text)
+    likeRequestOpt <- o .: ("opt")
+    likeRequestReason <- o .: ("reason")
+    likeRequestGuard <- o .: ("guard")
     pure $ LikeRequest {
       likeRequestOpt = likeRequestOpt,
       likeRequestReason = likeRequestReason,
@@ -138,17 +138,17 @@ data LikeResponse = LikeResponse {
 
 instance FromJSON LikeResponse where
   parseJSON (Object o) = do
-    likeResponseId <- o .: ("id" :: Text)
-    likeResponseEnt <- o .: ("ent" :: Text)
-    likeResponseEntId <- o .: ("ent_id" :: Text)
-    likeResponseUserId <- o .: ("user_id" :: Text)
-    likeResponseOpt <- o .: ("opt" :: Text)
-    likeResponseScore <- o .: ("score" :: Text)
-    likeResponseReason <- o .: ("reason" :: Text)
-    likeResponseActive <- o .: ("active" :: Text)
-    likeResponseGuard <- o .: ("guard" :: Text)
-    likeResponseCreatedAt <- o .: ("created_at" :: Text)
-    likeResponseModifiedAt <- o .: ("modified_at" :: Text)
+    likeResponseId <- o .: ("id")
+    likeResponseEnt <- o .: ("ent")
+    likeResponseEntId <- o .: ("ent_id")
+    likeResponseUserId <- o .: ("user_id")
+    likeResponseOpt <- o .: ("opt")
+    likeResponseScore <- o .: ("score")
+    likeResponseReason <- o .: ("reason")
+    likeResponseActive <- o .: ("active")
+    likeResponseGuard <- o .: ("guard")
+    likeResponseCreatedAt <- o .: ("created_at")
+    likeResponseModifiedAt <- o .: ("modified_at")
     pure $ LikeResponse {
       likeResponseId = likeResponseId,
       likeResponseEnt = likeResponseEnt,
@@ -195,7 +195,7 @@ data LikeResponses = LikeResponses {
 
 instance FromJSON LikeResponses where
   parseJSON (Object o) = do
-    likeResponses <- o .: ("like_responses" :: Text)
+    likeResponses <- o .: ("like_responses")
     pure $ LikeResponses {
       likeResponses = likeResponses
     }
@@ -227,12 +227,12 @@ data LikeStatResponse = LikeStatResponse {
 
 instance FromJSON LikeStatResponse where
   parseJSON (Object o) = do
-    likeStatResponseEnt <- o .: ("ent" :: Text)
-    likeStatResponseEntId <- o .: ("ent_id" :: Text)
-    likeStatResponseScore <- o .: ("score" :: Text)
-    likeStatResponseLike <- o .: ("like" :: Text)
-    likeStatResponseNeutral <- o .: ("neutral" :: Text)
-    likeStatResponseDislike <- o .: ("dislike" :: Text)
+    likeStatResponseEnt <- o .: ("ent")
+    likeStatResponseEntId <- o .: ("ent_id")
+    likeStatResponseScore <- o .: ("score")
+    likeStatResponseLike <- o .: ("like")
+    likeStatResponseNeutral <- o .: ("neutral")
+    likeStatResponseDislike <- o .: ("dislike")
     pure $ LikeStatResponse {
       likeStatResponseEnt = likeStatResponseEnt,
       likeStatResponseEntId = likeStatResponseEntId,
@@ -269,7 +269,7 @@ data LikeStatResponses = LikeStatResponses {
 
 instance FromJSON LikeStatResponses where
   parseJSON (Object o) = do
-    likeStatResponses <- o .: ("like_stat_responses" :: Text)
+    likeStatResponses <- o .: ("like_stat_responses")
     pure $ LikeStatResponses {
       likeStatResponses = likeStatResponses
     }

@@ -38,7 +38,7 @@ data Size
 
 instance FromJSON Size where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("XSmall" :: Text) -> do
         pure XSmall

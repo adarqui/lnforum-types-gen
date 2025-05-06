@@ -40,7 +40,7 @@ data PostData
 
 instance FromJSON PostData where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("PostDataRaw" :: Text) -> do
         r <- o .: "contents"
@@ -137,7 +137,7 @@ data TyPostData
 
 instance FromJSON TyPostData where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("TyPostDataRaw" :: Text) -> do
         pure TyPostDataRaw
@@ -220,13 +220,13 @@ data ThreadPostRequest = ThreadPostRequest {
 
 instance FromJSON ThreadPostRequest where
   parseJSON (Object o) = do
-    threadPostRequestTitle <- o .: ("title" :: Text)
-    threadPostRequestBody <- o .: ("body" :: Text)
-    threadPostRequestTags <- o .: ("tags" :: Text)
-    threadPostRequestPrivateTags <- o .: ("private_tags" :: Text)
-    threadPostRequestGuard <- o .: ("guard" :: Text)
-    threadPostRequestStateTag <- o .: ("state_tag" :: Text)
-    threadPostRequestStatePrivateTag <- o .: ("state_private_tag" :: Text)
+    threadPostRequestTitle <- o .: ("title")
+    threadPostRequestBody <- o .: ("body")
+    threadPostRequestTags <- o .: ("tags")
+    threadPostRequestPrivateTags <- o .: ("private_tags")
+    threadPostRequestGuard <- o .: ("guard")
+    threadPostRequestStateTag <- o .: ("state_tag")
+    threadPostRequestStatePrivateTag <- o .: ("state_private_tag")
     pure $ ThreadPostRequest {
       threadPostRequestTitle = threadPostRequestTitle,
       threadPostRequestBody = threadPostRequestBody,
@@ -279,21 +279,21 @@ data ThreadPostResponse = ThreadPostResponse {
 
 instance FromJSON ThreadPostResponse where
   parseJSON (Object o) = do
-    threadPostResponseId <- o .: ("id" :: Text)
-    threadPostResponseUserId <- o .: ("user_id" :: Text)
-    threadPostResponseBoardId <- o .: ("board_id" :: Text)
-    threadPostResponseThreadId <- o .: ("thread_id" :: Text)
-    threadPostResponseParentId <- o .: ("parent_id" :: Text)
-    threadPostResponseTitle <- o .: ("title" :: Text)
-    threadPostResponseBody <- o .: ("body" :: Text)
-    threadPostResponseTags <- o .: ("tags" :: Text)
-    threadPostResponsePrivateTags <- o .: ("private_tags" :: Text)
-    threadPostResponseActive <- o .: ("active" :: Text)
-    threadPostResponseGuard <- o .: ("guard" :: Text)
-    threadPostResponseCreatedAt <- o .: ("created_at" :: Text)
-    threadPostResponseModifiedBy <- o .: ("modified_by" :: Text)
-    threadPostResponseModifiedAt <- o .: ("modified_at" :: Text)
-    threadPostResponseActivityAt <- o .: ("activity_at" :: Text)
+    threadPostResponseId <- o .: ("id")
+    threadPostResponseUserId <- o .: ("user_id")
+    threadPostResponseBoardId <- o .: ("board_id")
+    threadPostResponseThreadId <- o .: ("thread_id")
+    threadPostResponseParentId <- o .: ("parent_id")
+    threadPostResponseTitle <- o .: ("title")
+    threadPostResponseBody <- o .: ("body")
+    threadPostResponseTags <- o .: ("tags")
+    threadPostResponsePrivateTags <- o .: ("private_tags")
+    threadPostResponseActive <- o .: ("active")
+    threadPostResponseGuard <- o .: ("guard")
+    threadPostResponseCreatedAt <- o .: ("created_at")
+    threadPostResponseModifiedBy <- o .: ("modified_by")
+    threadPostResponseModifiedAt <- o .: ("modified_at")
+    threadPostResponseActivityAt <- o .: ("activity_at")
     pure $ ThreadPostResponse {
       threadPostResponseId = threadPostResponseId,
       threadPostResponseUserId = threadPostResponseUserId,
@@ -348,7 +348,7 @@ data ThreadPostResponses = ThreadPostResponses {
 
 instance FromJSON ThreadPostResponses where
   parseJSON (Object o) = do
-    threadPostResponses <- o .: ("thread_post_responses" :: Text)
+    threadPostResponses <- o .: ("thread_post_responses")
     pure $ ThreadPostResponses {
       threadPostResponses = threadPostResponses
     }
@@ -379,11 +379,11 @@ data ThreadPostStatResponse = ThreadPostStatResponse {
 
 instance FromJSON ThreadPostStatResponse where
   parseJSON (Object o) = do
-    threadPostStatResponseThreadPostId <- o .: ("thread_post_id" :: Text)
-    threadPostStatResponseLikes <- o .: ("likes" :: Text)
-    threadPostStatResponseNeutral <- o .: ("neutral" :: Text)
-    threadPostStatResponseDislikes <- o .: ("dislikes" :: Text)
-    threadPostStatResponseViews <- o .: ("views" :: Text)
+    threadPostStatResponseThreadPostId <- o .: ("thread_post_id")
+    threadPostStatResponseLikes <- o .: ("likes")
+    threadPostStatResponseNeutral <- o .: ("neutral")
+    threadPostStatResponseDislikes <- o .: ("dislikes")
+    threadPostStatResponseViews <- o .: ("views")
     pure $ ThreadPostStatResponse {
       threadPostStatResponseThreadPostId = threadPostStatResponseThreadPostId,
       threadPostStatResponseLikes = threadPostStatResponseLikes,
@@ -418,7 +418,7 @@ data ThreadPostStatResponses = ThreadPostStatResponses {
 
 instance FromJSON ThreadPostStatResponses where
   parseJSON (Object o) = do
-    threadPostStatResponses <- o .: ("thread_post_stat_responses" :: Text)
+    threadPostStatResponses <- o .: ("thread_post_stat_responses")
     pure $ ThreadPostStatResponses {
       threadPostStatResponses = threadPostStatResponses
     }

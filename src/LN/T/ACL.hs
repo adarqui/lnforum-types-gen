@@ -35,7 +35,7 @@ data ACL
 
 instance FromJSON ACL where
   parseJSON (Object o) = do
-    tag <- o .: ("tag" :: Text)
+    tag <- o .: ("tag")
     case tag of
       ("ACL_Grant" :: Text) -> do
         r <- o .: "contents"
